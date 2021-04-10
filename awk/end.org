@@ -1,0 +1,20 @@
+* awk
+#+NAME: data1
+#+BEGIN_SRC text -n :async :results verbatim code
+  Beth 4.00 0
+  Dan 3.75 0
+  Kathy 4.00 10
+  Mark 5.00 20
+  Mary 5.50 22
+#+END_SRC
+
+#+BEGIN_SRC awk -n :async :results verbatim code :inb data1
+  $2 > 6 { n = n + 1; pay = pay + $2 * $3 }
+  END {
+  if ( n > 0 )
+  print n, "employees, total pay is ", pay,
+  "average pay is ", pay / n
+  else
+  print "no employees made more than $6 an hour"
+  }
+#+END_SRC
