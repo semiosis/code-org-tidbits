@@ -13,7 +13,7 @@
 =$NF= is the value of the last field.
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
-  awk '{ print "awk knows strings", $1, $2 ^ $3 }'
+  awk '{ printf("%s made %.2f dollars", $1, $2*$3 }'
 #+END_SRC
 
 #+RESULTS:
