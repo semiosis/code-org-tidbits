@@ -8,7 +8,7 @@
   Mary 7.50 22
 #+END_SRC
 
-#+BEGIN_SRC awk -n :f awk :async :results none
+#+BEGIN_SRC awk -n :f babel-awk :async :results verbatim code
   $2 > 6 { n = n + 1; pay = pay + $2 * $3 }
   END {
   if ( n > 0 )
@@ -21,4 +21,5 @@
 
 #+RESULTS:
 #+begin_src awk
+4 employees, total pay is  0 average pay is  0
 #+end_src
