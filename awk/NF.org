@@ -1,0 +1,22 @@
+* awk
+#+NAME: data1
+#+BEGIN_SRC text -n :async :results verbatim code
+  Beth 4.00 0
+  Dan 3.75 0
+  Kathy 4.00 10
+  Mark 5.00 20
+  Mary 5.50 22
+#+END_SRC
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
+  awk '{ print NF , $NF }'
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+3 0
+3 0
+3 10
+3 20
+3 22
+#+end_src
