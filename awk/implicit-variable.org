@@ -18,13 +18,3 @@ As soon as I write =emp=, awk creates it. No need to declare it.
 #+begin_src bash
 found 5 many employees
 #+end_src
-
-#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
-  awk '$2 * $3 > 50 { printf("%s made %.2f dollars\n", $1, $2*$3) }'
-#+END_SRC
-
-#+RESULTS:
-#+begin_src bash
-Mark made 100.00 dollars
-Mary made 121.00 dollars
-#+end_src
