@@ -8,6 +8,10 @@
   Mary 5.50 22
 #+END_SRC
 
+=NF= is the number of fields in the row.
+
+=$NF= is the value of the last field.
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
   awk '{ print NF , $NF }'
 #+END_SRC
