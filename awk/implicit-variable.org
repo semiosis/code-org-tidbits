@@ -11,16 +11,13 @@
 As soon as I write =emp=, awk creates it. No need to declare it.
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
-  awk '{ printf("%s made %.2f dollars\n", $1, $2*$3) }'
+  awk '{emp = emp + 1} END {printf("found %d many employees\n", emp)}"
 #+END_SRC
 
 #+RESULTS:
 #+begin_src bash
-Beth made 0.00 dollars
-Dan made 0.00 dollars
-Kathy made 40.00 dollars
-Mark made 100.00 dollars
-Mary made 121.00 dollars
+/tmp/babel-tNUtIg/generic-TsPCXB: line 1: unexpected EOF while looking for matching `''
+/tmp/babel-tNUtIg/generic-TsPCXB: line 2: syntax error: unexpected end of file
 #+end_src
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
