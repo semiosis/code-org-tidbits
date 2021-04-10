@@ -8,13 +8,30 @@
   Mary 5.50 22
 #+END_SRC
 
+=,= inserts the space.
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
   awk '{ print $1 , $3 }'
 #+END_SRC
 
 #+RESULTS:
 #+begin_src bash
-Kathy 40
-Mark 100
-Mary 121
+Beth 0
+Dan 0
+Kathy 10
+Mark 20
+Mary 22
+#+end_src
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
+  awk '{ print $1 $3 }'
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+Beth0
+Dan0
+Kathy10
+Mark20
+Mary22
 #+end_src
