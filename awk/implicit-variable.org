@@ -11,13 +11,12 @@
 As soon as I write =emp=, awk creates it. No need to declare it.
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
-  awk "{emp = emp + 1} END {printf("found %d many employees\\n", emp)}"
+  awk "{emp = emp + 1} END {printf(\"found %d many employees\\n\", emp)}"
 #+END_SRC
 
 #+RESULTS:
 #+begin_src bash
-awk: cmd. line:2: {emp = emp + 1} END {printf(found
-awk: cmd. line:2:                                  ^ unexpected newline or end of string
+found 5 many employees
 #+end_src
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
