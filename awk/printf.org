@@ -1,0 +1,26 @@
+* awk
+#+NAME: data1
+#+BEGIN_SRC text -n :async :results verbatim code
+  Beth 4.00 0
+  Dan 3.75 0
+  Kathy 4.00 10
+  Mark 5.00 20
+  Mary 5.50 22
+#+END_SRC
+
+=NF= is the number of fields in the row.
+
+=$NF= is the value of the last field.
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
+  awk '{ print "awk knows strings", $1, $2 ^ $3 }'
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+awk knows strings Beth 1
+awk knows strings Dan 1
+awk knows strings Kathy 1048576
+awk knows strings Mark 95367431640625
+awk knows strings Mary 19407927843770924
+#+end_src
