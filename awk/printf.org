@@ -13,10 +13,14 @@
 =$NF= is the value of the last field.
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
-  awk '{ printf("%s made %.2f dollars", $1, $2*$3) }'
+  awk '{ printf("%s made %.2f dollars\n", $1, $2*$3) }'
 #+END_SRC
 
 #+RESULTS:
 #+begin_src bash
-Beth made 0.00 dollarsDan made 0.00 dollarsKathy made 40.00 dollarsMark made 100.00 dollarsMary made 121.00 dollars
+Beth made 0.00 dollars
+Dan made 0.00 dollars
+Kathy made 40.00 dollars
+Mark made 100.00 dollars
+Mary made 121.00 dollars
 #+end_src
