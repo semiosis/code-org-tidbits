@@ -1,0 +1,34 @@
+* awk
+#+NAME: data1
+#+BEGIN_SRC text -n :async :results verbatim code
+  Beth 4.00 0
+  Dan 3.75 0
+  Kathy 4.00 10
+  Mark 5.00 20
+  Mary 5.50 22
+#+END_SRC
+
+As soon as I write =emp=, awk creates it. No need to declare it.
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
+  awk '{ printf("%s made %.2f dollars\n", $1, $2*$3) }'
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+Beth made 0.00 dollars
+Dan made 0.00 dollars
+Kathy made 40.00 dollars
+Mark made 100.00 dollars
+Mary made 121.00 dollars
+#+end_src
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
+  awk '$2 * $3 > 50 { printf("%s made %.2f dollars\n", $1, $2*$3) }'
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+Mark made 100.00 dollars
+Mary made 121.00 dollars
+#+end_src
