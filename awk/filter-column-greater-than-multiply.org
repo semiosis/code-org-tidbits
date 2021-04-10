@@ -9,12 +9,12 @@
 #+END_SRC
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
-  awk '$3 > 0'
+  awk '$3 > 0 { print $1 , $2 * $3 }'
 #+END_SRC
 
 #+RESULTS:
 #+begin_src bash
-Kathy 4.00 10
-Mark 5.00 20
-Mary 5.50 22
+Kathy 40
+Mark 100
+Mary 121
 #+end_src
