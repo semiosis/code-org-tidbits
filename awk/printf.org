@@ -24,3 +24,13 @@ Kathy made 40.00 dollars
 Mark made 100.00 dollars
 Mary made 121.00 dollars
 #+end_src
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code :inb data1
+  awk '$2 * $3 > 50 { printf("%s made %.2f dollars\n", $1, $2*$3) }'
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+Mark made 100.00 dollars
+Mary made 121.00 dollars
+#+end_src
