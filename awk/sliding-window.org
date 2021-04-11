@@ -15,8 +15,10 @@
 #+END_SRC
 
 # #+BEGIN_SRC awk -n :f "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
+# #+BEGIN_SRC awk -n :i "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
+# #+BEGIN_SRC awk -n :i babel-awk -v OFS="\t" :async :results verbatim code :inb data
 
-#+BEGIN_SRC awk -n :i "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
+#+BEGIN_SRC awk -n :i babel-awk -v OFS="\t" :async :results verbatim code :inb data
   BEGIN{window=4;slide=2}
   # {print "#dbg:$0="$0}
   {if(NR==1) print "coord",$6,$7 }
