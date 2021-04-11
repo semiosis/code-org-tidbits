@@ -14,6 +14,8 @@
   11  X   11  38  5   6.8825e-07  9.48149e-08
 #+END_SRC
 
+# #+BEGIN_SRC awk -n :f "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
+
 #+BEGIN_SRC awk -n :f "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
   BEGIN{window=4;slide=2}
   {if(NR==1) print "coord",$6,$7 }
