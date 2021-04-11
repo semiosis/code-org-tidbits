@@ -16,8 +16,9 @@
 
 # #+BEGIN_SRC awk -n :f "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
 
-#+BEGIN_SRC awk -n :f "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
+#+BEGIN_SRC awk -n :i "babel-awk -v OFS=\"\\t\"" :async :results verbatim code :inb data
   BEGIN{window=4;slide=2}
+  # {print "#dbg:$0="$0}
   {if(NR==1) print "coord",$6,$7 }
   {mod=NR%window; if(NR<=window){count++}else{sum-=array[mod];sum2-=array2[mod]}sum+=$6;sum2+=$7;array[mod]=$6;array2[mod]=$7;}
   (NR%slide)==0{print NR,sum/count,sum2/count}
@@ -25,4 +26,11 @@
 
 #+RESULTS:
 #+begin_src awk
+coord	corrlo5	corrlo10
+2	3.71293e-07	3.7926e-08
+4	5.56939e-07	6.16297e-08
+6	7.42585e-07	9.00742e-08
+8	7.42585e-07	9.48149e-08
+10	7.33529e-07	9.48149e-08
+12	7.10889e-07	9.48149e-08
 #+end_src
