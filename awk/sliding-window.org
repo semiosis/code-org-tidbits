@@ -27,7 +27,7 @@
   # {print "#dbg:$0="$0}
 
   {
-      if(NR==1)
+      if(NR == 1)
           print "coord",$6,$7
   }
 
@@ -40,7 +40,7 @@
       array2[mod]=$7
   }
 
-  (NR%slide)==0 {
+  (NR%slide) == 0 {
       print NR,sum/count,sum2/count
   }
 #+END_SRC
