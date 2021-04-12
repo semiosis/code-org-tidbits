@@ -27,6 +27,7 @@
   # {print "#dbg:$0 = "$0}
 
   {
+      # If first record
       if(NR == 1)
           print "coord",$6,$7
   }
