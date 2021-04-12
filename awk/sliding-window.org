@@ -22,7 +22,14 @@
   BEGIN{window=4;slide=2}
   # {print "#dbg:$0="$0}
   {if(NR==1) print "coord",$6,$7 }
-  {mod=NR%window; if(NR<=window){count++}else{sum-=array[mod];sum2-=array2[mod]}sum+=$6;sum2+=$7;array[mod]=$6;array2[mod]=$7;}
+  {
+      mod=NR%window
+      if(NR<=window){count++}else{sum-=array[mod]
+          sum2-=array2[mod]}sum+=$6
+      sum2+=$7
+      array[mod]=$6
+      array2[mod]=$7
+  }
   (NR%slide)==0{print NR,sum/count,sum2/count}
 #+END_SRC
 
