@@ -2,13 +2,13 @@
   (ns mrhaki.set.map-invert
     (:require [clojure.set :refer [map-invert]]
               [clojure.test :refer [is]]))
-  
+
   (is (= {"mrhaki" :alias "Clojure" :language}
          (map-invert {:alias "mrhaki" :language "Clojure"})))
-  
+
   ;; With duplicate values only one will be key.
-  (is (= {1 :c 2 :b 3 :d}
-         (map-invert {:a 1 :b 2 :c 1 :d 3})))
+  (printf "%s" (if (is (= {1 :c 2 :b 3 :d} (map-invert {:a 1 :b 2 :c 1 :d 3}))) "no" "yes"))
+
 #+END_SRC
 
 #+RESULTS:
