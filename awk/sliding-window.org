@@ -65,37 +65,36 @@ coord	corrlo5	corrlo10
 
 ** original awk
 #+BEGIN_SRC awk -n :i babel-awk -v OFS="\t" :async :results verbatim code :inb data
-  BEGIN {
-      window = 4
-      slide = 2
-  }
+   BEGIN {
+       window = 4
+       slide = 2
+   }
 
-  # {print "#dbg:$0 = "$0}
+   # {print "#dbg:$0 = "$0}
 
-  {
-      # If first record
-      if (NR == 1)
-          print "coord",$6,$7
-  }
+   {
+       # If first record
+       if (NR == 1)
+           print "coord",$6,$7
+   }
 
-  {
-      remainder = NR % window
-      if (NR <= window)
-      {
-          count++
-      } else {
-          sum -= array[remainder]
-          sum2 -= array2[remainder]
-      }
-      sum += $6
-      sum2 += $7
-      array[remainder] = $6
-      array2[remainder] = $7
-  }
+   {
+       remainder = NR % window
+       # If it's been through a full window then start decrementing sum
+       if (NR > window)
+       {
+           sum -= array[remainder]
+           sum2 -= array2[remainder]
+       }
+       sum += $6
+       sum2 += $7
+       array[remainder] = $6
+       array2[remainder] = $7
+   }
 
-  (NR % slide) == 0 {
-      print NR,sum/count,sum2/count
-  }
+   (NR % slide) == 0 {
+       print NR,sum/count,sum2/count
+   }
 #+END_SRC
 
 #+RESULTS:
