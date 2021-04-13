@@ -1,16 +1,30 @@
 #+BEGIN_SRC haskell -n :i ghcih -norc :async :results verbatim code
   data Name = Name String
-  
+
   -- this is the only way to create a Name
   nameFromString :: String -> Maybe Name
   nameFromString s | 10 < length s = Nothing
                    | otherwise     = Just (Name s)
-  
+
   -- this is the only way to access the contents of a Name
   stringFromName :: Name -> String
   stringFromName (Name s) = s
+
+  ---
+  print stringFromName nameFromString "hi"
 #+END_SRC
 
 #+RESULTS:
 #+begin_src haskell
+
+<interactive>:3:1: error:
+    • Couldn't match expected type ‘(String -> Maybe Name)
+                                    -> [Char] -> t’
+                  with actual type ‘IO ()’
+    • The function ‘print’ is applied to three arguments,
+      but its type ‘(Name -> String) -> IO ()’ has only one
+      In the expression: print stringFromName nameFromString "hi"
+      In an equation for ‘it’:
+          it = print stringFromName nameFromString "hi"
+    • Relevant bindings include it :: t (bound at <interactive>:3:1)
 #+end_src
