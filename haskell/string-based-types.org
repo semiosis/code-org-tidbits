@@ -10,3 +10,15 @@
   stringFromName :: Name -> String
   stringFromName (Name s) = s
 #+END_SRC
+
+#+RESULTS:
+#+begin_src haskell
+
+<interactive>:4:1: error:
+    Variable not in scope: nameFromString :: String -> Maybe Name
+
+<interactive>:6:18: error: parse error on input ‘|’
+
+<interactive>:9:1: error:
+    Variable not in scope: stringFromName :: Name -> String
+#+end_src
