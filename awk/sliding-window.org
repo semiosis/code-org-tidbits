@@ -32,8 +32,7 @@
   {
       remainder = NR % window
       # If it hasn't been through a full window yet, just increment
-      if (NR <= window)
-      {
+      if (NR <= window) {
           count++
       } else {
           sum -= array[remainder]
