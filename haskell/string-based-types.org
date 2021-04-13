@@ -11,6 +11,7 @@
   stringFromName (Name s) = s
   
   ---
+  -- print $ stringFromName $ nameFromString "hi"
   stringFromName $ nameFromString "hi"
 #+END_SRC
 
