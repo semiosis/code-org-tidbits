@@ -32,18 +32,18 @@
   }
 
   {
-      mod = NR % window
+      remainder = NR % window
       if (NR <= window)
       {
           count++
       } else {
-          sum -= array[mod]
-          sum2 -= array2[mod]
+          sum -= array[remainder]
+          sum2 -= array2[remainder]
       }
       sum += $6
       sum2 += $7
-      array[mod] = $6
-      array2[mod] = $7
+      array[remainder] = $6
+      array2[remainder] = $7
   }
 
   (NR % slide) == 0 {
@@ -78,18 +78,18 @@ coord	corrlo5	corrlo10
   }
 
   {
-      mod = NR % window
+      remainder = NR % window
       if (NR <= window)
       {
           count++
       } else {
-          sum -= array[mod]
-          sum2 -= array2[mod]
+          sum -= array[remainder]
+          sum2 -= array2[remainder]
       }
       sum += $6
       sum2 += $7
-      array[mod] = $6
-      array2[mod] = $7
+      array[remainder] = $6
+      array2[remainder] = $7
   }
 
   (NR % slide) == 0 {
