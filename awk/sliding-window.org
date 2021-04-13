@@ -28,7 +28,7 @@
 
   {
       # If first record
-      if(NR == 1)
+      if (NR == 1)
           print "coord",$6,$7
   }
 
