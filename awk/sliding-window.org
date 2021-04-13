@@ -49,9 +49,7 @@
       print NR,sum/count,sum2/count
   }
 
-  END {
-    print count
-    }
+  END {print count;}
 #+END_SRC
 
 #+RESULTS:
