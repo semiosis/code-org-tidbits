@@ -12,3 +12,18 @@ https://youtu.be/_q6Uj4X_knc?t=2749
 #+begin_src awk
 Red - Green - Blue
 #+end_src
+
+#+BEGIN_SRC awk -n :i babel-awk -v OFS="\t" :async :results verbatim code
+  BEGIN {
+      n=split("Red Green Blue", arr);
+      for (i=1;i<=n;++i)
+          print arr[i]
+  }
+#+END_SRC
+
+#+RESULTS:
+#+begin_src awk
+Red
+Green
+Blue
+#+end_src
