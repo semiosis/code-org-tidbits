@@ -100,10 +100,5 @@ coord	corrlo5	corrlo10
 #+RESULTS:
 #+begin_src awk
 coord	corrlo5	corrlo10
-2	3.71293e-07	3.7926e-08
-4	5.56939e-07	6.16297e-08
-6	7.42585e-07	9.00742e-08
-8	7.42585e-07	9.48149e-08
-10	7.33529e-07	9.48149e-08
-12	7.10889e-07	9.48149e-08
+awk: /tmp/babel-SQjv2J/generic-KOr6oM:29: (FILENAME=- FNR=2) fatal: division by zero attempted
 #+end_src
