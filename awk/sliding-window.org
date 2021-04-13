@@ -33,6 +33,7 @@
       remainder = NR % window
       # If it hasn't been through a full window yet, just increment
       if (NR <= window) {
+          # Count is needed in case there are not even 'window' number of lines in the file
           count ++
       } else {
           sum -= array[remainder]
