@@ -11,20 +11,16 @@
   stringFromName (Name s) = s
 
   ---
-  print stringFromName nameFromString "hi"
+  print $ stringFromName $ nameFromString "hi"
 #+END_SRC
 
 #+RESULTS:
 #+begin_src haskell
 
-<interactive>:3:1: error:
-    • Couldn't match expected type ‘(String -> Maybe Name)
-                                    -> [Char] -> t’
-                  with actual type ‘IO ()’
-    • The function ‘print’ is applied to three arguments,
-      but its type ‘(Name -> String) -> IO ()’ has only one
-      In the expression: print stringFromName nameFromString "hi"
-      In an equation for ‘it’:
-          it = print stringFromName nameFromString "hi"
-    • Relevant bindings include it :: t (bound at <interactive>:3:1)
+<interactive>:3:26: error:
+    • Couldn't match expected type ‘Name’ with actual type ‘Maybe Name’
+    • In the second argument of ‘($)’, namely ‘nameFromString "hi"’
+      In the second argument of ‘($)’, namely
+        ‘stringFromName $ nameFromString "hi"’
+      In the expression: print $ stringFromName $ nameFromString "hi"
 #+end_src
