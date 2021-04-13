@@ -1,1 +1,13 @@
 https://youtu.be/_q6Uj4X_knc?t=2749
+
+#+BEGIN_SRC awk -n :i babel-awk -v OFS="\t" :async :results verbatim code
+  SColors = "Red_Green_Blue"
+  split(SColors, Colors, "_")
+  print Colors[1] " - " Colors[2] " - " Colors[3]
+#+END_SRC
+
+#+RESULTS:
+#+begin_src awk
+awk: /tmp/babel-Pxf2fa/generic-DlcTx2:3: print Colors[1] " - " Colors[2] " - " Colors[3]
+awk: /tmp/babel-Pxf2fa/generic-DlcTx2:3: ^ syntax error
+#+end_src
