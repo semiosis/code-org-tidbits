@@ -1,4 +1,4 @@
-#+BEGIN_SRC haskell -n :i "babel-ghci -norc" :async :results verbatim code
+#+BEGIN_SRC haskell -n :i ghcih -norc :async :results verbatim code
   data Name = Name String
   
   -- this is the only way to create a Name
@@ -13,12 +13,4 @@
 
 #+RESULTS:
 #+begin_src haskell
-
-<interactive>:4:1: error:
-    Variable not in scope: nameFromString :: String -> Maybe Name
-
-<interactive>:6:18: error: parse error on input ‘|’
-
-<interactive>:9:1: error:
-    Variable not in scope: stringFromName :: Name -> String
 #+end_src
