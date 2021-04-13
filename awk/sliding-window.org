@@ -24,8 +24,6 @@
       slide = 2
   }
 
-  # {print "#dbg:$0 = "$0}
-
   # If first record
   (NR == 1) {
       print "coord",$6,$7
@@ -65,40 +63,46 @@ coord	corrlo5	corrlo10
 
 ** original awk
 #+BEGIN_SRC awk -n :i babel-awk -v OFS="\t" :async :results verbatim code :inb data
-   BEGIN {
-       window = 4
-       slide = 2
-   }
+  BEGIN {
+      window = 4
+      slide = 2
+  }
 
-   # {print "#dbg:$0 = "$0}
+  # {print "#dbg:$0 = "$0}
 
-   {
-       # If first record
-       if (NR == 1)
-           print "coord",$6,$7
-   }
+  {
+      # If first record
+      if (NR == 1)
+          print "coord",$6,$7
+  }
 
-   {
-       remainder = NR % window
-       # If it's been through a full window then start decrementing sum
-       if (NR > window)
-       {
-           sum -= array[remainder]
-           sum2 -= array2[remainder]
-       }
-       sum += $6
-       sum2 += $7
-       array[remainder] = $6
-       array2[remainder] = $7
-   }
+  {
+      remainder = NR % window
+      if (NR <= window)
+      {
+          count++
+      } else {
+          sum -= array[remainder]
+          sum2 -= array2[remainder]
+      }
+      sum += $6
+      sum2 += $7
+      array[remainder] = $6
+      array2[remainder] = $7
+  }
 
-   (NR % slide) == 0 {
-       print NR,sum/count,sum2/count
-   }
+  (NR % slide) == 0 {
+      print NR,sum/count,sum2/count
+  }
 #+END_SRC
 
 #+RESULTS:
 #+begin_src awk
 coord	corrlo5	corrlo10
-awk: /tmp/babel-SQjv2J/generic-KOr6oM:29: (FILENAME=- FNR=2) fatal: division by zero attempted
+2	3.71293e-07	3.7926e-08
+4	5.56939e-07	6.16297e-08
+6	7.42585e-07	9.00742e-08
+8	7.42585e-07	9.48149e-08
+10	7.33529e-07	9.48149e-08
+12	7.10889e-07	9.48149e-08
 #+end_src
