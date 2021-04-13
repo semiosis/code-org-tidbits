@@ -33,7 +33,7 @@
       remainder = NR % window
       # If it hasn't been through a full window yet, just increment
       if (NR <= window) {
-          count++
+          count ++
       } else {
           sum -= array[remainder]
           sum2 -= array2[remainder]
