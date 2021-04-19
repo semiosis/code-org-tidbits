@@ -1,0 +1,26 @@
+Leiningen can also pull configuration
+options from files called profiles.clj
+
+http://webcache.googleusercontent.com/search?q=cache:https://medium.com/@daniel.oliver.king/getting-real-work-done-in-clojure-application-development-683c8129a313
+
+The .lein-env file is not something you create manually — instead, the
+lein-environ Leiningen plugin automatically generates .lein-env by looking
+at the :env key in the project.clj configuration map.
+
+Open project.clj and take a look at the :dependencies and :plugins
+sections:
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [org.clojure/data.json "0.9.0"]
+                 [ring "1.7.1"]
+                 [ring/ring-json "0.4.0"]
+                 [ring-logger "1.0.1"]
+                 [compojure "1.6.1"]
+                 [org.postgresql/postgresql "42.2.5"]
+                 [ragtime "0.7.2"]
+                 [environ "1.1.0"]
+                 [clj-time "0.15.0"]
+                 [com.taoensso/timbre "4.10.0"]]:plugins [[lein-ring "0.12.5"]
+            [lein-environ "1.1.0"]]
+#+END_SRC
