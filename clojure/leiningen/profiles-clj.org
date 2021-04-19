@@ -7,7 +7,7 @@ The .lein-env file is not something you create manually — instead, the
 lein-environ Leiningen plugin automatically generates .lein-env by looking
 at the :env key in the project.clj configuration map.
 
-Open project.clj and take a look at the :dependencies and :plugins
+Open =project.clj= and take a look at the :dependencies and :plugins
 sections:
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
@@ -24,3 +24,5 @@ sections:
                  [com.taoensso/timbre "4.10.0"]]:plugins [[lein-ring "0.12.5"]
             [lein-environ "1.1.0"]]
 #+END_SRC
+
+[[sps:le project.clj]]
