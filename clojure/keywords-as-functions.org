@@ -1,0 +1,6 @@
+#+BEGIN_SRC text -n :async :results verbatim code
+  Also, note that I am using keywords as functions in this expression. A
+  keyword can be used as a function to look up the corresponding value in a
+  map. In other words, (:database-type env) is equivalent to (get env
+  :database-type)
+#+END_SRC
