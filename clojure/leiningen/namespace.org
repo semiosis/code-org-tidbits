@@ -1,0 +1,9 @@
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  lein run -m main
+#+END_SRC
+
+Look at the namespace specified by the -m
+command line option. This namespace will be
+the entry point of the project. In our case,
+this is the main namespace declared in
+main.clj.
