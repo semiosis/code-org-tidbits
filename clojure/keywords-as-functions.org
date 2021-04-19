@@ -1,3 +1,5 @@
+http://webcache.googleusercontent.com/search?q=cache:https://medium.com/@daniel.oliver.king/getting-real-work-done-in-clojure-application-development-683c8129a313
+
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (ns db.core
     (:require [environ.core :refer [env]]))(def connection
