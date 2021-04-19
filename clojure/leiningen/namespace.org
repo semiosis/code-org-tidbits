@@ -7,3 +7,5 @@ command line option. This namespace will be
 the entry point of the project. In our case,
 this is the main namespace declared in
 main.clj.
+
+http://webcache.googleusercontent.com/search?q=cache:https://medium.com/@daniel.oliver.king/a-clojure-development-environment-that-gets-out-of-your-way-c11e6711ead3
