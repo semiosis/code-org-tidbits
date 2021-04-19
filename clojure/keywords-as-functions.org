@@ -1,3 +1,15 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (ns db.core
+    (:require [environ.core :refer [env]]))(def connection
+    "Map representing the database connection."
+    {:dbtype (:database-type env)
+     :dbname (:database-name env)
+     :user (:database-username env)
+     :password (:database-password env)
+     :host (:database-host env)
+     :port (:database-port env)})
+#+END_SRC
+
 #+BEGIN_SRC text -n :async :results verbatim code
   Also, note that I am using keywords as functions in this expression. A
   keyword can be used as a function to look up the corresponding value in a
