@@ -1,0 +1,9 @@
+There is no return keyword in Clojure. A
+function automatically returns the value of
+the last expression in the function body, in
+this case the concatination of "Hello “ and
+my-name .
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn hello-message [name] (str "Hello " name))
+#+END_SRC
