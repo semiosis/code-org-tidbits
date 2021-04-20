@@ -1,11 +1,13 @@
 Leiningen can also pull configuration
-options from files called profiles.clj
+options from files called =profiles.clj=
 
 http://webcache.googleusercontent.com/search?q=cache:https://medium.com/@daniel.oliver.king/getting-real-work-done-in-clojure-application-development-683c8129a313
 
-The .lein-env file is not something you create manually — instead, the
-lein-environ Leiningen plugin automatically generates .lein-env by looking
-at the :env key in the project.clj configuration map.
+The =.lein-env= file is not something you
+create manually — instead, the lein-environ
+Leiningen plugin automatically generates
+=.lein-env= by looking at the :env key in the
+project.clj configuration map.
 
 Open =project.clj= and take a look at the :dependencies and :plugins
 sections:
