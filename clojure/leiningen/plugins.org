@@ -1,0 +1,11 @@
+http://webcache.googleusercontent.com/search?q=cache:https://medium.com/@daniel.oliver.king/getting-real-work-done-in-clojure-application-development-683c8129a313
+
+The =:plugins= section declares the Leiningen
+plugins that should be used for this project.
+Leiningen plugins typically add additional
+functionality to Leiningen that can be used
+during the build process.
+
+In this case, we have included the lein-
+environ plugin, which automatically generates
+the =.lein-env= configuration file.
