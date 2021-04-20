@@ -26,3 +26,9 @@ sections:
 #+END_SRC
 
 [[sps:lf project.clj]]
+
+Leiningen allows you to define different
+“profiles”, which specify configuration
+options for different environments (remember
+the ~/.lein/profiles.clj file where we
+declared the dependency on Proto-Repl?).
