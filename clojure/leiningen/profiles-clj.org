@@ -12,6 +12,8 @@ Leiningen plugin automatically generates
 project.clj configuration map.
 
 ** =project.clj=
+[[sps:lf project.clj]]
+
 *** :dependencies
 Open =project.clj= and take a look at the
 :dependencies and :plugins sections:
@@ -30,8 +32,6 @@ Open =project.clj= and take a look at the
                  [com.taoensso/timbre "4.10.0"]]:plugins [[lein-ring "0.12.5"]
             [lein-environ "1.1.0"]]
 #+END_SRC
-
-[[sps:lf project.clj]]
 
 *** :profiles
 Leiningen allows you to define different
