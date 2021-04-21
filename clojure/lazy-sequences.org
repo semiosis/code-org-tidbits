@@ -5,3 +5,21 @@ action and more values are added to it. The
 main benefit of lazy sequences is that they
 are processor and memory efficient. They only
 generate values as they are needed.
+
+** iterate
+There is a function called iterate that will
+call a function infinitely and collect return
+values in a sequence.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  ; (println (range 5)) 
+  ; (println (range 10 20)) 
+  ; (println (range 1 15 2)) 
+   
+  (defn add-ten [number] 
+      (+ number 10)) 
+   
+  (println (add-ten 10)) 
+   
+  ;(println (iterate add-ten 100))
+#+END_SRC
