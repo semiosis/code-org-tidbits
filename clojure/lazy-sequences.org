@@ -24,3 +24,17 @@ values in a sequence.
   ;; This would call my add-ten function starting with the value 100. 
   ;; (println (iterate add-ten 100))
 #+END_SRC
+
+** range is also lazy
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn add-ten [number] 
+      (+ number 10))
+  (println (take 5 (iterate add-ten 100)))
+  (println (take 5 (range 10 100)))
+#+END_SRC
+
+#+RESULTS:
+#+begin_src clojure
+(100 110 120 130 140)
+(10 11 12 13 14)
+#+end_src
