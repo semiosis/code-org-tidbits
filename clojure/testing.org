@@ -1,0 +1,6 @@
+Instead of typing the FQ =clojure.test/deftest=
+I can just use =deftest=.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (use 'clojure.test) 
+#+END_SRC
