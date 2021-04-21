@@ -1,3 +1,5 @@
+https://riptutorial.com/clojure/example/8497/defining-a-test-with-deftest
+
 Instead of typing the FQ =clojure.test/deftest=
 I can just use =deftest=.
 
