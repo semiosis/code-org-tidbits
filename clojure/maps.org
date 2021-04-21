@@ -1,23 +1,23 @@
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (def myself '("Mark")) 
-  (def myself-with-bros (conj myself "Adam" "Dan" "Mike")) 
-  (def myself-with-sisters (conj myself "Coleen" "Katy")) 
-   
-  (println "me with sisters" myself-with-sisters) 
-  (println "me with bros" myself-with-bros) 
-  (println "just me" myself) 
-   
-  (println) 
-   
-  (def me-map {:me "Mark"}) 
-  (def family-map-with-bros (assoc me-map :bro1 "Adam" :bro2 "Dan" :bro3 "Mike")) 
-  (def family-map-with-sisters (assoc me-map :sis1 "Coleen" :sis2 "Katy")) 
-  (def whole-family (merge family-map-with-bros family-map-with-sisters)) 
-  (def no-m-names (dissoc whole-family :me :bro3)) 
-   
-  (println "family with no M names" no-m-names) 
-  (println "whole family" whole-family) 
-  (println "me with sisters" family-map-with-sisters) 
-  (println "me with bros" family-map-with-bros) 
-  (println "me map" me-map) 
+  (def myself '("Mark"))
+  (def myself-with-bros (conj myself "Adam" "Dan" "Mike"))
+  (def myself-with-sisters (conj myself "Coleen" "Katy"))
+
+  (println "me with sisters" myself-with-sisters)
+  (println "me with bros" myself-with-bros)
+  (println "just me" myself)
+
+  (println)
+
+  (def me-map {:me "Mark"})
+  (def family-map-with-bros (assoc me-map :bro1 "Adam" :bro2 "Dan" :bro3 "Mike"))
+  (def family-map-with-sisters (assoc me-map :sis1 "Coleen" :sis2 "Katy"))
+  (def whole-family (merge family-map-with-bros family-map-with-sisters))
+  (def no-m-names (dissoc whole-family :me :bro3))
+
+  (println "family with no M names" no-m-names)
+  (println "whole family" whole-family)
+  (println "me with sisters" family-map-with-sisters)
+  (println "me with bros" family-map-with-bros)
+  (println "me map" me-map)
 #+END_SRC
