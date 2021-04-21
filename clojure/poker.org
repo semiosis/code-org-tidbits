@@ -57,6 +57,6 @@ I turn the ranks into a set so that I can
 easily check to see if a rank is in there with
 =contains?=.
 
-** every?
+** =every?=
 Returns true if (pred x) is logical true for
 every x in coll, else false.
