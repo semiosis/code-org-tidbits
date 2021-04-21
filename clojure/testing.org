@@ -3,4 +3,20 @@ I can just use =deftest=.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (use 'clojure.test) 
+ 
+  (deftest simple-test 
+      (is (= 1 1)) 
+      (is (= 1 2))) 
+ 
+  (run-tests)
+#+END_SRC
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (use 'clojure.test) 
+   
+  (deftest simple-test 
+      (is (= 1 1)) 
+      (is (= 1 2))) 
+   
+  (run-tests)
 #+END_SRC
