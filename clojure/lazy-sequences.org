@@ -40,3 +40,13 @@ values in a sequence.
 (100 110 120 130 140)
 (10 11 12 13 14)
 #+end_src
+
+** How to make them yourself =lazy-seq=
+- This calls =fib= recursively, but since it's
+inside =lazy-seq=, it may be held back.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn fib [left right] 
+      (lazy-seq 
+          (cons left (fib right (+ left right))))) 
+#+END_SRC
