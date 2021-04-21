@@ -15,9 +15,13 @@
   (defn get-complete-grade-string [grade]
       (str grade " " (get-grade grade) " " (pass-fail? grade)))
 
+  ;; for collects the results into a list
   (defn get-grade-results [grades]
       (for [grade grades]
           (get-complete-grade-string grade)))
-  
+
+  (defn get-grade-results [grades]
+      (map get-complete-grade-string grades))
+
   (get-grade-results '(78.0 84.0 96.0 74.0 52.0))
 #+END_SRC
