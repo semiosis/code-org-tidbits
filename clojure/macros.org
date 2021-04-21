@@ -93,3 +93,99 @@ will not even be evaluated.
 This is a nice feature because I can skip the
 expensive call to really-slow-even? when a
 value is not in the set.
+
+** Full code for setter (using a macro)
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (use 'clojure.test) 
+   
+  (defn really-slow-even? [num] 
+      (println "Working on determining if a number is even...") 
+      (Thread/sleep 2000) 
+      (even? num)) 
+   
+  (defmacro contains-with-and [map-or-set key conditional-code] 
+      `(let [map-or-set# ~map-or-set 
+             key# ~key] 
+          (if (contains? map-or-set# key#) ~conditional-code false))) 
+   
+  (defmacro contains-with-or [map-or-set key conditional-code] 
+      `(let [map-or-set# ~map-or-set 
+             key# ~key] 
+          (if (contains? map-or-set# key#) true ~conditional-code))) 
+   
+  (defmacro intersects-with-and [first-map-or-set second-map-or-set key conditional-code] 
+      `(let [first-map-or-set# ~first-map-or-set 
+             second-map-or-set# ~second-map-or-set 
+             key# ~key] 
+          (if (and (contains? first-map-or-set# key#) (contains? second-map-or-set# key#)) ~conditional-code false))) 
+   
+  (defmacro intersects-with-or [first-map-or-set second-map-or-set key conditional-code] 
+      `(let [first-map-or-set# ~first-map-or-set 
+             second-map-or-set# ~second-map-or-set 
+             key# ~key] 
+          (if (and (contains? first-map-or-set# key#) (contains? second-map-or-set# key#)) true ~conditional-code))) 
+   
+  (deftest test-set-functions 
+      (let [first-set #{1 2 3} 
+            second-set #{3 4} 
+            even-in-set 2 
+            odd-in-set 3 
+            out-of-set 100] 
+           
+          (println "Testing contains-with-and") 
+          (println "Should call really-slow-even?") 
+          (is (= true (contains-with-and first-set even-in-set (really-slow-even? even-in-set)))) 
+          (println) 
+   
+          (println "Should call really-slow-even?") 
+          (is (= false (contains-with-and first-set odd-in-set (really-slow-even? odd-in-set)))) 
+          (println) 
+   
+          (println "Should NOT call really-slow-even?") 
+          (is (= false (contains-with-and first-set out-of-set (really-slow-even? out-of-set)))) 
+          (println) 
+           
+   
+          (println "Testing contains-with-or") 
+          (println "Should NOT call really-slow-even?") 
+          (is (= true (contains-with-or first-set even-in-set (really-slow-even? even-in-set)))) 
+          (println) 
+   
+          (println "Should NOT call really-slow-even?") 
+          (is (= true (contains-with-or first-set odd-in-set (really-slow-even? odd-in-set)))) 
+          (println) 
+   
+          (println "Should call really-slow-even?") 
+          (is (= true (contains-with-or first-set out-of-set (really-slow-even? out-of-set)))) 
+          (println) 
+           
+   
+          (println "Testing intersects-with-and") 
+          (println "Should NOT call really-slow-even?") 
+          (is (= false (intersects-with-and first-set second-set even-in-set (really-slow-even? even-in-set)))) 
+          (println) 
+   
+          (println "Should call really-slow-even?") 
+          (is (= false (intersects-with-and first-set second-set odd-in-set (really-slow-even? odd-in-set)))) 
+          (println) 
+   
+          (println "Should NOT call really-slow-even?") 
+          (is (= false (intersects-with-and first-set second-set out-of-set (really-slow-even? out-of-set)))) 
+          (println) 
+           
+   
+          (println "Testing contains-with-or") 
+          (println "Should call really-slow-even?") 
+          (is (= true (intersects-with-or first-set second-set even-in-set (really-slow-even? even-in-set)))) 
+          (println) 
+   
+          (println "Should NOT call really-slow-even?") 
+          (is (= true (intersects-with-or first-set second-set odd-in-set (really-slow-even? odd-in-set)))) 
+          (println) 
+   
+          (println "Should call really-slow-even?") 
+          (is (= true (intersects-with-or first-set second-set out-of-set (really-slow-even? out-of-set)))) 
+          (println))) 
+   
+  (run-tests)
+#+END_SRC
