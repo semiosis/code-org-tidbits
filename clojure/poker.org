@@ -56,3 +56,7 @@ There is a keys function that returns the keys of a map.
 I turn the ranks into a set so that I can
 easily check to see if a rank is in there with
 =contains?=.
+
+** every?
+Returns true if (pred x) is logical true for
+every x in coll, else false.
