@@ -1,3 +1,4 @@
+* Introduction to Clojure macros
 ** =#=
 The =#= in the let is used to generate a unique
 name for the local binding.
@@ -67,4 +68,16 @@ The screenshot has the output.
   ;       (clojure.core/<= temp__1150__auto__ 32) (println Ice)
   ;       (clojure.core/< temp__1150__auto__ 212) (println Water)
   ;       :else (println Steam)))
+#+END_SRC
+
+* Set macros
+** sleep
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (def a-val 2) 
+  (def first-set #{1 2 3}) 
+   
+  (defn really-slow-even? [num] 
+      (println "Working on determining if a number is even...") 
+      (Thread/sleep 2000) 
+      (even? num))
 #+END_SRC
