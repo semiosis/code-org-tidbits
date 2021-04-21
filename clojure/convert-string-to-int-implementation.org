@@ -31,3 +31,9 @@ decimal numbering system).
 
       ([string-representation base]))
 #+END_SRC
+
+** Else is optional
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (if (and (>= base 2) (<= base 16))
+    (let []))
+#+END_SRC
