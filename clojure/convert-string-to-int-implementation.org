@@ -12,3 +12,22 @@
 
   (run-tests)
 #+END_SRC
+
+** Overloading functions
+The syntax for creating two functions with the
+same name is to surround each version in its
+own set of parentheses.
+
+The highlighted code shows the complete first
+version so far.
+
+Since no base is passed in this version I will
+assume the user wants to use base 10 (the
+decimal numbering system).
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn convert-string-to-int
+      ([string-representation])
+
+      ([string-representation base]))
+#+END_SRC
