@@ -18,7 +18,6 @@
   (defn get-grade-results [grades]
       (for [grade grades]
           (get-complete-grade-string grade)))
-
-
+  
   (get-grade-results '(78.0 84.0 96.0 74.0 52.0))
 #+END_SRC
