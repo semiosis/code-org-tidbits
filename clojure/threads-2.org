@@ -15,3 +15,11 @@ This times a function.
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (Executors/newFixedThreadPool number-of-threads)
 #+END_SRC
+
+* repeat
+Create multiple copies.
+
+** Create multiple copies of the same function
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (repeat number-of-threads (fn [] (play-a-lot-of-poker num-hands-per-thread five-or-seven)))
+#+END_SRC
