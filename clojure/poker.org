@@ -9,3 +9,29 @@ them do.
 
 I'll use this to see if any of the sequences
 have 5 or more cards in it.
+
+** group by
+Then I want to add each sequence to a map
+based on the card's suit.
+
+This is exactly what the built in function
+group-by does.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn get-cards-by-suit [cards] 
+      (group-by (fn [card] (card :suit)) cards)) 
+#+END_SRC
+
+** some
+
+** vals
+The vals function returns a sequence of just
+the values in a map.
+
+In this case each of the values is a sequence
+of cards with the same suit.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn is-flush? [all-cards-by-suit] 
+      (some (fn [cards] (if (>= (count cards) 5))) (vals all-cards-by-suit))) 
+#+END_SRC
