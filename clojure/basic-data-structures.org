@@ -1,0 +1,53 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (def a-list '(1 2 3)) 
+  (def a-vector ["Mark" "Laura" "Buddy" "Patrick"]) 
+  (def a-map {"Carthage" "Wisconsin" "MIT" "Massachusetts" "Stanford" "California"}) 
+  (def a-set #{"Mark" "Laura" "Buddy" "Patrick"}) 
+   
+   
+  (println "a-list: " a-list) 
+  (println "a-list count" (count a-list)) 
+  (println) 
+   
+   
+  (println "a-vector: " a-vector) 
+  (println "a-vector count" (count a-vector)) 
+  (println) 
+   
+   
+  (println "a-map: " a-map) 
+  (println "a-map count" (count a-map)) 
+  (println) 
+   
+  (println "Getting values from a map:") 
+  (println "Carthage is in" (get a-map "Carthage")) 
+  (println "Stanford is in" (get a-map "Stanford")) 
+  (println "IIT is in" (get a-map "IIT")) 
+  (println "IIT is in" (get a-map "IIT" "Unknown")) 
+  (println "MIT is in" (a-map "MIT")) 
+  (println) 
+   
+   
+  (println "a-set: " a-set) 
+  (println "a-set count" (count a-set)) 
+  (println (a-set "Mark")) 
+  (println (contains? a-set "Mark")) 
+  (println) 
+   
+   
+  (def another-list (cons 4 a-list)) 
+  (println "another-list: " another-list) 
+  (println "another-list count" (count another-list)) 
+  (println) 
+   
+   
+  (def another-vector (conj a-vector "Willy" "Juan-Pablo")) 
+  (println "another-vector: " another-vector) 
+  (println "another-vector count" (count another-vector)) 
+  (println) 
+   
+   
+  (def another-map (assoc a-map "GTech" "Georgia")) 
+  (println "GTech is in" (another-map "GTech")) 
+  (println)
+#+END_SRC
