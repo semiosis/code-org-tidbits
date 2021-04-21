@@ -37,3 +37,21 @@ decimal numbering system).
   (if (and (>= base 2) (<= base 16))
     (let []))
 #+END_SRC
+
+** Looping
+Looping is recursive in Clojure, the loop
+construct is a hack so that something like
+tail-recursive-optimization works in clojure.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn my-re-seq [re string]
+    "Something like re-seq"
+    (let [matcher (re-matcher re string)]
+
+      (loop [match (re-find matcher) ;loop starts with 2 set arguments
+             result []]
+        (if-not match
+          result
+          (recur (re-find matcher)    ;loop with 2 new arguments
+                 (conj result match))))))
+#+END_SRC
