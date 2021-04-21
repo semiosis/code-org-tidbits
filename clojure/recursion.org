@@ -60,3 +60,34 @@ recursion.
 Since the call stack is not used there is no
 risk of a stack overflow error but it still
 feels like I am using recursion.
+
+** fizz-buzz with recursion
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn prompt-int [prompt] 
+      (println prompt) 
+      (. Integer parseInt (read-line))) 
+   
+  (defn get-digits [number all-digits] 
+      (if (= number 0) 
+          all-digits 
+          (recur (quot number 10) (conj all-digits (mod number 10))))) 
+   
+  (defn fizz-or-buzz-or-number [number] 
+      (let [all-digits (get-digits number #{}) 
+            has-digit-3 (contains? all-digits 3) 
+            has-digit-5 (contains? all-digits 5)] 
+          (cond (and has-digit-3 has-digit-5) (str "fizz-buzz (" number ")") 
+                has-digit-3 (str "fizz (" number ")") 
+                has-digit-5 (str "buzz (" number ")") 
+                :else number))) 
+   
+  (defn fizz-buzz [] 
+      (let [start (prompt-int "Enter in a start value") 
+            end (prompt-int "Enter in an end value") 
+            nums-in-range (range start (+ end 1)) 
+            final-output (map fizz-or-buzz-or-number nums-in-range)] 
+          (doseq [result final-output] 
+              (println result)))) 
+   
+  (fizz-buzz)
+#+END_SRC
