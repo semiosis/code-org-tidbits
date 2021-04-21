@@ -22,5 +22,5 @@ values in a sequence.
   (println (add-ten 10)) 
 
   ;; This would call my add-ten function starting with the value 100. 
-  ;(println (iterate add-ten 100))
+  ;; (println (iterate add-ten 100))
 #+END_SRC
