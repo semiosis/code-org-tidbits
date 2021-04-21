@@ -1,3 +1,5 @@
+Apply treats positional arguments and list elements equally.
+
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (apply str "_" "0x" '("a" "b"))
 #+END_SRC
