@@ -1,0 +1,47 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn create-box [height width] 
+      (let [verified-height (if (> height 1) height 2) 
+            verified-width (if (> width 1) width 2)] 
+          {:height verified-height :width verified-width})) 
+   
+  (defn get-height [box] 
+      (box :height)) 
+   
+  (defn get-width [box] 
+      (box :width)) 
+   
+  (defn get-area [box] 
+      (* (get-height box) (get-width box))) 
+   
+  (defn get-perimeter [box] 
+      (+ (* (get-height box) 2) (* (get-width box) 2))) 
+   
+  (defn draw-box [box] 
+      (let [top-bottom-row-seq (repeat (get-width box) "*") 
+            top-bottom-row-text (apply str top-bottom-row-seq) 
+            middle-row-space-seq (repeat (- (get-width box) 2) " ") 
+            middle-row-space-text (apply str middle-row-space-seq) 
+            middle-row-text (str "*" middle-row-space-text "*") 
+            all-middle-rows (repeat (- (get-height box) 2) middle-row-text)] 
+          (println top-bottom-row-text) 
+          (doseq [row all-middle-rows] 
+              (println row)) 
+          (println top-bottom-row-text))) 
+   
+  (defn print-box [box] 
+      (println "Height" (get-height box)) 
+      (println "Width" (get-width box)) 
+      (println "Area" (get-area box)) 
+      (println "Perimeter" (get-perimeter box)) 
+      (draw-box box) 
+      (println)) 
+   
+  (defn expand [box scaling-factor] 
+      (create-box (* (get-height box) scaling-factor) (* (get-width box) scaling-factor))) 
+   
+  (def box1 (create-box 3 4)) 
+  (print-box box1) 
+   
+  (def box2 (expand box1 4)) 
+  (print-box box2)
+#+END_SRC
