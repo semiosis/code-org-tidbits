@@ -11,7 +11,6 @@ value appended to it. This will make the name
 unique and avoid any naming collisions.
 
 ** =~=
-
 The tilde ~ says to replace the code in the
 macro with the code passed in as a parameter. 
 
