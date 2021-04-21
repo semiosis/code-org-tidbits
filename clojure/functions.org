@@ -16,12 +16,40 @@
       (str grade " " (get-grade grade) " " (pass-fail? grade)))
 
   ;; for collects the results into a list
-  (defn get-grade-results [grades]
-      (for [grade grades]
-          (get-complete-grade-string grade)))
+  ;; (defn get-grade-results [grades]
+  ;;     (for [grade grades]
+  ;;         (get-complete-grade-string grade)))
+
+  ;; (defn get-grade-results [grades]
+  ;;     (map get-complete-grade-string grades))
 
   (defn get-grade-results [grades]
-      (map get-complete-grade-string grades))
+      (let [all-grades (map get-complete-grade-string grades)]
+          (apply str all-grades)))
 
-  (get-grade-results '(78.0 84.0 96.0 74.0 52.0))
+  ;; (get-grade-results '(78.0 84.0 96.0 74.0 52.0))
+
+  (defn get-final-grade [grades]
+    (let [sum-of-all-grades (reduce + grades)]
+      (/ sum-of-all-grades (count grades))))
+
+  (defn print-student [first middle last & grades]
+      (let [student-name (get-name first middle last)
+            grade-results (get-grade-results grades)
+            final-grade (get-final-grade grades)]
+          (println student-name)
+          (println "Grades: ")
+          (println grade-results)
+          (println "Final Grade: " final-grade (get-grade final-grade) (pass-fail? final-grade))
+          (println)))
+
+  (print-student "Mark" "Robert" "Mahoney" 78.0 84.0 96.0 74.0 52.0)
+
+
+
+  ;; An & in a parameter list collects arguments
+  ;; and puts them into a sequence that is
+  ;; accessible in the function.
+
+  ;; The sequence is called grades.
 #+END_SRC
