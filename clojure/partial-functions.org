@@ -1,0 +1,1 @@
+https://practicalli.github.io/clojure/thinking-functionally/partial-functions.html
