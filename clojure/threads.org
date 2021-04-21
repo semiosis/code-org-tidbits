@@ -17,17 +17,17 @@ In a thread
 
 ** Order of execution is not guaranteed by sequentially lining them up
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (println "Before creating threads") 
- 
-  (def thread1 (new Thread (fn [] (println "Thread 1")))) 
-  (.start thread1) 
- 
-  (def thread2 (new Thread (fn [] (println "Thread 2")))) 
-  (.start thread2) 
- 
-  (def thread3 (new Thread (fn [] (println "Thread 3")))) 
-  (.start thread3) 
- 
+  (println "Before creating threads")
+
+  (def thread1 (new Thread (fn [] (println "Thread 1"))))
+  (.start thread1)
+
+  (def thread2 (new Thread (fn [] (println "Thread 2"))))
+  (.start thread2)
+
+  (def thread3 (new Thread (fn [] (println "Thread 3"))))
+  (.start thread3)
+
   (println "After creating threads")
 #+END_SRC
 
@@ -48,20 +48,20 @@ run a Clojure program (sometimes called the
 'main' thread).
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (println "Before creating threads") 
-   
-  (def thread1 (new Thread (fn [] (println "Thread 1")))) 
-  (.start thread1) 
-   
-  (def thread2 (new Thread (fn [] (println "Thread 2")))) 
-  (.start thread2) 
-   
-  (def thread3 (new Thread (fn [] (println "Thread 3")))) 
-  (.start thread3) 
-   
+  (println "Before creating threads")
+
+  (def thread1 (new Thread (fn [] (println "Thread 1"))))
+  (.start thread1)
+
+  (def thread2 (new Thread (fn [] (println "Thread 2"))))
+  (.start thread2)
+
+  (def thread3 (new Thread (fn [] (println "Thread 3"))))
+  (.start thread3)
+
   ;; This sleeps the main thread
-  (Thread/sleep 500) 
-   
+  (Thread/sleep 500)
+
   (println "After creating threads")
 #+END_SRC
 
@@ -80,21 +80,21 @@ I am importing that class so that I can create
 for me.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (import '(java.util.concurrent Executors)) 
-   
-  ; (println "Before creating threads") 
-   
-  ; (def thread1 (new Thread (fn [] (println "Thread 1")))) 
-  ; (.start thread1) 
-   
-  ; (def thread2 (new Thread (fn [] (println "Thread 2")))) 
-  ; (.start thread2) 
-   
-  ; (def thread3 (new Thread (fn [] (println "Thread 3")))) 
-  ; (.start thread3) 
-   
-  ; (Thread/sleep 500) 
-   
+  (import '(java.util.concurrent Executors))
+
+  ; (println "Before creating threads")
+
+  ; (def thread1 (new Thread (fn [] (println "Thread 1"))))
+  ; (.start thread1)
+
+  ; (def thread2 (new Thread (fn [] (println "Thread 2"))))
+  ; (.start thread2)
+
+  ; (def thread3 (new Thread (fn [] (println "Thread 3"))))
+  ; (.start thread3)
+
+  ; (Thread/sleep 500)
+
   ; (println "After creating threads")
 #+END_SRC
 
@@ -109,43 +109,43 @@ them.
 
 ** Final code
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (import '(java.util.concurrent Executors)) 
-   
-  (defn use-thread-pool [number-of-threads] 
-      (let [seq-of-numbers (range number-of-threads) 
-            pool (Executors/newFixedThreadPool number-of-threads) 
-            tasks (map (fn [thread-number] (fn [] (* (nth seq-of-numbers thread-number) 10))) seq-of-numbers)] 
-          (println "seq-of-numbers: ") 
-          (doseq [num seq-of-numbers] 
-              (print num "")) 
-          (println) 
-          (println "seq-of-nums times 10") 
-          (doseq [future (.invokeAll pool tasks)] 
-              (print (.get future) "")) 
-          (.shutdown pool))) 
-   
-  (use-thread-pool 10) 
-   
-  ; (println "Before creating threads") 
-   
-  ; (def thread1 (new Thread (fn [] (println "Thread 1")))) 
-  ; (.start thread1) 
-   
-  ; (def thread2 (new Thread (fn [] (println "Thread 2")))) 
-  ; (.start thread2) 
-   
-  ; (def thread3 (new Thread (fn [] (println "Thread 3")))) 
-  ; (.start thread3) 
-   
-  ; (Thread/sleep 500) 
-   
+  (import '(java.util.concurrent Executors))
+
+  (defn use-thread-pool [number-of-threads]
+      (let [seq-of-numbers (range number-of-threads)
+            pool (Executors/newFixedThreadPool number-of-threads)
+            tasks (map (fn [thread-number] (fn [] (* (nth seq-of-numbers thread-number) 10))) seq-of-numbers)]
+          (println "seq-of-numbers: ")
+          (doseq [num seq-of-numbers]
+              (print num ""))
+          (println)
+          (println "seq-of-nums times 10")
+          (doseq [future (.invokeAll pool tasks)]
+              (print (.get future) ""))
+          (.shutdown pool)))
+
+  (use-thread-pool 10)
+
+  ; (println "Before creating threads")
+
+  ; (def thread1 (new Thread (fn [] (println "Thread 1"))))
+  ; (.start thread1)
+
+  ; (def thread2 (new Thread (fn [] (println "Thread 2"))))
+  ; (.start thread2)
+
+  ; (def thread3 (new Thread (fn [] (println "Thread 3"))))
+  ; (.start thread3)
+
+  ; (Thread/sleep 500)
+
   ; (println "After creating threads")
 #+END_SRC
 
 #+RESULTS:
 #+begin_src clojure
-seq-of-numbers: 
-0 1 2 3 4 5 6 7 8 9 
+seq-of-numbers:
+0 1 2 3 4 5 6 7 8 9
 seq-of-nums times 10
-0 10 20 30 40 50 60 70 80 90 
+0 10 20 30 40 50 60 70 80 90
 #+end_src
