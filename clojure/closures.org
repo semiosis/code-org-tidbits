@@ -1,0 +1,13 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn get-retirement-calculator [retirement-age] 
+      (fn [age] (- retirement-age age))) 
+   
+  (def marks-age 44) 
+  (def optimistic (get-retirement-calculator 67)) 
+  (def pessimistic (get-retirement-calculator 72)) 
+  (def really-depressing (get-retirement-calculator 100)) 
+   
+  (println "Optimistically I can retire in" (optimistic marks-age) "years.") 
+  (println "Pessimistically I can retire in" (pessimistic marks-age) "years.") 
+  (println "I hope it doesn't come to this... I can retire in" (really-depressing marks-age) "years.")
+#+END_SRC
