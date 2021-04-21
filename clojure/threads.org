@@ -115,14 +115,19 @@ them.
       (let [seq-of-numbers (range number-of-threads)
             pool (Executors/newFixedThreadPool number-of-threads)
             tasks (map (fn [thread-number] (fn [] (* (nth seq-of-numbers thread-number) 10))) seq-of-numbers)]
-          (println "seq-of-numbers: ")
-          (doseq [num seq-of-numbers]
-              (print num ""))
-          (println)
-          (println "seq-of-nums times 10")
-          (doseq [future (.invokeAll pool tasks)]
-              (print (.get future) ""))
-          (.shutdown pool)))
+        (println "seq-of-numbers: ")
+        (doseq [num seq-of-numbers]
+          (print num ""))
+        (println)
+        (println "seq-of-nums times 10")
+
+        ;; All futures have a method called get
+        ;; that will return the collected value. In
+        ;; this case it is a number multiplied by
+        ;; 10.
+        (doseq [future (.invokeAll pool tasks)]
+          (print (.get future) ""))
+        (.shutdown pool)))
 
   (use-thread-pool 10)
 
