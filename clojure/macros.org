@@ -12,11 +12,11 @@ unique and avoid any naming collisions.
 
 ** =~=
 The tilde ~ says to replace the code in the
-macro with the code passed in as a parameter. 
+macro with the code passed in as a parameter.
 
 This now makes use of the passed in
 parameters. temp is a value but the other
-parameters are chunks of code to execute.  
+parameters are chunks of code to execute.
 
 Remember, a macro is kind of like a code
 template that has some pieces that will stay
@@ -25,7 +25,7 @@ tilde is how I replace those parts of the
 code.
 
 The output now selects one of the printlns to
-execute instead of all three. 
+execute instead of all three.
 
 ** =macroexpand-1=
 
@@ -43,28 +43,28 @@ The screenshot has the output.
 
 ** Macros in clojure
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (defmacro act-on-water-state [temp if-frozen-do if-water-do if-steam-do] 
-      `(let [temp# ~temp] 
-          (cond 
-              (<= temp# 32) ~if-frozen-do 
-              (< temp# 212) ~if-water-do 
-              :else ~if-steam-do))) 
-   
-  (defn prompt-for-int [prompt] 
-      (println prompt) 
-      (. Integer parseInt (read-line))) 
-   
-  (defn handle-water-based-on-temp [] 
-      (let [users-temp (prompt-for-int "Enter in a water temp")] 
-          (act-on-water-state users-temp (println "Ice") (println "Water") (println "Steam")))) 
-   
-  ;(handle-water-based-on-temp) 
-   
-  (println (macroexpand-1 '(act-on-water-state 20 (println "Ice") (println "Water") (println "Steam")))) 
-   
-  ;(clojure.core/let [temp__1150__auto__ 20]  
-  ;   (clojure.core/cond  
-  ;       (clojure.core/<= temp__1150__auto__ 32) (println Ice)  
-  ;       (clojure.core/< temp__1150__auto__ 212) (println Water)  
+  (defmacro act-on-water-state [temp if-frozen-do if-water-do if-steam-do]
+      `(let [temp# ~temp]
+          (cond
+              (<= temp# 32) ~if-frozen-do
+              (< temp# 212) ~if-water-do
+              :else ~if-steam-do)))
+
+  (defn prompt-for-int [prompt]
+      (println prompt)
+      (. Integer parseInt (read-line)))
+
+  (defn handle-water-based-on-temp []
+      (let [users-temp (prompt-for-int "Enter in a water temp")]
+          (act-on-water-state users-temp (println "Ice") (println "Water") (println "Steam"))))
+
+  ;(handle-water-based-on-temp)
+
+  (println (macroexpand-1 '(act-on-water-state 20 (println "Ice") (println "Water") (println "Steam"))))
+
+  ;(clojure.core/let [temp__1150__auto__ 20]
+  ;   (clojure.core/cond
+  ;       (clojure.core/<= temp__1150__auto__ 32) (println Ice)
+  ;       (clojure.core/< temp__1150__auto__ 212) (println Water)
   ;       :else (println Steam)))
 #+END_SRC
