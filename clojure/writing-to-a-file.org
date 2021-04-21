@@ -1,4 +1,8 @@
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (apply str "_" "0x" '("a" "b"))
+#+END_SRC
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (def hex-digits {\a \A \b \B \c \C \d \D \e \E \f \F \o \0}) 
    
   (defn word-made-from-letters? [word acceptable-letters] 
@@ -11,3 +15,4 @@
    
   (println (get-words-made-from-letters hex-digits "bigDictionary.txt"))
 #+END_SRC
+
