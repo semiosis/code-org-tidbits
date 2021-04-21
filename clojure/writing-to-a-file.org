@@ -1,0 +1,13 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (def hex-digits {\a \A \b \B \c \C \d \D \e \E \f \F \o \0}) 
+   
+  (defn word-made-from-letters? [word acceptable-letters] 
+      (every? (fn [letter] (contains? acceptable-letters letter)) word)) 
+   
+  (defn get-words-made-from-letters [letters file-path] 
+      (let [file-contents (slurp file-path) 
+            all-words (clojure.string/split-lines file-contents)] 
+          (filter (fn [word] (word-made-from-letters? word letters)) all-words))) 
+   
+  (println (get-words-made-from-letters hex-digits "bigDictionary.txt"))
+#+END_SRC
