@@ -15,11 +15,12 @@ values in a sequence.
   ; (println (range 5)) 
   ; (println (range 10 20)) 
   ; (println (range 1 15 2)) 
-   
+
   (defn add-ten [number] 
       (+ number 10)) 
-   
+
   (println (add-ten 10)) 
-   
+
+  ;; This would call my add-ten function starting with the value 100. 
   ;(println (iterate add-ten 100))
 #+END_SRC
