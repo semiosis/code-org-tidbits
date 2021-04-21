@@ -106,3 +106,38 @@ function's return value until I am ready to
 use it. Then I'll ask each future for the
 return value when the thread is done and print
 them.
+
+** Final code
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (import '(java.util.concurrent Executors)) 
+   
+  (defn use-thread-pool [number-of-threads] 
+      (let [seq-of-numbers (range number-of-threads) 
+            pool (Executors/newFixedThreadPool number-of-threads) 
+            tasks (map (fn [thread-number] (fn [] (* (nth seq-of-numbers thread-number) 10))) seq-of-numbers)] 
+          (println "seq-of-numbers: ") 
+          (doseq [num seq-of-numbers] 
+              (print num "")) 
+          (println) 
+          (println "seq-of-nums times 10") 
+          (doseq [future (.invokeAll pool tasks)] 
+              (print (.get future) "")) 
+          (.shutdown pool))) 
+   
+  (use-thread-pool 10) 
+   
+  ; (println "Before creating threads") 
+   
+  ; (def thread1 (new Thread (fn [] (println "Thread 1")))) 
+  ; (.start thread1) 
+   
+  ; (def thread2 (new Thread (fn [] (println "Thread 2")))) 
+  ; (.start thread2) 
+   
+  ; (def thread3 (new Thread (fn [] (println "Thread 3")))) 
+  ; (.start thread3) 
+   
+  ; (Thread/sleep 500) 
+   
+  ; (println "After creating threads")
+#+END_SRC
