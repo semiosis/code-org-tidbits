@@ -97,3 +97,12 @@ for me.
    
   ; (println "After creating threads")
 #+END_SRC
+
+** future
+The functions the threads execute each returns
+a value. That value will be stored inside a
+'future' object which will hold on to the
+function's return value until I am ready to
+use it. Then I'll ask each future for the
+return value when the thread is done and print
+them.
