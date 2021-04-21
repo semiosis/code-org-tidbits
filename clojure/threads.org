@@ -15,19 +15,25 @@ In a thread
 
 ** Order of execution is not guaranteed by sequentially lining them up
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (println "Before creating threads") 
+ 
   (def thread1 (new Thread (fn [] (println "Thread 1")))) 
   (.start thread1) 
-   
+ 
   (def thread2 (new Thread (fn [] (println "Thread 2")))) 
   (.start thread2) 
-   
+ 
   (def thread3 (new Thread (fn [] (println "Thread 3")))) 
-  (.start thread3)
+  (.start thread3) 
+ 
+  (println "After creating threads")
 #+END_SRC
 
 #+RESULTS:
 #+begin_src clojure
+Before creating threads
 Thread 1
 Thread 2
 Thread 3
+After creating threads
 #+end_src
