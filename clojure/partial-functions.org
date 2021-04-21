@@ -1,1 +1,7 @@
 https://practicalli.github.io/clojure/thinking-functionally/partial-functions.html
+
+Clojure does not support automatic currying.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (map (partial sum 2) [1 3 5 7 9])
+#+END_SRC
