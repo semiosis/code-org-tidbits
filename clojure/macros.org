@@ -1,0 +1,10 @@
+The =#= in the let is used to generate a unique
+name for the local binding.
+
+The passed in code may have something in it
+named temp. This would be a problem, of
+course.
+
+Anything with a =#= in it will get a unique
+value appended to it. This will make the name
+unique and avoid any naming collisions.
