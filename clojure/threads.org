@@ -6,3 +6,9 @@
   (def a-thread (new Thread (fn [] (println "In a thread"))))
   (. a-thread start)
 #+END_SRC
+
+#+RESULTS:
+#+begin_src clojure
+In a thread
+In a thread
+#+end_src
