@@ -14,22 +14,22 @@ call a function infinitely and collect return
 values in a sequence.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  ; (println (range 5)) 
-  ; (println (range 10 20)) 
-  ; (println (range 1 15 2)) 
+  ; (println (range 5))
+  ; (println (range 10 20))
+  ; (println (range 1 15 2))
 
-  (defn add-ten [number] 
-      (+ number 10)) 
+  (defn add-ten [number]
+      (+ number 10))
 
-  (println (add-ten 10)) 
+  (println (add-ten 10))
 
-  ;; This would call my add-ten function starting with the value 100. 
+  ;; This would call my add-ten function starting with the value 100.
   ;; (println (iterate add-ten 100))
 #+END_SRC
 
 ** range is also lazy
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (defn add-ten [number] 
+  (defn add-ten [number]
       (+ number 10))
   (println (take 5 (iterate add-ten 100)))
   (println (take 5 (range 10 100)))
@@ -46,9 +46,45 @@ values in a sequence.
 inside =lazy-seq=, it may be held back.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (defn fib [left right] 
-      (lazy-seq 
-          (cons left (fib right (+ left right))))) 
+  (defn fib [left right]
+      (lazy-seq
+          (cons left (fib right (+ left right)))))
 #+END_SRC
 
 yielding a value is called _realizing_ in clojure.
+
+** Final code and comments
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  ; (println (range 5))
+  ; (println (range 10 20))
+  ; (println (range 1 15 2))
+
+  ; (defn add-ten [number]
+  ;     (+ number 10))
+
+  ; (println (add-ten 10))
+
+  ; (println (take 5 (iterate add-ten 100)))
+
+  ; (println (take 5 (range 10 100)))
+
+  ; (defn fib [left right]
+  ;     (println "Realizing:" left)
+  ;     (lazy-seq
+  ;         (cons left (fib right (+ left right)))))
+
+  ; ; (println (take 10 (fib 0 1)))
+  ; (def some-fibs (fib 0 1))
+  ; (def sum-of-first-five (reduce + (take 5 some-fibs)))
+  ; (def sum-of-first-ten (reduce + (take 10 some-fibs)))
+
+  ; (println "Sum of first 5 fib numbers:" sum-of-first-five)
+  ; (println "Sum of first 10 fib numbers:" sum-of-first-ten)
+
+  (defn compounding-interest [principal interest-rate]
+      (lazy-seq
+          (cons principal (compounding-interest (* principal (+ 1.0 (/ interest-rate 100.0))) interest-rate))))
+
+  (doseq [amount (take 5 (compounding-interest 100.0 10.0))]
+      (println (format "%.2f" amount)))
+#+END_SRC
