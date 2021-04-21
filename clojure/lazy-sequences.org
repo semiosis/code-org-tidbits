@@ -50,3 +50,5 @@ inside =lazy-seq=, it may be held back.
       (lazy-seq 
           (cons left (fib right (+ left right))))) 
 #+END_SRC
+
+yielding a value is called _realizing_ in clojure.
