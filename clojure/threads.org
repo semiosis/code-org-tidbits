@@ -57,6 +57,7 @@ run a Clojure program (sometimes called the
   (def thread3 (new Thread (fn [] (println "Thread 3")))) 
   (.start thread3) 
    
+  ;; This sleeps the main thread
   (Thread/sleep 500) 
    
   (println "After creating threads")
