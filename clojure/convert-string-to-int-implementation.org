@@ -1,0 +1,14 @@
+** TDD
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (use 'clojure.test)
+
+  (deftest test-convert-string-to-int
+    (is (= 1001 (convert-string-to-int "1001")))
+    (is (= 1234567890 (convert-string-to-int "0001234567890")))
+    (is (= 9 (convert-string-to-int "1001" 2)))
+    (is (= 4097 (convert-string-to-int "1001" 16)))
+    (is (= 65535 (convert-string-to-int "FFFF" 16)))
+    (is (= 195948557 (convert-string-to-int "BADF00D" 16))))
+
+  (run-tests)
+#+END_SRC
