@@ -4,22 +4,22 @@ the =recur= form is used to make a tail
 recursive call.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  ; (defn infinitely-recursive [iteration-number] 
-  ;     (println "Iteration number:" iteration-number) 
-  ;     (infinitely-recursive (inc iteration-number))) 
-   
-  ; (infinitely-recursive 1) 
-   
-  (defn fib-helper [all-fibs left right number] 
-      (if (>= left  number) 
-          all-fibs 
-  ;        (fib-helper (conj all-fibs left) right (+ left right) number))) 
-          (recur (conj all-fibs left) right (+ left right) number))) 
-   
-  (defn fibs-up-to-number [number] 
-      (fib-helper [] 0 1 number)) 
-   
-  (println (fibs-up-to-number 5)) 
-  (println (fibs-up-to-number 50)) 
+  ; (defn infinitely-recursive [iteration-number]
+  ;     (println "Iteration number:" iteration-number)
+  ;     (infinitely-recursive (inc iteration-number)))
+
+  ; (infinitely-recursive 1)
+
+  (defn fib-helper [all-fibs left right number]
+      (if (>= left  number)
+          all-fibs
+  ;        (fib-helper (conj all-fibs left) right (+ left right) number)))
+          (recur (conj all-fibs left) right (+ left right) number)))
+
+  (defn fibs-up-to-number [number]
+      (fib-helper [] 0 1 number))
+
+  (println (fibs-up-to-number 5))
+  (println (fibs-up-to-number 50))
   (println (fibs-up-to-number 500))
 #+END_SRC
