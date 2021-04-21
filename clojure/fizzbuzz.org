@@ -18,17 +18,18 @@
                 divisible-by-5 "buzz"
                 :else number)))
 
+  ;; fizz-buzz is overloaded so it can take different sets of parameters
   (defn fizz-buzz
-      ([start end]
-          (let [nums-in-range (range start (+ end 1))
-                final-output (map fizz-or-buzz-or-number nums-in-range)]
-              (doseq [result final-output]
-                  (println result))))
+    ([start end]
+     (let [nums-in-range (range start (+ end 1))
+           final-output (map fizz-or-buzz-or-number nums-in-range)]
+       (doseq [result final-output]
+         (println result))))
 
-      ([]
-          (let [start (prompt-int "Enter in a start value")
-              end (prompt-int "Enter in an end value")]
-              (fizz-buzz start end))))
+    ([]
+     (let [start (prompt-int "Enter in a start value")
+           end (prompt-int "Enter in an end value")]
+       (fizz-buzz start end))))
 
   (fizz-buzz)
   (println)
