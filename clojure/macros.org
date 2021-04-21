@@ -40,3 +40,31 @@ parameters. I am printing the output of the
 function call.
 
 The screenshot has the output.
+
+** Macros in clojure
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defmacro act-on-water-state [temp if-frozen-do if-water-do if-steam-do] 
+      `(let [temp# ~temp] 
+          (cond 
+              (<= temp# 32) ~if-frozen-do 
+              (< temp# 212) ~if-water-do 
+              :else ~if-steam-do))) 
+   
+  (defn prompt-for-int [prompt] 
+      (println prompt) 
+      (. Integer parseInt (read-line))) 
+   
+  (defn handle-water-based-on-temp [] 
+      (let [users-temp (prompt-for-int "Enter in a water temp")] 
+          (act-on-water-state users-temp (println "Ice") (println "Water") (println "Steam")))) 
+   
+  ;(handle-water-based-on-temp) 
+   
+  (println (macroexpand-1 '(act-on-water-state 20 (println "Ice") (println "Water") (println "Steam")))) 
+   
+  ;(clojure.core/let [temp__1150__auto__ 20]  
+  ;   (clojure.core/cond  
+  ;       (clojure.core/<= temp__1150__auto__ 32) (println Ice)  
+  ;       (clojure.core/< temp__1150__auto__ 212) (println Water)  
+  ;       :else (println Steam)))
+#+END_SRC
