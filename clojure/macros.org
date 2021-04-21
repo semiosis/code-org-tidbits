@@ -81,3 +81,15 @@ The screenshot has the output.
       (Thread/sleep 2000) 
       (even? num))
 #+END_SRC
+
+** =and= short-circuits
+Clojure's and function supports short circuit
+evaluation.
+
+In other words, if the first logical
+expression evaluates to false then the second
+will not even be evaluated.
+
+This is a nice feature because I can skip the
+expensive call to really-slow-even? when a
+value is not in the set.
