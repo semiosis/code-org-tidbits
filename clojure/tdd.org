@@ -1,13 +1,19 @@
 ** Write the tests first
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (use 'clojure.test) 
-    
-  (defn sqrt [number-to-root]) 
-   
-  (deftest sqrt-tests 
-      (is (= 5.0 (sqrt 25.0)) 
-      (is (= 6.0 (sqrt 36.0)) 
-      (is (= 10.0 (sqrt 100.0)) 
-      (is (= 10.488 (sqrt 110.0)) 
-      (is (= 1.414 (sqrt 2.0))))
+  (use 'clojure.test)
+
+  (defn near= [number1 number2 acceptable-difference]
+      (<= (Math/abs (- number1 number2)) acceptable-difference))
+
+  (defn sqrt [number-to-root]
+      0.0)
+
+  (deftest sqrt-tests
+      (is (near= 5.0 (sqrt 25.0) 0.001))
+      (is (near= 6.0 (sqrt 36.0) 0.001))
+      (is (near= 10.0 (sqrt 100.0) 0.001))
+      (is (near= 10.488 (sqrt 110.0) 0.001))
+      (is (near= 1.414 (sqrt 2.0) 0.001)))
+
+  (run-tests)
 #+END_SRC
