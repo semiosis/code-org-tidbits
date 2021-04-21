@@ -1,0 +1,4 @@
+** This thread prints something to the screen
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (def a-thread (new Thread (fn [] (println "In a thread"))))
+#+END_SRC
