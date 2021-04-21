@@ -26,3 +26,17 @@ code.
 
 The output now selects one of the printlns to
 execute instead of all three. 
+
+** =macroexpand-1=
+
+There is a function that will show you how
+your macro will be expanded called
+macroexpand-1. This is very helpful while
+debugging your macros.
+
+Here I am using it to see how the call to my
+macro would be expanded with the four
+parameters. I am printing the output of the
+function call.
+
+The screenshot has the output.
