@@ -37,7 +37,7 @@ have 5 or more cards in it.
 
 some requires a sequence to iterate over.
 
-** vals
+** =vals=
 The vals function returns a sequence of just
 the values in a map.
 
@@ -48,3 +48,11 @@ of cards with the same suit.
   (defn is-flush? [all-cards-by-suit] 
       (some (fn [cards] (if (>= (count cards) 5))) (vals all-cards-by-suit))) 
 #+END_SRC
+
+** =keys=
+There is a keys function that returns the keys of a map.
+
+** =contains?=
+I turn the ranks into a set so that I can
+easily check to see if a rank is in there with
+=contains?=.
