@@ -1,3 +1,4 @@
+** =#=
 The =#= in the let is used to generate a unique
 name for the local binding.
 
@@ -8,3 +9,21 @@ course.
 Anything with a =#= in it will get a unique
 value appended to it. This will make the name
 unique and avoid any naming collisions.
+
+** =~=
+
+The tilde ~ says to replace the code in the
+macro with the code passed in as a parameter. 
+
+This now makes use of the passed in
+parameters. temp is a value but the other
+parameters are chunks of code to execute.  
+
+Remember, a macro is kind of like a code
+template that has some pieces that will stay
+the same and some that will be replaced. The
+tilde is how I replace those parts of the
+code.
+
+The output now selects one of the printlns to
+execute instead of all three. 
