@@ -66,29 +66,29 @@ case.
 
 ** Final version
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (use 'clojure.test) 
-   
-  (defn convert-string-to-int 
-      ([string-representation] (convert-string-to-int string-representation 10)) 
-   
-      ([string-representation base] 
-          (if (and (>= base 2) (<= base 16))  
-              (let [char-to-digit-map {\0 0 \1 1 \2 2 \3 3 \4 4 \5 5 \6 6 \7 7 \8 8 \9 9 \A 10 \B 11 \C 12 \D 13 \E 14 \F 15 \a 10 \b 11 \c 12 \d 13 \e 14 \f 15} 
-                    reverse-digits (map (fn [a-digit] (char-to-digit-map a-digit)) (reverse string-representation))] 
-                  (loop [nums reverse-digits 
-                         power-of-base 1 
-                         sum 0] 
-                      (if (= 0 (count nums)) 
-                          sum 
-                          (recur (rest nums) (* power-of-base base) (+ sum (* (first nums) power-of-base))))))))) 
-   
-  (deftest test-convert-string-to-int 
-    (is (= 1001 (convert-string-to-int "1001"))) 
-    (is (= 1234567890 (convert-string-to-int "0001234567890"))) 
-    (is (= 9 (convert-string-to-int "1001" 2))) 
-    (is (= 4097 (convert-string-to-int "1001" 16))) 
-    (is (= 65535 (convert-string-to-int "FFFF" 16))) 
-    (is (= 195948557 (convert-string-to-int "BADF00D" 16)))) 
-     
-  (run-tests) 
+  (use 'clojure.test)
+
+  (defn convert-string-to-int
+      ([string-representation] (convert-string-to-int string-representation 10))
+
+      ([string-representation base]
+          (if (and (>= base 2) (<= base 16))
+              (let [char-to-digit-map {\0 0 \1 1 \2 2 \3 3 \4 4 \5 5 \6 6 \7 7 \8 8 \9 9 \A 10 \B 11 \C 12 \D 13 \E 14 \F 15 \a 10 \b 11 \c 12 \d 13 \e 14 \f 15}
+                    reverse-digits (map (fn [a-digit] (char-to-digit-map a-digit)) (reverse string-representation))]
+                  (loop [nums reverse-digits
+                         power-of-base 1
+                         sum 0]
+                      (if (= 0 (count nums))
+                          sum
+                          (recur (rest nums) (* power-of-base base) (+ sum (* (first nums) power-of-base)))))))))
+
+  (deftest test-convert-string-to-int
+    (is (= 1001 (convert-string-to-int "1001")))
+    (is (= 1234567890 (convert-string-to-int "0001234567890")))
+    (is (= 9 (convert-string-to-int "1001" 2)))
+    (is (= 4097 (convert-string-to-int "1001" 16)))
+    (is (= 65535 (convert-string-to-int "FFFF" 16)))
+    (is (= 195948557 (convert-string-to-int "BADF00D" 16))))
+
+  (run-tests)
 #+END_SRC
