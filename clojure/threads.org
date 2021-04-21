@@ -71,3 +71,27 @@ Thread 2
 Thread 3
 After creating threads
 #+end_src
+
+** executors
+I am importing that class so that I can create
+10 threads and have them each do a little work
+for me.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (import '(java.util.concurrent Executors)) 
+   
+  ; (println "Before creating threads") 
+   
+  ; (def thread1 (new Thread (fn [] (println "Thread 1")))) 
+  ; (.start thread1) 
+   
+  ; (def thread2 (new Thread (fn [] (println "Thread 2")))) 
+  ; (.start thread2) 
+   
+  ; (def thread3 (new Thread (fn [] (println "Thread 3")))) 
+  ; (.start thread3) 
+   
+  ; (Thread/sleep 500) 
+   
+  ; (println "After creating threads")
+#+END_SRC
