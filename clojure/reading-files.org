@@ -9,8 +9,23 @@
   ;;     (println "-->" line))
 
 
+  ;; It turns out there is a simpler way to
+  ;; search using a set to store the common words
+  ;; instead of binary search on a sequence.
+
+  ;; Here I am altering the get-file-as-
+  ;; sequence-of-words function by calling the set
+  ;; function to turn the sequence of words into a
+  ;; set of words.
+
+  ;; A set has no duplicates and has an
+  ;; efficient contains? function.
+
+  ;; (defn get-file-as-sequence-of-words [path]
+  ;;     (clojure.string/split (get-file-as-one-big-string path) #"\s+"))
   (defn get-file-as-sequence-of-words [path]
-      (clojure.string/split (get-file-as-one-big-string path) #"\s+"))
+      (set (clojure.string/split (get-file-as-one-big-string path) #"\s+")))
+
 
   ;; (doseq [word (get-file-as-sequence-of-words "sqrt110.txt")]
   ;;     (println word))
@@ -20,8 +35,8 @@
 
 
   (defn cleanse-word [word]
-      (let [lowercase-word (clojure.string/lower-case word)]
-          (clojure.string/replace lowercase-word #"[^a-z0-9]" "")))
+    (let [lowercase-word (clojure.string/lower-case word)]
+      (clojure.string/replace lowercase-word #"[^a-z0-9]" "")))
 
   (defn cleanse-words [path]
       (let [original-lines (get-file-as-sequence-of-lines path)]
@@ -35,10 +50,72 @@
   ;; (apply str (repeat 5 \x))
   ;; (apply str (repeat 5 "x"))
 
-  ;; (defn redact-word [word]
-  ;;     (apply str (repeat (count word) \x)))
+  (defn redact-word [word]
+      (apply str (repeat (count word) \x)))
 
   ;; (println "Mark redacted" (redact-word "Mark"))
 
   ;; (println "Mahoney redacted" (redact-word "Mahoney"))
+
+  ; (defn binary-search-helper [start end word common-words]
+  ;     (let [middle-pos (int (/ (+ start end) 2.0))
+  ;           word-in-middle (nth common-words middle-pos)]
+  ;         (cond (> start end) false
+  ;               (= (compare word-in-middle word) 0) true
+  ;               (< (compare word word-in-middle) 0) (binary-search-helper start (- middle-pos 1) word common-words)
+  ;               :else (binary-search-helper (+ middle-pos 1) end word common-words))))
+
+  ; (defn binary-search [word common-words]
+  ;     (binary-search-helper 0 (- (count common-words) 1) word common-words))
+  (defn search [word common-words]
+      (contains? common-words word))
+
+  ;; println can also print booleans
+  (println (binary-search "men" (get-file-as-sequence-of-words "1000words.txt"))) ;true
+  (println (binary-search "a" (get-file-as-sequence-of-words "1000words.txt"))) ;true
+  (println (binary-search "your" (get-file-as-sequence-of-words "1000words.txt"))) ;true
+  (println (binary-search "abcxyz" (get-file-as-sequence-of-words "1000words.txt"))) ;false
+
+  (defn redact-common-words [cleansed-words-by-line common-words]
+      (for [line cleansed-words-by-line]
+          (for [word line]
+              ; (if (binary-search (word :cleansed-word) common-words) (redact-word (word :original-word)) (word :original-word)))))
+              (if (search (word :cleansed-word) common-words) (redact-word (word :original-word)) (word :original-word)))))
+
+  (defn redact-uncommon-words [cleansed-words-by-line common-words]
+      (for [line cleansed-words-by-line]
+          (for [word line]
+              ; (if (binary-search (word :cleansed-word) common-words) (word :original-word) (redact-word (word :original-word))))))
+              (if (search (word :cleansed-word) common-words) (word :original-word) (redact-word (word :original-word))))))
+
+  ;; (println (redact-common-words (cleanse-words "sqrt110.txt") (get-file-as-sequence-of-words "1000words.txt")))
+
+  (defn main [path common-word-path]
+      (let [cleansed-words-by-line (cleanse-words path)
+            common-words (get-file-as-sequence-of-words common-word-path)
+            with-redacted-common-words (redact-common-words cleansed-words-by-line common-words)
+            with-redacted-uncommon-words (redact-uncommon-words cleansed-words-by-line common-words)]
+
+          (println "Original:")
+          (doseq [line cleansed-words-by-line]
+              (doseq [word line]
+                  (print (word :original-word) ""))
+              (println))
+          (println)
+
+          (println "Common words redacted:")
+          (doseq [line with-redacted-common-words]
+              (doseq [word line]
+                  (print word ""))
+              (println))
+          (println)
+
+          (println "Uncommon words redacted:")
+          (doseq [line with-redacted-uncommon-words]
+              (doseq [word line]
+                  (print word ""))
+              (println))
+          (println)))
+
+  (main "sqrt110.txt" "1000words.txt")
 #+END_SRC
