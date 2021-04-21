@@ -1,0 +1,17 @@
+* =time= function
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (time (print-frequencies (play-a-lot-of-poker 1000000 5) 1000000))
+#+END_SRC
+
+This times a function.
+
+* executors
+#+BEGIN_SRC text -n :async :results verbatim code
+  Executors
+      manage thread pool
+#+END_SRC
+
+* Create a number of threads
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (Executors/newFixedThreadPool number-of-threads)
+#+END_SRC
