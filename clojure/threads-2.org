@@ -23,3 +23,28 @@ Create multiple copies.
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (repeat number-of-threads (fn [] (play-a-lot-of-poker num-hands-per-thread five-or-seven)))
 #+END_SRC
+
+* =merge-with=
+All of the maps in poker-results have a hand
+name and the number of occurrences that were
+detected:
+
+#+BEGIN_SRC lean -n :f terraform-console :async :results verbatim code
+  {"Royal Flush" 3
+   "Straight Flush" 14
+   ...
+   ...
+   "High Card" 500246}
+#+END_SRC
+
+There is a function called merge-with that
+will merge maps together.
+
+If two or more maps have the same key a
+function will be applied to the values with
+the same key to produce a new value.
+
+I will use the =+= function to add all of the
+values in each of the maps together. This sums
+up the total number of hands detected in all
+of the threads.
