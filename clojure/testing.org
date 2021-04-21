@@ -4,12 +4,12 @@ Instead of typing the FQ =clojure.test/deftest=
 I can just use =deftest=.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (use 'clojure.test) 
- 
-  (deftest simple-test 
-      (is (= 1 1)) 
-      (is (= 1 2))) 
- 
+  (use 'clojure.test)
+
+  (deftest simple-test
+      (is (= 1 1))
+      (is (= 1 2)))
+
   (run-tests)
 #+END_SRC
 
@@ -19,11 +19,73 @@ Instead of checking for exact equality I
 should be checking for near equality.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (use 'clojure.test) 
-   
-  (deftest simple-test 
-      (is (= 1 1)) 
-      (is (= 1 2))) 
-   
+  (use 'clojure.test)
+
+  (defn near-equal [num1 num2 acceptable-difference]
+      (< (Math/abs (- num1 num2)) acceptable-difference))
+
+  (defn value-after-years-generator [interest-rate]
+      (fn [principal years]
+          (* principal (Math/pow (+ 1.0 (/ interest-rate 100.0)) years))))
+
+  (deftest value-after-years-generator-test
+      (let [ten-percent-interest-fn (value-after-years-generator 10.0)
+            twenty-percent-interest-fn (value-after-years-generator 20.0)]
+          (is (near-equal 110.0 (ten-percent-interest-fn 100.0 1) 0.1))
+          (is (near-equal 121.0 (ten-percent-interest-fn 100.0 2) 0.1))
+          (is (near-equal 133.10 (ten-percent-interest-fn 100.0 3) 0.1))
+
+          (is (near-equal 120.0 (twenty-percent-interest-fn 100.0 1) 0.1))
+          (is (near-equal 144.0 (twenty-percent-interest-fn 100.0 2) 0.1))
+          (is (near-equal 172.80 (twenty-percent-interest-fn 100.0 3) 0.1))))
+
+  (defn value-after-single-year-plus-or-minus [principal interest-rate year-number plus-or-minus-rates]
+      (let [rates (range (- interest-rate plus-or-minus-rates) (+ interest-rate plus-or-minus-rates 1))
+            interest-functions (map value-after-years-generator rates)]
+          (for [interest-function interest-functions]
+              (interest-function principal year-number))))
+
+  (deftest no-plus-or-minus-test
+    (let [no-plus-or-minus (value-after-single-year-plus-or-minus 100.0 10.0 1 0)]
+      (is (near-equal (nth no-plus-or-minus 0) 110.0 0.1))))
+
+  (deftest plus-or-minus-one-test
+    (let [plus-or-minus-one (value-after-single-year-plus-or-minus 100.0 10.0 1 1)]
+      (is (near-equal (nth plus-or-minus-one 0) 109.0 0.1))
+      (is (near-equal (nth plus-or-minus-one 1) 110.0 0.1))
+      (is (near-equal (nth plus-or-minus-one 2) 111.0 0.1))))
+
+  (defn value-after-multiple-years-plus-or-minus [principal interest-rate num-years plus-or-minus-rates]
+    (for [year (range 1 (+ num-years 1))]
+      (value-after-single-year-plus-or-minus principal interest-rate year plus-or-minus-rates)))
+
+  (deftest multiple-year-test
+    (let [multi-year-data (value-after-multiple-years-plus-or-minus 100.0 10.0 3 1)
+          row1 (nth multi-year-data 0)
+          row2 (nth multi-year-data 1)
+          row3 (nth multi-year-data 2)]
+      (is (= (count multi-year-data) 3))
+      (is (= (count row1) 3))
+      (is (near-equal (nth row1 0) 109.0 0.1))
+      (is (near-equal (nth row2 0) 118.81 0.1))
+      (is (near-equal (nth row3 0) 129.5029 0.1))
+      (is (near-equal (nth row1 1) 110.0 0.1))
+      (is (near-equal (nth row2 1) 121.0 0.1))
+      (is (near-equal (nth row3 1) 133.10 0.1))
+      (is (near-equal (nth row1 2) 111.0 0.1))
+      (is (near-equal (nth row2 2) 123.21 0.1))
+      (is (near-equal (nth row3 2) 136.7631 0.1))))
+
   (run-tests)
+
+  (defn print-schedule [principal interest-rate years plus-or-minus]
+    (let [rows (value-after-multiple-years-plus-or-minus principal interest-rate years plus-or-minus)]
+      (println)
+      (doseq [row rows]
+        (doseq [col row]
+          (print (format "%.2f" col) " "))
+        (println))
+      (println)))
+
+  (print-schedule 100.0 10.0 5 3)
 #+END_SRC
