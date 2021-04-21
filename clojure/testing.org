@@ -11,6 +11,11 @@ I can just use =deftest=.
   (run-tests)
 #+END_SRC
 
+_Comparing floating point numbers_
+
+Instead of checking for exact equality I
+should be checking for near equality.
+
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (use 'clojure.test) 
    
