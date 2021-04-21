@@ -1,0 +1,13 @@
+** Write the tests first
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (use 'clojure.test) 
+    
+  (defn sqrt [number-to-root]) 
+   
+  (deftest sqrt-tests 
+      (is (= 5.0 (sqrt 25.0)) 
+      (is (= 6.0 (sqrt 36.0)) 
+      (is (= 10.0 (sqrt 100.0)) 
+      (is (= 10.488 (sqrt 110.0)) 
+      (is (= 1.414 (sqrt 2.0))))
+#+END_SRC
