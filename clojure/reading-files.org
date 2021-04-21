@@ -1,0 +1,36 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn get-file-as-one-big-string [path] 
+      (slurp path)) 
+ 
+  (defn get-file-as-sequence-of-lines [path] 
+      (clojure.string/split-lines (get-file-as-one-big-string path))) 
+ 
+  ;; (doseq [line (get-file-as-sequence-of-lines "sqrt110.txt")] 
+  ;;     (println "-->" line))
+
+ 
+  (defn get-file-as-sequence-of-words [path] 
+      (clojure.string/split (get-file-as-one-big-string path) #"\s+")) 
+ 
+  ;; (doseq [word (get-file-as-sequence-of-words "sqrt110.txt")] 
+  ;;     (println word)) 
+ 
+  ;; (doseq [word (get-file-as-sequence-of-words "1000words.txt")] 
+  ;;     (println word))
+
+ 
+  (defn cleanse-word [word] 
+      (let [lowercase-word (clojure.string/lower-case word)] 
+          (clojure.string/replace lowercase-word #"[^a-z0-9]" ""))) 
+ 
+  (defn cleanse-words [path] 
+      (let [original-lines (get-file-as-sequence-of-lines path)] 
+          (for [line original-lines] 
+              (for [word (clojure.string/split line #"\s+")] 
+                  {:original-word word :cleansed-word (cleanse-word word)})))) 
+ 
+  ;; (println (cleanse-words "sqrt110.txt"))
+
+  ;; Create a string of xs
+  ;; (apply str (repeat 5 \x))
+#+END_SRC
