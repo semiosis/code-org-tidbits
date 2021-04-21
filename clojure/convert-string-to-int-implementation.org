@@ -55,3 +55,6 @@ tail-recursive-optimization works in clojure.
           (recur (re-find matcher)    ;loop with 2 new arguments
                  (conj result match))))))
 #+END_SRC
+
+The =recur= form belongs to =loop= in this
+case.
