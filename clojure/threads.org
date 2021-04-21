@@ -98,7 +98,7 @@ for me.
   ; (println "After creating threads")
 #+END_SRC
 
-** future (not a keyword)
+** future (not a keyword), just a binding
 The functions the threads execute each returns
 a value. That value will be stored inside a
 'future' object which will hold on to the
