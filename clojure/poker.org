@@ -22,7 +22,7 @@ group-by does.
       (group-by (fn [card] (card :suit)) cards)) 
 #+END_SRC
 
-** some
+** some (may as well be called =any?=)
 
 some is a function that iterates over a
 collection and passes each value into another
@@ -32,7 +32,7 @@ some will return the first value that the
 inner function returns true or nil if none of
 them do.
 
-I'll use this to see if any of the sequences
+I'll use this to see if _any_ of the sequences
 have 5 or more cards in it.
 
 some requires a sequence to iterate over.
