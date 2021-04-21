@@ -23,3 +23,24 @@ recursive call.
   (println (fibs-up-to-number 50))
   (println (fibs-up-to-number 500))
 #+END_SRC
+
+The previous version uses plain old recursion
+which uses a stack frame for each recursive
+call.
+
+There is a risk that if the user asks for a
+big enough fib number that this function could
+blow the stack.
+
+Clojure supports 'tail recursion' with the
+recur form.
+
+Tail recursion is possible when there is
+nothing done after the recursive call in a
+function. In other words, nothing happens on
+the way back through the call stack when the
+recursion is complete.
+
+In this case there is no work done after the
+recursive call so this is a candidate for tail
+recursion.
