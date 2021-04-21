@@ -108,6 +108,15 @@ return value when the thread is done and print
 them.
 
 ** Final code
+*** shutting down the threads
+
+shut the thread pool down since I don't need it anymore.
+
+This doesn't halt all threads immediately.
+Instead it gradually shuts the threads down
+once they complete their tasks.
+
+*** Final code
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (import '(java.util.concurrent Executors))
 
