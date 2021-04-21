@@ -60,3 +60,193 @@ easily check to see if a rank is in there with
 ** =every?=
 Returns true if (pred x) is logical true for
 every x in coll, else false.
+
+** Final code
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (use 'clojure.test) 
+   
+  (defn get-card [card-number] 
+      (let [suit-index (quot card-number 13) 
+            rank-index (mod card-number 13) 
+            suit-names ["Clubs" "Diamonds" "Hearts" "Spades"] 
+            rank-names ["2" "3" "4" "5" "6" "7" "8" "9" "10" "Jack" "Queen" "King" "Ace"] 
+            rank (+ rank-index 2) 
+            suit (nth suit-names suit-index) 
+            card-string (str (nth rank-names rank-index) " of " suit)] 
+          {:rank rank :suit suit :card-string card-string})) 
+   
+  (defn get-cards-from-shuffled-deck [number-of-cards] 
+      (if (and (<= number-of-cards 52) (>= number-of-cards 1)) 
+          (map get-card (take number-of-cards (shuffle (range 52)))))) 
+   
+  (defn get-cards-by-suit [cards] 
+      (group-by (fn [card] (card :suit)) cards)) 
+   
+  (defn get-cards-by-rank [cards] 
+      (group-by (fn [card] (card :rank)) cards)) 
+   
+  (defn count-cards [minimum-number-of-cards] 
+      (fn [cards] (if (>= (count cards) minimum-number-of-cards) cards nil))) 
+   
+  (defn is-flush? [all-cards-by-suit] 
+      (some (count-cards 5) (vals all-cards-by-suit))) 
+   
+  (defn is-four-of-a-kind? [all-cards-by-rank] 
+      (some (count-cards 4) (vals all-cards-by-rank))) 
+   
+  (defn is-three-of-a-kind? [all-cards-by-rank] 
+      (some (count-cards 3) (vals all-cards-by-rank))) 
+   
+  (defn is-pair? [all-cards-by-rank] 
+      (some (count-cards 2) (vals all-cards-by-rank))) 
+   
+  (defn is-full-house? [all-cards-by-rank] 
+      (let [first-triple (some (count-cards 3) (vals all-cards-by-rank)) 
+            first-triple-rank (if first-triple ((nth first-triple 0) :rank) nil) 
+            all-cards-by-rank-without-first-triple (if first-triple (dissoc all-cards-by-rank first-triple-rank) nil)] 
+          (if first-triple (some (count-cards 2) (vals all-cards-by-rank-without-first-triple))))) 
+   
+  (defn is-two-pair? [all-cards-by-rank] 
+      (let [first-pair (some (count-cards 2) (vals all-cards-by-rank)) 
+            first-pair-rank (if first-pair ((nth first-pair 0) :rank) nil) 
+            all-cards-by-rank-without-first-pair (if first-pair (dissoc all-cards-by-rank first-pair-rank) nil)] 
+          (if first-pair (some (count-cards 2) (vals all-cards-by-rank-without-first-pair))))) 
+   
+  (defn straight-check [rank-set] 
+      (fn [starting-point] (every? (fn [rank-value] (contains? rank-set rank-value)) (range starting-point (+ starting-point 5))))) 
+   
+  (defn is-straight? [all-cards-by-rank] 
+      (let [all-cards-by-rank-with-low-aces (if (contains? all-cards-by-rank 14) (assoc all-cards-by-rank 1 (all-cards-by-rank 14)) all-cards-by-rank) 
+            all-rank-sets (set (keys all-cards-by-rank-with-low-aces)) 
+            all-straight-rank-starting-points (range 1 11)] 
+          (some (straight-check all-rank-sets) all-straight-rank-starting-points))) 
+   
+  (defn is-straight-flush? [all-cards-by-suit] 
+      (let [flush-cards (some (count-cards 5) (vals all-cards-by-suit)) 
+            flush-cards-by-rank (if flush-cards (get-cards-by-rank flush-cards))] 
+            (is-straight? flush-cards-by-rank))) 
+   
+  (defn is-royal-flush? [all-cards-by-suit] 
+      (let [flush-cards (some (count-cards 5) (vals all-cards-by-suit)) 
+            flush-cards-by-rank (if flush-cards (get-cards-by-rank flush-cards))] 
+          (if flush-cards (and (contains? flush-cards-by-rank 10) (contains? flush-cards-by-rank 11) (contains? flush-cards-by-rank 12) (contains? flush-cards-by-rank 13) (contains? flush-cards-by-rank 14))))) 
+   
+  (defn get-best-hand [all-cards] 
+      (let [all-cards-by-suit (get-cards-by-suit all-cards) 
+            all-cards-by-rank (get-cards-by-rank all-cards)] 
+          (cond  
+              (is-royal-flush? all-cards-by-suit) "Royal Flush" 
+              (is-straight-flush? all-cards-by-suit) "Straight Flush" 
+              (is-four-of-a-kind? all-cards-by-rank) "Four of a Kind" 
+              (is-full-house? all-cards-by-rank) "Full House" 
+              (is-flush? all-cards-by-suit) "Flush" 
+              (is-straight? all-cards-by-rank) "Straight" 
+              (is-three-of-a-kind? all-cards-by-rank) "Three of a Kind" 
+              (is-two-pair? all-cards-by-rank) "Two Pair" 
+              (is-pair? all-cards-by-rank) "Pair" 
+              :else "High Card"))) 
+   
+  (defn get-hands [number-of-cards-in-hand] 
+      (lazy-seq  
+          (cons (get-cards-from-shuffled-deck number-of-cards-in-hand)  
+              (get-hands number-of-cards-in-hand)))) 
+   
+  (defn play-a-lot-of-poker [number-of-hands number-of-cards-in-hand] 
+      (let [hands (take number-of-hands (get-hands number-of-cards-in-hand)) 
+            results (map get-best-hand hands)] 
+          (frequencies results))) 
+   
+  (defn print-frequencies [poker-frequencies num-hands] 
+      (let [royal-flush-percentage (* 100 (/ (float (get poker-frequencies "Royal Flush" 0)) (float num-hands))) 
+            straight-flush-percentage (* 100 (/ (float (get poker-frequencies "Straight Flush" 0)) (float num-hands))) 
+            four-of-a-kind-percentage (* 100 (/ (float (get poker-frequencies "Four of a Kind" 0)) (float num-hands))) 
+            full-house-percentage (* 100 (/ (float (get poker-frequencies "Full House" 0)) (float num-hands))) 
+            flush-percentage (* 100 (/ (float (get poker-frequencies "Flush" 0)) (float num-hands))) 
+            straight-percentage (* 100 (/ (float (get poker-frequencies "Straight" 0)) (float num-hands))) 
+            three-of-a-kind-percentage (* 100 (/ (float (get poker-frequencies "Three of a Kind" 0)) (float num-hands))) 
+            two-pair-percentage (* 100 (/ (float (get poker-frequencies "Two Pair" 0)) (float num-hands))) 
+            pair-percentage (* 100 (/ (float (get poker-frequencies "Pair" 0)) (float num-hands))) 
+            high-card-percentage (* 100 (/ (float (get poker-frequencies "High Card" 0)) (float num-hands)))] 
+          (println "Poker Hand Frequencies:") 
+          (println "Royal Flush" (format "%.6f" royal-flush-percentage) "%") 
+          (println "Straight Flush" (format "%.6f" straight-flush-percentage) "%") 
+          (println "Four of a Kind" (format "%.4f" four-of-a-kind-percentage) "%") 
+          (println "Full House" (format "%.2f" full-house-percentage) "%") 
+          (println "Flush" (format "%.2f" flush-percentage) "%") 
+          (println "Straight" (format "%.2f" straight-percentage) "%") 
+          (println "Three of a Kind" (format "%.2f" three-of-a-kind-percentage) "%") 
+          (println "Two Pair" (format "%.2f" two-pair-percentage) "%") 
+          (println "Pair" (format "%.2f" pair-percentage) "%") 
+          (println "High Card" (format "%.2f" high-card-percentage) "%"))) 
+   
+  (def poker-frequencies (play-a-lot-of-poker 1000000 5)) 
+  (print-frequencies poker-frequencies 1000000) 
+   
+  ;; tests ;; 
+  (deftest test-get-best-hand  
+      ;10 of Clubs, Jack of Clubs, Queen of Clubs, King of Clubs, Ace of Clubs 
+      (is (= "Royal Flush" (get-best-hand [(get-card 8) (get-card 9) (get-card 10) (get-card 11) (get-card 12)])))      
+      ;2 of Clubs, 3 of Clubs, 4 of Clubs, 5 of Clubs, 6 of Clubs 
+      (is (= "Straight Flush" (get-best-hand [(get-card 0) (get-card 1) (get-card 2) (get-card 3) (get-card 4)]))) 
+      ;2 of Clubs, 2 of Diamonds, 2 of Hearts, 2 of Spades, 2 of Clubs, Ace of Spades 
+      (is (= "Four of a Kind" (get-best-hand [(get-card 0) (get-card 13) (get-card 26) (get-card 39) (get-card 51)]))) 
+      ;2 of Clubs, 2 of Diamonds, 2 of Hearts, 3 of Clubs, 3 of Diamonds 
+      (is (= "Full House" (get-best-hand [(get-card 0) (get-card 13) (get-card 26) (get-card 1) (get-card 14)]))) 
+      ;2 of Clubs, 4 of Clubs, 6 of Clubs, 8 of Clubs, 10 of Clubs 
+      (is (= "Flush" (get-best-hand [(get-card 0) (get-card 2) (get-card 4) (get-card 6) (get-card 8)]))) 
+      ;2 of Clubs, 3 of Diamonds, 4 of Hearts, 5 of Spades, 6 of Spades 
+      (is (= "Straight" (get-best-hand [(get-card 0) (get-card 14) (get-card 28) (get-card 42) (get-card 43)]))) 
+      ;Ace of Clubs, 2 of Clubs, 3 of Diamonds, 4 of Hearts, 5 of Spades- low straight 
+      (is (= "Straight" (get-best-hand [(get-card 12) (get-card 0) (get-card 14) (get-card 28) (get-card 42)]))) 
+      ;2 of Clubs, 2 of Diamonds, 2 of Hearts, 3 of Hearts, 4 of Hearts 
+      (is (= "Three of a Kind" (get-best-hand [(get-card 0) (get-card 13) (get-card 26) (get-card 27) (get-card 28)]))) 
+      ;2 of Clubs, 2 of Diamonds, 3 of Clubs, 3 of Diamonds, Ace of Spades 
+      (is (= "Two Pair" (get-best-hand [(get-card 0) (get-card 13) (get-card 1) (get-card 14) (get-card 51)]))) 
+      ;2 of Clubs, 2 of Diamonds, 4 of Diamonds, 5 of Diamonds, 6 of Diamonds  
+      (is (= "Pair" (get-best-hand [(get-card 0) (get-card 13) (get-card 15) (get-card 16) (get-card 17)]))) 
+      ;2 of Clubs, 4 of Clubs, 6 of Clubs, 8 of Clubs, Ace of Spades 
+      (is (= "High Card" (get-best-hand [(get-card 0) (get-card 2) (get-card 4) (get-card 6) (get-card 51)])))) 
+   
+  (deftest test-get-cards-by-suit 
+      (let [all-cards (map get-card (range 52)) 
+            all-cards-by-suit (get-cards-by-suit all-cards)] 
+          (doseq [suit ["Clubs" "Diamonds" "Hearts" "Spades"]] 
+              (is (= (count (all-cards-by-suit suit)) 13))))) 
+   
+  (deftest test-get-cards-by-rank 
+      (let [all-cards (map get-card (range 52)) 
+            all-cards-by-rank (get-cards-by-rank all-cards)] 
+          (doseq [rank (range 2 15)] 
+              (is (= (count (all-cards-by-rank rank)) 4))))) 
+   
+  (deftest test-get-cards-from-shuffled-deck 
+      (let [all-cards-set (set (get-cards-from-shuffled-deck 52)) 
+            too-many-cards (get-cards-from-shuffled-deck 100) 
+            negative-cards (get-cards-from-shuffled-deck -1)] 
+          (is (= 52 (count all-cards-set)))  
+          (is (nil? too-many-cards))  
+          (is (nil? negative-cards)))) 
+   
+  (deftest test-get-card 
+      (let [two-of-clubs (get-card 0) ;2 of Clubs 
+            five-of-diamonds (get-card 16) ;5 of Diamonds 
+            jack-of-hearts (get-card 35) ;Jack of Hearts 
+            ace-of-spades (get-card 51)] ;Ace of Spades 
+          (is (= 2 (two-of-clubs :rank))) 
+          (is (= "Clubs" (two-of-clubs :suit)) 
+          (is (= "2 of Clubs" (two-of-clubs :card-string)))) 
+           
+          (is (= 5 (five-of-diamonds :rank)))         
+          (is (= "Diamonds" (five-of-diamonds :suit)) 
+          (is (= "5 of Diamonds" (five-of-diamonds :card-string)))) 
+           
+          (is (= 11 (jack-of-hearts :rank)))         
+          (is (= "Hearts" (jack-of-hearts :suit)) 
+          (is (= "Jack of Hearts" (jack-of-hearts :card-string)))) 
+           
+          (is (= 14 (ace-of-spades :rank)))         
+          (is (= "Spades" (ace-of-spades :suit))) 
+          (is (= "Ace of Spades" (ace-of-spades :card-string))))) 
+   
+  ;(run-tests)
+#+END_SRC
