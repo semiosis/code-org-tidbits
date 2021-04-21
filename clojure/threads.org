@@ -12,3 +12,15 @@
 In a thread
 In a thread
 #+end_src
+
+** Order of execution is not guaranteed
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (def thread1 (new Thread (fn [] (println "Thread 1")))) 
+  (.start thread1) 
+   
+  (def thread2 (new Thread (fn [] (println "Thread 2")))) 
+  (.start thread2) 
+   
+  (def thread3 (new Thread (fn [] (println "Thread 3")))) 
+  (.start thread3)
+#+END_SRC
