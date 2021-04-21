@@ -55,138 +55,138 @@ of the threads.
 
 * final code
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
-  (import '(java.util.concurrent Executors)) 
-   
-  ;; Cards ;; 
-  (defn get-card [card-number] 
-      (let [suit-index (quot card-number 13) ;0-12 0 Clubs, 13-25 1 Diamonds, 26-38 2 Hearts, 39-51 3 Spades 
-            rank-index (mod card-number 13) ;0-12 + 2 = 2-14 
-            suit-names ["Clubs" "Diamonds" "Hearts" "Spades"] 
-            rank-names ["2" "3" "4" "5" "6" "7" "8" "9" "10" "Jack" "Queen" "King" "Ace"] 
-            rank (+ rank-index 2) ;2-14 
-            suit (nth suit-names suit-index) 
-            card-string (str (nth rank-names rank-index) " of " suit)] 
-          {:rank rank :suit suit :card-string card-string})) 
-   
-  ;; Deck ;; 
-  (defn get-cards-from-shuffled-deck [number-of-cards] 
-      (if (and (<= number-of-cards 52) (>= number-of-cards 1)) 
-          (map get-card (take number-of-cards (shuffle (range 52)))))) 
-   
-  ;; Poker ;; 
-  (defn get-cards-by-suit [cards] 
-      (group-by (fn [card] (card :suit)) cards)) 
-   
-  (defn get-cards-by-rank [cards] 
-      (group-by (fn [card] (card :rank)) cards)) 
-   
-  (defn count-cards [minimum-number-of-cards] 
-      (fn [cards] (if (>= (count cards) minimum-number-of-cards) cards nil))) 
-   
-  (defn is-flush? [all-cards-by-suit] 
-      (some (count-cards 5) (vals all-cards-by-suit))) 
-   
-  (defn is-four-of-a-kind? [all-cards-by-rank] 
-      (some (count-cards 4) (vals all-cards-by-rank))) 
-   
-  (defn is-three-of-a-kind? [all-cards-by-rank] 
-      (some (count-cards 3) (vals all-cards-by-rank))) 
-   
-  (defn is-pair? [all-cards-by-rank] 
-      (some (count-cards 2) (vals all-cards-by-rank))) 
-   
-  (defn is-full-house? [all-cards-by-rank] 
-      (let [first-triple (some (count-cards 3) (vals all-cards-by-rank)) 
-            first-triple-rank (if first-triple ((nth first-triple 0) :rank) nil) 
-            all-cards-by-rank-without-first-triple (if first-triple (dissoc all-cards-by-rank first-triple-rank) nil)] 
-          (if first-triple (some (count-cards 2) (vals all-cards-by-rank-without-first-triple))))) 
-   
-  (defn is-two-pair? [all-cards-by-rank] 
-      (let [first-pair (some (count-cards 2) (vals all-cards-by-rank)) 
-            first-pair-rank (if first-pair ((nth first-pair 0) :rank) nil) 
-            all-cards-by-rank-without-first-pair (if first-pair (dissoc all-cards-by-rank first-pair-rank) nil)] 
-          (if first-pair (some (count-cards 2) (vals all-cards-by-rank-without-first-pair))))) 
-           
-  (defn straight-check [rank-set] 
-      (fn [starting-point] (every? (fn [rank-value] (contains? rank-set rank-value)) (range starting-point (+ starting-point 5))))) 
-   
-  (defn is-straight? [all-cards-by-rank] 
-      (let [all-cards-by-rank-with-low-aces (if (contains? all-cards-by-rank 14) (assoc all-cards-by-rank 1 (all-cards-by-rank 14)) all-cards-by-rank) 
-            all-rank-sets (set (keys all-cards-by-rank-with-low-aces)) 
-            all-straight-rank-starting-points (range 1 11)] 
-          (some (straight-check all-rank-sets) all-straight-rank-starting-points))) 
-   
-  (defn is-royal-flush? [all-cards-by-suit] 
-      (let [flush-cards (some (count-cards 5) (vals all-cards-by-suit)) 
-            flush-cards-by-rank (if flush-cards (get-cards-by-rank flush-cards))] 
-          (if flush-cards (and (contains? flush-cards-by-rank 10) (contains? flush-cards-by-rank 11) (contains? flush-cards-by-rank 12) (contains? flush-cards-by-rank 13) (contains? flush-cards-by-rank 14))))) 
-   
-  (defn is-straight-flush? [all-cards-by-suit] 
-      (let [flush-cards (some (count-cards 5) (vals all-cards-by-suit)) 
-            flush-cards-by-rank (if flush-cards (get-cards-by-rank flush-cards))] 
-            (if flush-cards (is-straight? flush-cards-by-rank)))) 
-   
-   
-  (defn get-best-hand [all-cards] 
-      (let [all-cards-by-suit (get-cards-by-suit all-cards) 
-            all-cards-by-rank (get-cards-by-rank all-cards)] 
-          (cond  
-              (is-royal-flush? all-cards-by-suit) "Royal Flush" 
-              (is-straight-flush? all-cards-by-suit) "Straight Flush" 
-              (is-four-of-a-kind? all-cards-by-rank) "Four of a Kind" 
-              (is-full-house? all-cards-by-rank) "Full House" 
-              (is-flush? all-cards-by-suit) "Flush" 
-              (is-straight? all-cards-by-rank) "Straight" 
-              (is-three-of-a-kind? all-cards-by-rank) "Three of a Kind" 
-              (is-two-pair? all-cards-by-rank) "Two Pair" 
-              (is-pair? all-cards-by-rank) "Pair" 
-              :else "High Card"))) 
-   
-  (defn get-hands [num-cards-in-hand] 
-      (lazy-seq  
-          (cons (get-cards-from-shuffled-deck num-cards-in-hand)  
-              (get-hands num-cards-in-hand)))) 
-   
-  (defn print-frequencies [poker-frequencies num-hands] 
-      (let [royal-flush-percentage (* 100 (/ (float (get poker-frequencies "Royal Flush" 0)) (float num-hands))) 
-            straight-flush-percentage (* 100 (/ (float (get poker-frequencies "Straight Flush" 0)) (float num-hands))) 
-            four-of-a-kind-percentage (* 100 (/ (float (get poker-frequencies "Four of a Kind" 0)) (float num-hands))) 
-            full-house-percentage (* 100 (/ (float (get poker-frequencies "Full House" 0)) (float num-hands))) 
-            flush-percentage (* 100 (/ (float (get poker-frequencies "Flush" 0)) (float num-hands))) 
-            straight-percentage (* 100 (/ (float (get poker-frequencies "Straight" 0)) (float num-hands))) 
-            three-of-a-kind-percentage (* 100 (/ (float (get poker-frequencies "Three of a Kind" 0)) (float num-hands))) 
-            two-pair-percentage (* 100 (/ (float (get poker-frequencies "Two Pair" 0)) (float num-hands))) 
-            pair-percentage (* 100 (/ (float (get poker-frequencies "Pair" 0)) (float num-hands))) 
-            high-card-percentage (* 100 (/ (float (get poker-frequencies "High Card" 0)) (float num-hands)))] 
-          (println "Poker Hand Frequencies:") 
-          (println "Royal Flush" (format "%.6f" royal-flush-percentage) "%") 
-          (println "Straight Flush" (format "%.6f" straight-flush-percentage) "%") 
-          (println "Four of a Kind" (format "%.4f" four-of-a-kind-percentage) "%") 
-          (println "Full House" (format "%.2f" full-house-percentage) "%") 
-          (println "Flush" (format "%.2f" flush-percentage) "%") 
-          (println "Straight" (format "%.2f" straight-percentage) "%") 
-          (println "Three of a Kind" (format "%.2f" three-of-a-kind-percentage) "%") 
-          (println "Two Pair" (format "%.2f" two-pair-percentage) "%") 
-          (println "Pair" (format "%.2f" pair-percentage) "%") 
-          (println "High Card" (format "%.2f" high-card-percentage) "%"))) 
-   
-  (defn play-a-lot-of-poker [num-hands five-or-seven] 
-      (let [hands (take num-hands (get-hands five-or-seven)) 
-            results (map get-best-hand hands)] 
-          (frequencies results))) 
-   
-  (defn play-poker-in-threads [num-hands-per-thread five-or-seven number-of-threads] 
-      (let [pool (Executors/newFixedThreadPool number-of-threads) 
-            tasks (repeat number-of-threads (fn [] (play-a-lot-of-poker num-hands-per-thread five-or-seven))) 
-            poker-results (map (fn [future] (.get future)) (.invokeAll pool tasks))] 
-          (.shutdown pool) 
-          (apply merge-with + poker-results))) 
-   
-  (def user-supplied-number-of-threads 2) 
-  (def hands-per-thread 500000) 
-  (def total-number-of-hands (* user-supplied-number-of-threads hands-per-thread)) 
-   
-  (time (print-frequencies (play-poker-in-threads hands-per-thread 5 user-supplied-number-of-threads) total-number-of-hands))         
-   
-  ;(time (print-frequencies (play-a-lot-of-poker 1000000 5) 1000000)) 
+  (import '(java.util.concurrent Executors))
+
+  ;; Cards ;;
+  (defn get-card [card-number]
+      (let [suit-index (quot card-number 13) ;0-12 0 Clubs, 13-25 1 Diamonds, 26-38 2 Hearts, 39-51 3 Spades
+            rank-index (mod card-number 13) ;0-12 + 2 = 2-14
+            suit-names ["Clubs" "Diamonds" "Hearts" "Spades"]
+            rank-names ["2" "3" "4" "5" "6" "7" "8" "9" "10" "Jack" "Queen" "King" "Ace"]
+            rank (+ rank-index 2) ;2-14
+            suit (nth suit-names suit-index)
+            card-string (str (nth rank-names rank-index) " of " suit)]
+          {:rank rank :suit suit :card-string card-string}))
+
+  ;; Deck ;;
+  (defn get-cards-from-shuffled-deck [number-of-cards]
+      (if (and (<= number-of-cards 52) (>= number-of-cards 1))
+          (map get-card (take number-of-cards (shuffle (range 52))))))
+
+  ;; Poker ;;
+  (defn get-cards-by-suit [cards]
+      (group-by (fn [card] (card :suit)) cards))
+
+  (defn get-cards-by-rank [cards]
+      (group-by (fn [card] (card :rank)) cards))
+
+  (defn count-cards [minimum-number-of-cards]
+      (fn [cards] (if (>= (count cards) minimum-number-of-cards) cards nil)))
+
+  (defn is-flush? [all-cards-by-suit]
+      (some (count-cards 5) (vals all-cards-by-suit)))
+
+  (defn is-four-of-a-kind? [all-cards-by-rank]
+      (some (count-cards 4) (vals all-cards-by-rank)))
+
+  (defn is-three-of-a-kind? [all-cards-by-rank]
+      (some (count-cards 3) (vals all-cards-by-rank)))
+
+  (defn is-pair? [all-cards-by-rank]
+      (some (count-cards 2) (vals all-cards-by-rank)))
+
+  (defn is-full-house? [all-cards-by-rank]
+      (let [first-triple (some (count-cards 3) (vals all-cards-by-rank))
+            first-triple-rank (if first-triple ((nth first-triple 0) :rank) nil)
+            all-cards-by-rank-without-first-triple (if first-triple (dissoc all-cards-by-rank first-triple-rank) nil)]
+          (if first-triple (some (count-cards 2) (vals all-cards-by-rank-without-first-triple)))))
+
+  (defn is-two-pair? [all-cards-by-rank]
+      (let [first-pair (some (count-cards 2) (vals all-cards-by-rank))
+            first-pair-rank (if first-pair ((nth first-pair 0) :rank) nil)
+            all-cards-by-rank-without-first-pair (if first-pair (dissoc all-cards-by-rank first-pair-rank) nil)]
+          (if first-pair (some (count-cards 2) (vals all-cards-by-rank-without-first-pair)))))
+
+  (defn straight-check [rank-set]
+      (fn [starting-point] (every? (fn [rank-value] (contains? rank-set rank-value)) (range starting-point (+ starting-point 5)))))
+
+  (defn is-straight? [all-cards-by-rank]
+      (let [all-cards-by-rank-with-low-aces (if (contains? all-cards-by-rank 14) (assoc all-cards-by-rank 1 (all-cards-by-rank 14)) all-cards-by-rank)
+            all-rank-sets (set (keys all-cards-by-rank-with-low-aces))
+            all-straight-rank-starting-points (range 1 11)]
+          (some (straight-check all-rank-sets) all-straight-rank-starting-points)))
+
+  (defn is-royal-flush? [all-cards-by-suit]
+      (let [flush-cards (some (count-cards 5) (vals all-cards-by-suit))
+            flush-cards-by-rank (if flush-cards (get-cards-by-rank flush-cards))]
+          (if flush-cards (and (contains? flush-cards-by-rank 10) (contains? flush-cards-by-rank 11) (contains? flush-cards-by-rank 12) (contains? flush-cards-by-rank 13) (contains? flush-cards-by-rank 14)))))
+
+  (defn is-straight-flush? [all-cards-by-suit]
+      (let [flush-cards (some (count-cards 5) (vals all-cards-by-suit))
+            flush-cards-by-rank (if flush-cards (get-cards-by-rank flush-cards))]
+            (if flush-cards (is-straight? flush-cards-by-rank))))
+
+
+  (defn get-best-hand [all-cards]
+      (let [all-cards-by-suit (get-cards-by-suit all-cards)
+            all-cards-by-rank (get-cards-by-rank all-cards)]
+          (cond
+              (is-royal-flush? all-cards-by-suit) "Royal Flush"
+              (is-straight-flush? all-cards-by-suit) "Straight Flush"
+              (is-four-of-a-kind? all-cards-by-rank) "Four of a Kind"
+              (is-full-house? all-cards-by-rank) "Full House"
+              (is-flush? all-cards-by-suit) "Flush"
+              (is-straight? all-cards-by-rank) "Straight"
+              (is-three-of-a-kind? all-cards-by-rank) "Three of a Kind"
+              (is-two-pair? all-cards-by-rank) "Two Pair"
+              (is-pair? all-cards-by-rank) "Pair"
+              :else "High Card")))
+
+  (defn get-hands [num-cards-in-hand]
+      (lazy-seq
+          (cons (get-cards-from-shuffled-deck num-cards-in-hand)
+              (get-hands num-cards-in-hand))))
+
+  (defn print-frequencies [poker-frequencies num-hands]
+      (let [royal-flush-percentage (* 100 (/ (float (get poker-frequencies "Royal Flush" 0)) (float num-hands)))
+            straight-flush-percentage (* 100 (/ (float (get poker-frequencies "Straight Flush" 0)) (float num-hands)))
+            four-of-a-kind-percentage (* 100 (/ (float (get poker-frequencies "Four of a Kind" 0)) (float num-hands)))
+            full-house-percentage (* 100 (/ (float (get poker-frequencies "Full House" 0)) (float num-hands)))
+            flush-percentage (* 100 (/ (float (get poker-frequencies "Flush" 0)) (float num-hands)))
+            straight-percentage (* 100 (/ (float (get poker-frequencies "Straight" 0)) (float num-hands)))
+            three-of-a-kind-percentage (* 100 (/ (float (get poker-frequencies "Three of a Kind" 0)) (float num-hands)))
+            two-pair-percentage (* 100 (/ (float (get poker-frequencies "Two Pair" 0)) (float num-hands)))
+            pair-percentage (* 100 (/ (float (get poker-frequencies "Pair" 0)) (float num-hands)))
+            high-card-percentage (* 100 (/ (float (get poker-frequencies "High Card" 0)) (float num-hands)))]
+          (println "Poker Hand Frequencies:")
+          (println "Royal Flush" (format "%.6f" royal-flush-percentage) "%")
+          (println "Straight Flush" (format "%.6f" straight-flush-percentage) "%")
+          (println "Four of a Kind" (format "%.4f" four-of-a-kind-percentage) "%")
+          (println "Full House" (format "%.2f" full-house-percentage) "%")
+          (println "Flush" (format "%.2f" flush-percentage) "%")
+          (println "Straight" (format "%.2f" straight-percentage) "%")
+          (println "Three of a Kind" (format "%.2f" three-of-a-kind-percentage) "%")
+          (println "Two Pair" (format "%.2f" two-pair-percentage) "%")
+          (println "Pair" (format "%.2f" pair-percentage) "%")
+          (println "High Card" (format "%.2f" high-card-percentage) "%")))
+
+  (defn play-a-lot-of-poker [num-hands five-or-seven]
+      (let [hands (take num-hands (get-hands five-or-seven))
+            results (map get-best-hand hands)]
+          (frequencies results)))
+
+  (defn play-poker-in-threads [num-hands-per-thread five-or-seven number-of-threads]
+      (let [pool (Executors/newFixedThreadPool number-of-threads)
+            tasks (repeat number-of-threads (fn [] (play-a-lot-of-poker num-hands-per-thread five-or-seven)))
+            poker-results (map (fn [future] (.get future)) (.invokeAll pool tasks))]
+          (.shutdown pool)
+          (apply merge-with + poker-results)))
+
+  (def user-supplied-number-of-threads 2)
+  (def hands-per-thread 500000)
+  (def total-number-of-hands (* user-supplied-number-of-threads hands-per-thread))
+
+  (time (print-frequencies (play-poker-in-threads hands-per-thread 5 user-supplied-number-of-threads) total-number-of-hands))
+
+  ;(time (print-frequencies (play-a-lot-of-poker 1000000 5) 1000000))
 #+END_SRC
