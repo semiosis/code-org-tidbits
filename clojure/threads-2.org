@@ -11,7 +11,7 @@ This times a function.
       manage thread pool
 #+END_SRC
 
-* Create a number of threads
+* Create a pool of threads
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (Executors/newFixedThreadPool number-of-threads)
 #+END_SRC
