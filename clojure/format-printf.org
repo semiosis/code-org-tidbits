@@ -1,0 +1,34 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn get-monthly-payment [principal monthly-interest-rate number-of-months] 
+      (let [numerator (* principal monthly-interest-rate) 
+            partial-denominator (Math/pow (+ 1.0 monthly-interest-rate) (- number-of-months)) 
+            denominator (- 1.0 partial-denominator)] 
+          (/ numerator denominator))) 
+   
+  (defn print-rows-helper [current-month-number number-of-months monthly-payment monthly-interest-rate remaining-principal] 
+      (let [interest-payment (* remaining-principal monthly-interest-rate) 
+            principal-payment (- monthly-payment interest-payment) 
+            principal-after-payment (- remaining-principal principal-payment) 
+            row-output (str current-month-number ". " (format "%.2f" monthly-payment) " " (format "%.2f" interest-payment) " " (format "%.2f" principal-payment) " " (format "%.2f" principal-after-payment))] 
+          (println row-output) 
+          (if (< current-month-number number-of-months) 
+              (recur (inc current-month-number) number-of-months monthly-payment monthly-interest-rate principal-after-payment)))) 
+   
+  (defn print-rows [number-of-months monthly-payment monthly-interest-rate principal] 
+      (print-rows-helper 1 number-of-months monthly-payment monthly-interest-rate principal)) 
+   
+  (defn print-mortgage-schedule [principal annual-interest-rate number-of-months] 
+      (let [monthly-interest-rate (/ (/ annual-interest-rate 100.0) 12.0) 
+            monthly-payment (get-monthly-payment principal monthly-interest-rate number-of-months) 
+            total-loan-amount (* number-of-months monthly-payment) 
+            amount-paid-in-interest (- total-loan-amount principal)] 
+          (println "Principal: $" (format "%.2f" principal)) 
+          (println "Annual interest rate: " (format "%.1f" annual-interest-rate)) 
+          (println "Monthly payment: $" (format "%.2f" monthly-payment)) 
+          (println "Total amount paid for the loan: $ " (format "%.2f" total-loan-amount)) 
+          (println "Amount paid in interest: $" (format "%.2f" amount-paid-in-interest)) 
+          (println) 
+          (print-rows number-of-months monthly-payment monthly-interest-rate principal))) 
+   
+  (print-mortgage-schedule 100000.0 12.0 360)
+#+END_SRC
