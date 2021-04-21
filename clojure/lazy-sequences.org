@@ -1,0 +1,7 @@
+A lazy sequence is one that can holds some
+values and a plan to create even more. When a
+lazy sequence is realized the plan is put into
+action and more values are added to it. The
+main benefit of lazy sequences is that they
+are processor and memory efficient. They only
+generate values as they are needed.
