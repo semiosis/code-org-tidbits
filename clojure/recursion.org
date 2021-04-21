@@ -44,3 +44,19 @@ recursion is complete.
 In this case there is no work done after the
 recursive call so this is a candidate for tail
 recursion.
+
+_Tail recursion_ is possible when there is
+nothing done after the recursive call in a
+function. In other words, nothing happens on
+the way back through the call stack when the
+recursion is complete.
+
+Instead of using the call stack to make a
+call, recur will cause the parameters to be
+reevaluated and the flow of control will jump
+to the beginning of the function simulating
+recursion.
+
+Since the call stack is not used there is no
+risk of a stack overflow error but it still
+feels like I am using recursion.
