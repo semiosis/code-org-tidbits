@@ -1,0 +1,13 @@
+(defun clean-up-terraform ()
+  (interactive)
+  (beginning-of-buffer)
+  (toggle-read-only)
+  (cua-set-mark)
+  (search-forward "»")
+  (backward-char)
+  ;; (forward-paragraph)
+  ;; (forward-line)
+  (delete-selected)
+  (toggle-read-only))
+
+(add-to-list 'eww-patchup-url-alist '("://www.terraform.io/docs/language/resources/" . clean-up-terraform))

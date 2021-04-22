@@ -4,3 +4,33 @@ provisioner
     there are better alternatives. For more
     information, see the main Provisioners
     page.
+
+provisioner "file"
+    Used to copy files or directories from the
+    machine executing Terraform to the newly
+    created resource. The file provisioner
+    supports ssh.
+
+Terraform graph
+    Contains nodes
+
+nodes
+    types:
+    - Resource node
+    - Provider configuration node
+    - Resource meta-node
+
+resource node
+    Manages an entity of this provider (EC2,
+    VPC, and so on, in the case of AWS).
+
+provider configuration node
+    Configures a provider (AWS, in our
+    examples)
+
+resource meta-node
+    Doesn’t really do anything special; it is
+    used for convenience and makes a graph
+    more pretty. It is applicable only if you
+    specify a count parameter greater than
+    one.

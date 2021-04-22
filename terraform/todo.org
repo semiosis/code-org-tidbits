@@ -1,2 +1,7 @@
 * TODO Create a recipe for this that I can refollow
 https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-terraform-aws-docker
+
+* commands
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  terraform graph
+#+END_SRC
