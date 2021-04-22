@@ -2,6 +2,15 @@
 https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-terraform-aws-docker
 
 * commands
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  cd "$(gc https://github.com/npalm/terraform-aws-gitlab-runner)")
+  # initialize to get all the resources I need
+  terraform init
+
+  # look at the graph
+  terraform graph
+#+END_SRC
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   terraform graph
 #+END_SRC
