@@ -1,4 +1,4 @@
-* TODO Create a recipe for this that I can refollow
+* TODO Create a recipe for this that I can follow the steps again and again
 https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-terraform-aws-docker
 
 * commands
