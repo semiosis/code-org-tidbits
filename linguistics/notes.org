@@ -1,0 +1,7 @@
+* Notes
+** [[https://www.youtube.com/watch?v=9JScy7ulDpE]["c strip-unicode probably failed"]]
+
+Language is designed as a system of
+thought and not of a system of
+externalisation.
+

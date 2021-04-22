@@ -1,3 +1,25 @@
+nativism
+generativism
+
+X-bar theory
+    A theory of syntactic category formation.
+
+    It embodies two independent claims: one,
+    that phrases may contain intermediate
+    constituents projected from a head X; and
+    two, that this system of projected
+    constituency may be common to more than
+    one category.
+
+    Noam Chomsky said something about it.
+
+merge function
+    https://www.youtube.com/watch?v=9JScy7ulDpE
+
+    Language is designed as a system of
+    thought and not of a system of
+    externalisation.
+
 phonology
     A branch of linguistics that studies how
     languages or dialects systematically
