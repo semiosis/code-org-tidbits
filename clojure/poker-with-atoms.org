@@ -29,3 +29,12 @@ refs.
 
 They have the same access functions =deref=
 and the shorthand =@=.
+
+** =swap!=
+The atom =poker-results= is passed into the
+first parameter of =conj= followed by an additional
+parameter (i.e. =frequencies-of-hands=).
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (swap! poker-results conj frequencies-of-hands)
+#+END_SRC
