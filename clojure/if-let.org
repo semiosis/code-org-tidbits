@@ -1,0 +1,12 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  ;; This macro is nice when you need to calculate something big. And you need 
+  ;; to use the result but only when it's true:
+  
+  (if-let [life (meaning-of-life 12)]
+     life
+     (if-let [origin (origin-of-life 1)]
+        origin
+        (if-let [shooter (who-shot-jr 5)]
+           shooter
+  	 42)))
+#+END_SRC
