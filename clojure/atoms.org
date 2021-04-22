@@ -1,0 +1,19 @@
+** Final code
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (import '(java.util.concurrent Executors TimeUnit)) 
+  
+  (def sum-of-squares (atom 0))
+  
+  (defn get-square-fn[num]
+    (fn[] (swap! sum-of-squares + (* num num))))
+  
+  (defn create-threads [number-of-threads]
+      (let [pool (Executors/newFixedThreadPool number-of-threads)
+            tasks (map get-square-fn (range 1 (inc number-of-threads)))]
+          (.invokeAll pool tasks) 
+          (.shutdown pool) 
+          (.awaitTermination pool 1 TimeUnit/MINUTES)))
+  
+  (create-threads 5)
+  (println "Sum of squares" @sum-of-squares)
+#+END_SRC
