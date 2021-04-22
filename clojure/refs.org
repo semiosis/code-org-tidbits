@@ -61,3 +61,57 @@ performed in a transaction.
     transactions.
 
 *** =dosync= creates a transaction
+
+** Final code
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (import '(java.util.concurrent Executors))
+
+  (def quarters-in-the-bank (ref 4000)) ;$1000
+  (def dollars-in-the-bank (ref 1000)) ;$1000
+
+  (defn print-bank-state []
+      (println)
+      (println "========================== Bank State ==========================")
+      (println "Currently, there are" (deref dollars-in-the-bank) "dollars and" (deref quarters-in-the-bank) "quarters in the bank")
+      (println "The dollar value of the bank is" (+ (deref dollars-in-the-bank) (/ (deref quarters-in-the-bank) 4)))
+      (println "================================================================")
+      (println))
+
+  (defn exchange-dollars-for-quarters [dollars-to-add]
+      (let [quarters-to-remove (* dollars-to-add 4)]
+          ;(println "Exchanging" dollars-to-add "dollars for" quarters-to-remove "quarters")
+          ;(println "(Adding" dollars-to-add "dollars and removing" quarters-to-remove "quarters)")
+          (dosync
+              (ref-set dollars-in-the-bank (+ @dollars-in-the-bank dollars-to-add))
+              (ref-set quarters-in-the-bank (- @quarters-in-the-bank quarters-to-remove)))))
+
+  (defn exchange-quarters-for-dollars [quarters-to-add]
+      (let [dollars-to-remove (/ quarters-to-add 4)]
+          ;(println "Exchanging" quarters-to-add "quarters for" dollars-to-remove "dollars")
+          ;(println "(Adding" quarters-to-add "quarters and removing" dollars-to-remove "dollars)")
+          (dosync
+              (ref-set quarters-in-the-bank (+ @quarters-in-the-bank quarters-to-add))
+              (ref-set dollars-in-the-bank (- @dollars-in-the-bank dollars-to-remove)))))
+
+  (defn random-true-false []
+      (if (< (Math/random) 0.5) true false))
+
+  (defn random-exchange []
+      (Thread/sleep (* (Math/random) 50.0))
+      (if (random-true-false) (exchange-dollars-for-quarters 1) (exchange-quarters-for-dollars 4)))
+
+  (defn exchange-many-times-in-threads [number-of-threads]
+      (let [pool (Executors/newFixedThreadPool number-of-threads)
+            tasks (repeat number-of-threads random-exchange)]
+          (.invokeAll pool tasks)))
+
+  (print-bank-state)
+  (exchange-many-times-in-threads 1000)
+  (print-bank-state)
+
+  ; (print-bank-state)
+  ; (exchange-dollars-for-quarters 10)
+  ; (print-bank-state)
+  ; (exchange-quarters-for-dollars 20)
+  ; (print-bank-state)
+#+END_SRC
