@@ -2,6 +2,12 @@
 An atom is like a ref.
 It can be dereferenced with =deref= or =@=.
 
+** awaitTermination
+add a wait period before killing the threads
+in case I accidentally added some kind of
+infinite loop in one of the threads. I do this
+with a call to awaitTermination.
+
 ** Final code
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (import '(java.util.concurrent Executors TimeUnit))
