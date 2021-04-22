@@ -6,6 +6,8 @@ such as virtual networks, compute instances,
 or higher-level components such as DNS
 records.
 
+https://www.terraform.io/docs/language/resources/index.html
+
 ** Resource Blocks
 https://www.terraform.io/docs/language/resources/syntax.html
 
