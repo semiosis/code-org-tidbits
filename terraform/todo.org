@@ -1,2 +1,2 @@
-* TODO Create a recipe for this
+* TODO Create a recipe for this that I can refollow
 https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-terraform-aws-docker
