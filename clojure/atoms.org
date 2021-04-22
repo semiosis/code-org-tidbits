@@ -1,3 +1,6 @@
+** =atom=
+An atom is like a ref.
+
 ** Final code
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (import '(java.util.concurrent Executors TimeUnit))
