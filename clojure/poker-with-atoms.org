@@ -5,3 +5,27 @@ These are equivalent.
   ()
   '()
 #+END_SRC
+
+* an =atom= is like a =ref=
+An atom is like a ref in that it is a global,
+shared mutable reference (or pointer) that can
+be changed to point to new values.
+
+An atom is different than a ref because it can
+be manipulated outside of a transaction.
+
+Atoms are a lightweight alternative to refs
+when coordinated access to multiple refs is
+not necessary. Atoms are not appropriate when
+changing one depends on changing another. If
+this is what you need then you need to use a
+ref.
+
+atoms are great for shared access to a single
+piece of data among a group of threads.
+Because there is no need for a transaction
+using atoms are slightly easier to use than
+refs.
+
+They have the same access functions =deref=
+and the shorthand =@=.
