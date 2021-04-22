@@ -1,5 +1,6 @@
 ** =atom=
 An atom is like a ref.
+It can be dereferenced with =deref= or =@=.
 
 ** Final code
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
