@@ -1,4 +1,6 @@
 * empty list
+These are equivalent.
+
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   ()
   '()
