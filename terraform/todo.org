@@ -14,3 +14,8 @@ https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-te
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   terraform graph
 #+END_SRC
+
+*** TODO Add this to =cr=
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  terraform graph | dot -Tpng > graph.png
+#+END_SRC
