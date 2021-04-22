@@ -28,7 +28,7 @@ transaction
   (def dollars-in-the-bank (ref 1000)) ;$1000
 #+END_SRC
 
-** =deref=
+** =deref= (shorthand: =@=)
 To retrieve a value of a ref there is a
 function called deref.
 
