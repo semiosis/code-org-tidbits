@@ -1,0 +1,16 @@
+* Chomsky on GPT-3
+https://www.youtube.com/watch?v=c6MU5zQwtT4
+
+1 hour 12
+GPT-3
+
+It's not a LM. It works just as well for
+impossible languages as for actual languages.
+It is therefore refuted, if indended as a LM,
+by normal scientific criteria.
+Independently of the refutation, the way it
+works has no relation to language or cognition
+generally.
+Perhaps it's useful for some purpose, but it
+seems to tell us nothing about language or
+cognition generally.

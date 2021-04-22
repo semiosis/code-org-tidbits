@@ -23,3 +23,6 @@ conception of language, anyway).
       "I don't usually like to talk about things
       at that level of generality."
 #+END_SRC
+
+* Galileo's challenge
+[[egr:Galileo's challenge]]
