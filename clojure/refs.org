@@ -21,3 +21,23 @@ transaction
     Particularly powerful in multi-threaded
     programs where coordinated access to
     multiple global refs is required.
+
+** basic example
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (def quarters-in-the-bank (ref 4000)) ;$1000 
+  (def dollars-in-the-bank (ref 1000)) ;$1000
+#+END_SRC
+
+** =deref=
+To retrieve a value of a ref there is a
+function called deref.
+
+This is short for 'dereference' which is a
+term used in programming languages with
+explicit pointers.
+
+This says, "go to what the ref points to and
+return that value".
+
+The values can be used like other values as
+long as you dereference them.
