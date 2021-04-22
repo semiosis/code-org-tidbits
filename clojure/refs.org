@@ -41,3 +41,23 @@ return that value".
 
 The values can be used like other values as
 long as you dereference them.
+
+** =dosync=
+Whenever two refs need coordination in order
+to change together the operations need to be
+performed in a transaction.
+
++ A transaction is a group of operations that are:
+- =atomic=
+  all ref updates will appear to happen
+  simultaneously.
+- =consistent=
+  all ref updates can be validated for
+  correctness and all of them rolled back if
+  any one fails.
+- =isolated=
+  no other part of the program can see
+  partially updated refs from other
+  transactions.
+
+dosync creates a transaction.
