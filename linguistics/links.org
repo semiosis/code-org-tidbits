@@ -16,3 +16,10 @@ He thinks it's a shot in the dark.
 He thinks human experimentation is required,
 since only humans have language (his
 conception of language, anyway).
+
+* words
+#+BEGIN_SRC text -n :async :results verbatim code
+  generality
+      "I don't usually like to talk about things
+      at that level of generality."
+#+END_SRC
