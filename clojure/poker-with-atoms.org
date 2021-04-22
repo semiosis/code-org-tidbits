@@ -1,0 +1,5 @@
+* empty list
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  ()
+  '()
+#+END_SRC
