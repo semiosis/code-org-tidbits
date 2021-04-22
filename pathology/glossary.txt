@@ -5,3 +5,9 @@ spinal meningitis
     through the body. Without treatment it can
     cause brain damage in a matter of hours
     and can be fatal within 24 hours.
+
+    It can be caused by specific viruses,
+    bacteria, or fungi that gets transmitted
+    from person to person by sneezing,
+    talking, kissing, or sharing food or
+    drinks.
