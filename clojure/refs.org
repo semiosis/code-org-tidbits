@@ -60,4 +60,4 @@ performed in a transaction.
     partially updated refs from other
     transactions.
 
-dosync creates a transaction.
+*** =dosync= creates a transaction
