@@ -1,3 +1,13 @@
+universal grammar
+    Arguments for:
+    - Convergence
+
+components of universal grammar
+
+displaced reference
+
+discrete infinity
+
 nativism
 generativism
 
