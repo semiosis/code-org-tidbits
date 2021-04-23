@@ -1,3 +1,28 @@
+constructive vs selective grammar
+    We will distinguish between selective
+    grammars and constructive grammars
+    following the spirit of the classical
+    terminological distinction that Massimo
+    Piattelli-Palmarini (1989) originally
+    introduced into linguistics from biology.
+
+    In textbooks, you will never find the
+    rules that eliminate the impossible
+    combinations of words (selective
+    grammars).
+
+    You only find the rules that describe the
+    possible combinations (constructive
+    grammars), and among these rules, you are
+    likely to find just those that lead to
+    ‘‘proper’’ language rather than actual
+    spoken language.
+    
+    The Boundaries of Babel_ The Brain and the Enigma of Impossible Languages (2008, The MIT Press) - libgen.lc.pdf
+
+neurobiological correlates
+    https://mitpress.mit.edu/books/boundaries-babel
+
 universal grammar
     Arguments for:
     - Convergence
@@ -12,6 +37,7 @@ nativism
 generativism
 
 X-bar theory
+X` theory
     A theory of syntactic category formation.
 
     It embodies two independent claims: one,
@@ -22,6 +48,18 @@ X-bar theory
     one category.
 
     Noam Chomsky said something about it.
+
+    https://www.youtube.com/watch?v=n8TYuq173N0&ab_channel=TheTrevTutor
+    - phrase
+    - specificer
+    - adjunct
+    - complement
+    - head
+
+specifier
+    [#x-bar]
+
+    Daughters to XPs and sisters to X`s
 
 merge function
     https://www.youtube.com/watch?v=9JScy7ulDpE
