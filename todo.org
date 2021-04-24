@@ -20,10 +20,14 @@ I've been working on that in emacs, which is good.
 - filter-cmd-buttonize
 - aws-instances
 
-* Set up =aws-shell=
+* Set up tools
+** Set up =aws-shell=
 https://aws.amazon.com/blogs/developer/super-charge-your-aws-command-line-experience-with-aws-shell/
 
-* Set up =saws=
+** Set up =saws=
 #+BEGIN_SRC sh -n :sps bash :async :results none
   x -sh saws -z "saws>" -s "aws " -i
 #+END_SRC
+
+** =aws-fuzzy-finder=
+https://github.com/pmazurek/aws-fuzzy-finder
