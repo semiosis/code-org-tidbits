@@ -31,3 +31,7 @@ https://aws.amazon.com/blogs/developer/super-charge-your-aws-command-line-experi
 
 ** =aws-fuzzy-finder=
 https://github.com/pmazurek/aws-fuzzy-finder
+
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  py i -36 aws-fuzzy-finder
+#+END_SRC
