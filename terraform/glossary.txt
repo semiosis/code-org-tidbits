@@ -5,6 +5,32 @@ provisioner
     information, see the main Provisioners
     page.
 
+    Provisioners can be used to model specific
+    actions on the local machine or on a
+    remote machine in order to prepare servers
+    or other infrastructure objects for
+    service.
+    
+    Provisioners are a Last Resort.
+    
+    Terraform includes the concept of
+    provisioners as a measure of pragmatism,
+    knowing that there will always be certain
+    behaviors that can't be directly
+    represented in Terraform's declarative
+    model.
+
+    Examples:
+    - file
+    - local-exec
+    - remote-exec
+
+    Vendor Provisioners:
+    - chef
+    - habitat
+    - puppet
+    - salt-masterless
+
 provisioner "file"
     Used to copy files or directories from the
     machine executing Terraform to the newly
