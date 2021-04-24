@@ -1,3 +1,19 @@
+** nw -- smartly escape dollar
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun nw (&optional cmd nw_args)
+    "Runs command in a horizontal split"
+    (interactive)
+    (if (not cmd)
+        (setq cmd "zsh"))
+    ;; (shell-command (concat "unbuffer tm -f -d -te nw " nw_args " -c " (q (get-dir)) " " (q cmd) " &"))
+  
+    (setq cmd (q cmd))
+    (setq cmd (s-replace-regexp "\\$" "\\\\$" cmd))
+    (setq cmd (s-replace-regexp "\\$" "\\\\$" cmd))
+  
+    (sn (concat "unbuffer tm -f -d -te nw " nw_args " -c " (q (get-dir)) " " cmd " &")))
+#+END_SRC
+
 ** egr -- add urlencode
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   #!/bin/bash
