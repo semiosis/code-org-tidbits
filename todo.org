@@ -18,7 +18,7 @@ I've been working on that in emacs, which is good.
 
 * TODO Automate the aws cli a bit more
 - filter-cmd-buttonize
-- aws-instances
+- =aws-instances=
 
 * Set up tools
 ** Set up =aws-shell=
@@ -34,4 +34,12 @@ https://github.com/pmazurek/aws-fuzzy-finder
 
 #+BEGIN_SRC sh -n :sps bash :async :results none
   py -36 i aws-fuzzy-finder
+#+END_SRC
+
+This is just for finding instances and sshing into them.
+
+But it would be more useful to automate/extend emacs' =aws-instances=.
+
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  mkw aws-fuzzy
 #+END_SRC
