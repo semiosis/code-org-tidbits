@@ -1,3 +1,7 @@
+* TODO Make some kind of fuzzyfinder for API endpoints
+** Fuzzy select the name of an API
+** Fuzzy select from the endpoints
+
 * Get this
 https://youtu.be/oZCPnnDlBvI?t=1152
 
