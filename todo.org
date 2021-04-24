@@ -25,5 +25,5 @@ https://aws.amazon.com/blogs/developer/super-charge-your-aws-command-line-experi
 
 * Set up =saws=
 #+BEGIN_SRC sh -n :sps bash :async :results none
-  x -sh saws -e "saws>" -s "aws " -i
+  x -sh saws -z "saws>" -s "aws " -i
 #+END_SRC
