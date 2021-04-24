@@ -24,3 +24,6 @@ I've been working on that in emacs, which is good.
 https://aws.amazon.com/blogs/developer/super-charge-your-aws-command-line-experience-with-aws-shell/
 
 * Set up =saws=
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  x -sh saws -e "saws>" -s "aws " -i
+#+END_SRC
