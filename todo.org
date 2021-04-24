@@ -1,6 +1,8 @@
 * Get this
 https://youtu.be/oZCPnnDlBvI?t=1152
 
+* TODO Find a universal API fuzzy finder and explorer
+
 * List all API endpoints
 [[egr:aws api list all endpoints]]
 [[egr:github api list all endpoints]]
