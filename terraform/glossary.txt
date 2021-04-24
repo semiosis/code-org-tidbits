@@ -1,3 +1,10 @@
+jsonencode
+    gli -F "\\.tf$" json
+    ga json .tf
+    ga jsonencode .tf
+
+    https://www.terraform.io/docs/language/functions/jsonencode.html
+
 provisioner
     Note: Provisioners should only be used as
     a last resort. For most common situations

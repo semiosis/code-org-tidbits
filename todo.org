@@ -1,2 +1,17 @@
 * Get this
 https://youtu.be/oZCPnnDlBvI?t=1152
+
+* List all API endpoints
+[[egr:aws api list all endpoints]]
+[[egr:github api list all endpoints]]
+[[egr:gitlab api list all endpoints]]
+[[egr:terraform api list all endpoints]]
+[[egr:docker api list all endpoints]]
+
+** Fuzzy search endpoits
+I need custom fuzzy finders.
+I've been working on that in emacs, which is good.
+
+* TODO Automate the aws cli a bit more
+- filter-cmd-buttonize
+- aws-instances
