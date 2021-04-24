@@ -1,3 +1,6 @@
+* TODO Follow this guide. It's awesome
+https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/
+
 * TODO Upgrade to terraform 0.15
 
 * TODO Make another filter-cmd for instance type, security group, etc.
