@@ -1,2 +1,7 @@
 * TODO Do this course or find the stuff
 https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-terraform-aws-docker
+
+* Look into this
+https://gitlab.com/gitlab-com/gl-infra
+
+- =ansible-migrations=

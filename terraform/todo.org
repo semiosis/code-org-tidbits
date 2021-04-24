@@ -1,3 +1,10 @@
+* TODO Upgrade to terraform 0.15
+
+* TODO Make another filter-cmd for instance type, security group, etc.
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"instance_type = \"t2.micro\"" "$MYGIT/alexsedova/terraform-aws-docker/app-instances.tf"
+#+END_SRC
+
 * Review AWS tutorial
 https://github.com/azerothcore/wiki/blob/master/docs/aws-tutorial.md
 
