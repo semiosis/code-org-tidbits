@@ -1,5 +1,6 @@
 * TODO Follow this guide. It's awesome
 https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/
+https://github.com/chrishowejones/blog-film-ratings
 
 * TODO Upgrade to terraform 0.15
 
