@@ -1,0 +1,138 @@
+** egr -- add urlencode
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  #!/bin/bash
+  
+  ( hs "$(basename "$0")" "$@" "#" "<==" "$(ps -o comm= $PPID)" 0</dev/null ) &>/dev/null
+  
+  # This might actually work if I had the q script. I have to remake it.
+  
+  sn="$(basename "$0")"
+  
+  : ${lucky:=""}
+  case "$sn" in
+      egl|google-lucky|*gr-lucky|ifl) {
+          lucky=y
+      }
+      ;;
+  
+      *)
+  esac
+  
+  # normal google
+  enginequery="http://www.google.com/search?ie=utf-8&oe=utf-8&q=<s>"
+  
+  : ${lucky:=""}
+  pattern=
+  while [ $# -gt 0 ]; do opt="$1"; case "$opt" in
+      "") { shift; }; ;;
+      -l|-lucky) {
+          lucky=y
+  
+          enginequery="http://www.google.com/search?ie=utf-8&oe=utf-8&btnI&q=<s>"
+          shift
+      }
+      ;;
+  
+      +/*) { # pattern
+          pattern="$(p "$opt" | mcut -d+/ -f2 | s chomp | qne)"
+  
+          shift
+      }
+      ;;
+  
+      -ddg) {
+          enginequery="https://duckduckgo.com/?q=<s>&ia=web"
+          shift
+      }
+      ;;
+  
+      -g) {
+          enginequery="http://www.google.com/search?ie=utf-8&oe=utf-8&q=<s>"
+          shift
+      }
+      ;;
+  
+      -tor) {
+          export USETOR=y
+          shift
+      }
+      ;;
+  
+      -uq) {
+          IMPLICIT_QUOTING=n
+          shift
+      }
+      ;;
+  
+      -q) {
+          GEN_QUERY_URL=y
+          shift
+      }
+      ;;
+  
+      *) break;
+  esac; done
+  
+  : ${IMPLICIT_QUOTING:="y"}
+  
+  if test "$IMPLICIT_QUOTING" = "y"; then
+      query="$(cmd-nice "$@" | ns | ds -q ifl)"; : ${query:=""}
+  else
+      query="$(echo "$@" | ns | ds -q ifl)"; : ${query:=""}
+  fi
+  
+  query="$(p "$query" | urlencode)"
+  
+  engine=google
+  
+  if test "$lucky" = "y"; then
+      # query+="&btnI"
+      engine=google-lucky
+  fi
+  
+  url="$(p "$url" | urlencode)"
+  
+  url="$(echo "$enginequery" | tl -s "$(p "$query" | urlencode)")"
+  
+  ## false && 
+  #if test "$lucky" = "y"; then
+  #    # Annoyingly, this doesn't return good results often
+  #    # url=$(ci eval "gl $query" | head -n 1)
+  #
+  #    url="http://www.google.com/search?ie=utf-8&oe=utf-8&btnI&q=$(p "$query" | urlencode)"
+  #else
+  #    # if me running; then
+  #    #     # Can't put (delete-frame) here
+  #    #     # egr http code 500
+  #    #     me -e "(engine/search-$engine $(aqf "$query"))" && exit
+  #    # else
+  #    #     # lucky="http://www.google.com/search?ie=utf-8&oe=utf-8&btnI&q=$(p "$query" | urlencode)"
+  #        # ff "$lucky"
+  #
+  #        # gl head -n1 -- that's an IFL lsearch!
+  #        # url=$(eval "gl $query" | head -n 1)
+  #
+  #        url="http://www.google.com/search?ie=utf-8&oe=utf-8&q=$(p "$query" | urlencode)"
+  #    #fi
+  #fi
+  
+  if test "$GEN_URL_AND_EXIT" = "y"; then
+      echo "$url"
+      exit 0
+  fi
+  
+  is_tty() {
+      # If stout is a tty
+      [[ -t 1 ]]
+  }
+  
+  if is_tty; then
+      if test -n "$pattern"; then
+          xs eww "$url" "$pattern"
+      else
+          eww "$url"
+      fi
+  else
+      elinks-dump "$url"
+  fi
+#+END_SRC
