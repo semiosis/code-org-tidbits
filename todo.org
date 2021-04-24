@@ -19,3 +19,8 @@ I've been working on that in emacs, which is good.
 * TODO Automate the aws cli a bit more
 - filter-cmd-buttonize
 - aws-instances
+
+* Set up =aws-shell=
+https://aws.amazon.com/blogs/developer/super-charge-your-aws-command-line-experience-with-aws-shell/
+
+* Set up =saws=
