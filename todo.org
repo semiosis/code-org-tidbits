@@ -3,6 +3,15 @@ https://github.com/aome510/hackernews-TUI
 ** lmgrep
 https://github.com/dainiusjocas/lucene-grep
 
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  echo "Lucene is awesome" | docker run --entrypoint "" --rm --name dainiusjocas-lucene-grep-e9cfdfb9-1-0-11f9f2c4-19dc-4a94-a13b-9bc3319e32ce -v /home/shane/source/git:/media/mygit -i dainiusjocas-lucene-grep-e9cfdfb9:1.0 ./lmgrep "Lucene"
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+[0;35m*STDIN*[0m:[0;32m1[0m:[1;31mLucene[0m is awesome
+#+end_src
+
 *** Read this
 https://www.jocas.lt/blog/post/intro-to-lucene-grep/
 
@@ -58,3 +67,4 @@ But it would be more useful to automate/extend emacs' =aws-instances=.
 
 * copy across
 e:$SCRIPTS/docker-get-build-cmd
+
