@@ -105,6 +105,10 @@ e:$SCRIPTS/docker-get-build-cmd
 $SCRIPTS/lmgrep
 
 * TODO Set up aws user account
-aws iam create-user --user-name Shane
-aws iam create-login-profile --user-name Shane --password "$(pwgen 30 1 >> $NOTES/personal/passwords/aws-shane.txt)"
-aws iam create-access-key --user-name Shane
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  aws iam create-user --user-name Shane
+  # Enable console login
+  aws iam create-login-profile --user-name Shane --password "$(pwgen 30 1 >> $NOTES/personal/passwords/aws-shane.txt)"
+  # Enable programmatic access
+  aws iam create-access-key --user-name Shane
+#+END_SRC
