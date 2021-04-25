@@ -55,3 +55,6 @@ But it would be more useful to automate/extend emacs' =aws-instances=.
 #+BEGIN_SRC sh -n :sps bash :async :results none
   mkw aws-fuzzy
 #+END_SRC
+
+* copy across
+e:$SCRIPTS/docker-get-cmd
