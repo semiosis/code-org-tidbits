@@ -57,4 +57,4 @@ But it would be more useful to automate/extend emacs' =aws-instances=.
 #+END_SRC
 
 * copy across
-e:$SCRIPTS/docker-get-cmd
+e:$SCRIPTS/docker-get-build-cmd
