@@ -1,3 +1,6 @@
+* copy password
+$NOTES/personal/passwords/google-gmail-aws2021.txt
+
 * Install
 https://github.com/aome510/hackernews-TUI
 ** lmgrep
