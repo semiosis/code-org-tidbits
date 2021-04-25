@@ -1,8 +1,10 @@
 * Install
 https://github.com/aome510/hackernews-TUI
 ** lmgrep
-https://www.jocas.lt/blog/post/intro-to-lucene-grep/
 https://github.com/dainiusjocas/lucene-grep
+
+*** Read this
+https://www.jocas.lt/blog/post/intro-to-lucene-grep/
 
 * TODO Make some kind of fuzzyfinder for API endpoints
 ** Fuzzy select the name of an API
