@@ -1,5 +1,6 @@
 * Install
 https://github.com/aome510/hackernews-TUI
+** lmgrep
 https://www.jocas.lt/blog/post/intro-to-lucene-grep/
 https://github.com/dainiusjocas/lucene-grep
 
