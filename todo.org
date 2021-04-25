@@ -1,3 +1,15 @@
+* TODO Make some aws tablists
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  aws iam list-users
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+{
+    "Users": []
+}
+#+end_src
+
 * copy password
 $NOTES/personal/passwords/google-gmail-aws2021.txt
 
