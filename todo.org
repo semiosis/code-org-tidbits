@@ -1,4 +1,10 @@
-* TODO Make some aws tablists
+* automate aws
+** TODO enable iam billing
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  egr aws cli enable iam billing
+#+END_SRC
+
+** TODO Make some aws tablists
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   aws iam list-users
 #+END_SRC
