@@ -10,6 +10,10 @@
 }
 #+end_src
 
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  aws iam create-user --user-name Shane
+#+END_SRC
+
 * copy password
 $NOTES/personal/passwords/google-gmail-aws2021.txt
 
