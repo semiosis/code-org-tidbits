@@ -110,5 +110,5 @@ $SCRIPTS/lmgrep
   # Enable console login
   aws iam create-login-profile --user-name Shane --password "$(pwgen 30 1 >> $NOTES/personal/passwords/aws-shane.txt)"
   # Enable programmatic access
-  aws iam create-access-key --user-name Shane
+  aws iam create-access-key --user-name Shane >> $NOTES/personal/passwords/aws-shane-programmatic.json
 #+END_SRC
