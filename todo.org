@@ -2,7 +2,7 @@
 $NOTES/personal/passwords/google-gmail-aws2021.txt
 
 * TODO Make a list of pages I have automated the CLI for
-** Create admin user
+** Create admin user, admin group and admin policy
 https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html
 
 * Install
