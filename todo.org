@@ -68,3 +68,5 @@ But it would be more useful to automate/extend emacs' =aws-instances=.
 * copy across
 e:$SCRIPTS/docker-get-build-cmd
 
+* docker container for lmgrep
+$SCRIPTS/lmgrep
