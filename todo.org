@@ -172,6 +172,4 @@ Or use awk in the interim.
 
 #+RESULTS:
 #+begin_src bash
-/tmp/babel-AQbPl4/generic-yQ0MbQ: line 1: unexpected EOF while looking for matching `"'
-/tmp/babel-AQbPl4/generic-yQ0MbQ: line 2: syntax error: unexpected end of file
 #+end_src
