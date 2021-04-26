@@ -35,6 +35,11 @@ https://console.aws.amazon.com/billing/home?#/account
   aws ec2 describe-key-pairs
 #+END_SRC
 
+Your private key isn't stored in AWS and can
+be retrieved only when it's created. You can't
+recover it later. Instead, if you lose the
+private key, you must create a new key pair.
+
 #+RESULTS:
 #+begin_src bash
 {
