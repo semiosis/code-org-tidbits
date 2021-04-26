@@ -157,3 +157,15 @@ Use emacs and tablist for this.
 
 ** Try out this one
 http://harelba.github.io/q/
+
+Or use awk in the interim.
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  "AdministratorAccess","arn:aws:iam::aws:policy/AdministratorAccess"
+#+END_SRC
+
+"arn:aws:iam::aws:policy/AdministratorAccess"
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  oci aws iam attach-user-policy --user-name Administrator "arn:aws:iam::aws:policy/AdministratorAccess"
+#+END_SRC
