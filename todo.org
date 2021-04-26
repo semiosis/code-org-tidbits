@@ -134,3 +134,10 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-gr
     }
 }
 #+end_src
+
+# fuzzify
+# aws iam list-policies
+
+#+BEGIN_SRC text -n :async :results verbatim code
+  AdministratorAccess
+#+END_SRC
