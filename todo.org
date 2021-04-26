@@ -34,6 +34,10 @@ https://console.aws.amazon.com/billing/home?#/account
   aws ec2 describe-key-pairs
 #+END_SRC
 
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  aws ec2 create-key-pair --key-name AdminKey
+#+END_SRC
+
 * copy password
 $NOTES/personal/passwords/google-gmail-aws2021.txt
 
