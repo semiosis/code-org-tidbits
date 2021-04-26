@@ -30,6 +30,7 @@ https://console.aws.amazon.com/billing/home?#/account
 #+END_SRC
 
 ** TODO Key management
+*** List keys -- make a tablist
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   aws ec2 describe-key-pairs
 #+END_SRC
@@ -48,6 +49,9 @@ https://console.aws.amazon.com/billing/home?#/account
 }
 #+end_src
 
+*** Download key to ssh file
+
+*** Create key
 #+BEGIN_SRC sh -n :sps bash :async :results none
   aws ec2 create-key-pair --key-name AdminKey
 #+END_SRC
