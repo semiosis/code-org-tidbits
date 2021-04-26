@@ -1,3 +1,6 @@
+* Follow these instructions
+https://web.archive.org/web/20190729164342/https://dzone.com/articles/deploy-a-clojure-web-application-to-aws-using-terr
+
 * Copy this across before continuing. It uses =hc=.
 $SCRIPTS/aws
 $SCRIPTS/saws-docker
