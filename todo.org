@@ -105,10 +105,12 @@ e:$SCRIPTS/docker-get-build-cmd
 $SCRIPTS/lmgrep
 
 * TODO Set up aws user account
+https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
-  aws iam create-user --user-name Shane
+  oci aws iam create-user --user-name Administrator
   # Enable console login
-  aws iam create-login-profile --user-name Shane --password "$(pwgen 30 1 >> $NOTES/personal/passwords/aws-shane.txt)"
+  oci aws iam create-login-profile --user-name Administrator --password "$(pwgen 30 1 >> $NOTES/personal/passwords/aws-administrator.txt)"
   # Enable programmatic access
-  aws iam create-access-key --user-name Shane >> $NOTES/personal/passwords/aws-shane-programmatic.json
+  oci aws iam create-access-key --user-name Administrator >> $NOTES/personal/passwords/aws-administrator-programmatic.json
 #+END_SRC
