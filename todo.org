@@ -57,7 +57,7 @@ download and save the json.
 }
 #+end_src
 
-*** Download key to ssh file
+*** Download key to ssh file when it's created
 
 *** Create key
 #+BEGIN_SRC sh -n :sps bash :async :results none
