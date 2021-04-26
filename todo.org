@@ -219,7 +219,6 @@ Or use awk in the interim.
 #+end_src
 
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-example.svg
-  @startuml
   !include <awslib/AWSCommon>
   !include <awslib/AWSSimplified.puml>
   !include <awslib/Compute/all.puml>
@@ -243,7 +242,6 @@ Or use awk in the interim.
   AdExchange -right-> Smadex: 3. Bid request / response
   Smadex -left-> Mobile: 4. Show Ad
   Users -right-> Smadex: 5. Impression / click / install / event {request id}
-  @enduml
 #+END_SRC
 
 #+RESULTS:
