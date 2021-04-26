@@ -1,3 +1,12 @@
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+    Files named exactly terraform.tfvars or terraform.tfvars.json.
+    Any files with names ending in .auto.tfvars or .auto.tfvars.json.
+
+    These variables are loaded automatically.
+
 data
     https://www.terraform.io/docs/language/data-sources/index.html
 

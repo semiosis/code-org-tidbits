@@ -1,0 +1,4 @@
+Where are variables initialized?
+    https://www.terraform.io/docs/language/index.html
+
+    Specifically, availability_zones.
