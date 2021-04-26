@@ -40,6 +40,9 @@ be retrieved only when it's created. You can't
 recover it later. Instead, if you lose the
 private key, you must create a new key pair.
 
+When I create the key pair, I should also
+download and save the json.
+
 #+RESULTS:
 #+begin_src bash
 {
