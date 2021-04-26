@@ -148,5 +148,9 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-gr
 Use emacs and tablist for this.
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
-  oci aws iam list-policies | jq ".Policies[] | [ .PolicyName, .Arn ] | @csv"
+  oci aws iam list-policies | jq -r ".Policies[] | [ .PolicyName, .Arn ] | @csv"
+#+END_SRC
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  "AdministratorAccess","arn:aws:iam::aws:policy/AdministratorAccess"
 #+END_SRC
