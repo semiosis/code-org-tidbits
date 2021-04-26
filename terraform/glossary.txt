@@ -32,6 +32,16 @@ data
 
     ewwlinks +/"data \"aws_ecs_task_definition\" \"film_ratings_app\" {" "https://dzone.com/articles/deploy-a-clojure-web-application-to-aws-using-terr"
 
+    ewwlinks +/"data \"aws_ami\" \"example\" {" "https://www.terraform.io/docs/language/data-sources/index.html"
+    A data block requests that Terraform read
+    from a given data source ("aws_ami") and
+    export the result under the given local
+    name ("example"). The name is used to
+    refer to this resource from elsewhere in
+    the same Terraform module, but has no
+    significance outside of the scope of a
+    module.
+
 jsonencode
     gli -F "\\.tf$" json
     ga json .tf
