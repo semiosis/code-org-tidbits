@@ -167,5 +167,11 @@ Or use awk in the interim.
 "arn:aws:iam::aws:policy/AdministratorAccess"
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
-  oci aws iam attach-user-policy --user-name Administrator "arn:aws:iam::aws:policy/AdministratorAccess"
+  oci aws iam attach-user-policy --user-name Administrator --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 #+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+/tmp/babel-AQbPl4/generic-yQ0MbQ: line 1: unexpected EOF while looking for matching `"'
+/tmp/babel-AQbPl4/generic-yQ0MbQ: line 2: syntax error: unexpected end of file
+#+end_src
