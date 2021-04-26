@@ -154,3 +154,6 @@ Use emacs and tablist for this.
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   "AdministratorAccess","arn:aws:iam::aws:policy/AdministratorAccess"
 #+END_SRC
+
+** Try out this one
+http://harelba.github.io/q/
