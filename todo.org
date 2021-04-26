@@ -34,6 +34,20 @@ https://console.aws.amazon.com/billing/home?#/account
   aws ec2 describe-key-pairs
 #+END_SRC
 
+#+RESULTS:
+#+begin_src bash
+{
+    "KeyPairs": [
+        {
+            "KeyPairId": "key-0b6e4e12d64f459bf",
+            "KeyFingerprint": "b3:f0:48:25:b6:94:d1:b0:8c:42:be:ba:25:02:32:b3:a4:29:49:14",
+            "KeyName": "AdminKey",
+            "Tags": []
+        }
+    ]
+}
+#+end_src
+
 #+BEGIN_SRC sh -n :sps bash :async :results none
   aws ec2 create-key-pair --key-name AdminKey
 #+END_SRC
