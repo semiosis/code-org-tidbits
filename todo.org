@@ -30,6 +30,9 @@ https://console.aws.amazon.com/billing/home?#/account
 #+END_SRC
 
 ** TODO Key management
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  aws ec2 describe-key-pairs
+#+END_SRC
 
 * copy password
 $NOTES/personal/passwords/google-gmail-aws2021.txt
