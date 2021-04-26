@@ -7,6 +7,12 @@ terraform.tfvars.json
 
     These variables are loaded automatically.
 
+    variables can also be passed in from
+    environment variables with TF_VAR_
+    prefixes:
+        export TF_VAR_aws_access_key_id=xxxxxxxx
+        export TF_VAR_aws_secret_access_key=xxxxxxxxxxxxxxxxxxx
+
 data
     https://www.terraform.io/docs/language/data-sources/index.html
 
