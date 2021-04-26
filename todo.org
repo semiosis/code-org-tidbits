@@ -249,3 +249,18 @@ Or use awk in the interim.
 
 #+RESULTS:
 [[file:aws-example.svg]]
+
+
+#+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-sprites.svg
+  @startuml
+  !include <awslib/AWSCommon>
+  !include <awslib/Compute/all.puml>
+  !include <awslib/mobile/all.puml>
+  !include <awslib/general/all.puml>
+  
+  listsprites
+  @enduml
+#+END_SRC
+
+#+RESULTS:
+[[file:aws-sprites.svg]]
