@@ -293,3 +293,6 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
   InstanceCW -down-> App2: Port 3000
   InstanceCW -down-> DB: Port 5432
 #+END_SRC
+
+#+RESULTS:
+[[file:terraformclojure.svg]]
