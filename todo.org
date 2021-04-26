@@ -29,6 +29,8 @@ https://console.aws.amazon.com/billing/home?#/account
   aws iam create-user --user-name Shane
 #+END_SRC
 
+** TODO Key management
+
 * copy password
 $NOTES/personal/passwords/google-gmail-aws2021.txt
 
@@ -175,3 +177,4 @@ Or use awk in the interim.
 #+RESULTS:
 #+begin_src bash
 #+end_src
+
