@@ -217,8 +217,6 @@ Or use awk in the interim.
 #+begin_src bash
 #+end_src
 
-
-
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-example.svg
   @startuml
   !include <awslib/AWSCommon>
@@ -250,6 +248,8 @@ Or use awk in the interim.
 #+RESULTS:
 [[file:aws-example.svg]]
 
+** Automate building the aws diagram
+$SCRIPTS/plantuml-list-sprites
 
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-sprites.svg
   @startuml
