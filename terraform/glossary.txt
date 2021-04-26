@@ -1,3 +1,17 @@
+ecs-task-definition
+    Import the mongodb module, then you get
+    this. It's nothing to do with mongodb
+    though.
+
+    The purpose of this module is to generate
+    a valid Amazon ECS Task Definition
+    dynamically.
+
+    https://registry.terraform.io/modules/mongodb/ecs-task-definition/aws/latest
+
+    It's also not this:
+        https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition
+
 terraform.tfvars
 terraform.tfvars.json
 *.auto.tfvars
