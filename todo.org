@@ -262,3 +262,34 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
 
 #+RESULTS:
 [[file:aws-sprites.svg]]
+
+#+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file terraformclojure.svg
+  !include <awslib/AWSCommon>
+  !include <awslib/AWSSimplified.puml>
+  !include <awslib/Compute/all.puml>
+  !include <awslib/mobile/all.puml>
+  !include <awslib/general/all.puml>
+  !include <awslib/GroupIcons/all.puml>
+
+   skinparam linetype polyline
+  ' skinparam linetype ortho
+
+  ' package "AWS Cloud" {
+  ' EC2(Smadex, "Smadex Service", " ")
+  ' }
+
+  EC2(ALBLoadBalancer, "ALB Load Balancer", " ")
+  EC2(NWLoadBalancer, "NW Load Balancer", " ")
+  EC2AutoScaling(AutoscalingGroup, "Autoscaling Group", " ")
+  EC2InstancewithCloudWatch(InstanceCW, "Instance with CloudWatch", " ")
+  General(App1, "App", " ")
+  General(App2, "App", " ")
+  GenericDatabase(DB, "Database", " ")
+
+  ALBLoadBalancer -down-> InstanceCW
+  NWLoadBalancer -down-> InstanceCW
+  AutoscalingGroup -right-> InstanceCW
+  InstanceCW -down-> App1: Port 3000
+  InstanceCW -down-> App2: Port 3000
+  InstanceCW -down-> DB: Port 5432
+#+END_SRC
