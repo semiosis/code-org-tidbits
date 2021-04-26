@@ -296,3 +296,5 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
 
 #+RESULTS:
 [[file:terraformclojure.svg]]
+
+Set up two ECS tasks called film_ratings_app and film_ratings_db.
