@@ -117,3 +117,20 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-gr
   # Enable programmatic access
   oci aws iam create-access-key --user-name Administrator >> $NOTES/personal/passwords/aws-administrator-programmatic.json
 #+END_SRC
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  oci aws iam create-user --user-name Administrator
+#+END_SRC
+
+#+RESULTS:
+#+begin_src bash
+{
+    "User": {
+        "Path": "/",
+        "UserName": "Administrator",
+        "UserId": "AIDAR55HCH7KNSLMHLBLO",
+        "Arn": "arn:aws:iam::132957487060:user/Administrator",
+        "CreateDate": "2021-04-26T00:07:09Z"
+    }
+}
+#+end_src
