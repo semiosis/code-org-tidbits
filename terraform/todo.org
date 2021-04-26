@@ -15,20 +15,26 @@ https://github.com/chrishowejones/blog-film-ratings
 https://github.com/azerothcore/wiki/blob/master/docs/aws-tutorial.md
 
 * TODO Buttonize emacs
-    sp +/"ami           = \"ami-26c43149\"" "$MYGIT/alexsedova/terraform-aws-docker/app-instances.tf"
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"ami           = \"ami-26c43149\"" "$MYGIT/alexsedova/terraform-aws-docker/app-instances.tf"
+#+END_SRC
 
-    The "ami-[0-9a-z]+" string should be
-    buttonized to search for the AMI.
+The "ami-[0-9a-z]+" string should be
+buttonized to search for the AMI.
 
-    https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html#finding-an-ami-console
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html#finding-an-ami-console
 
-    le tf | xargs cat1 | scrape "\bami-[a-z0-9]+\b"
-    aws ec2 describe-images --image-ids ami-0ff8a91507f77f867
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  le tf | xargs cat1 | scrape "\bami-[a-z0-9]+\b"
+#+END_SRC
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  aws ec2 describe-images --image-ids ami-0ff8a91507f77f867
+#+END_SRC
 
-    https://grep.app/search?q=aws%20ec2%20describe-images%20--image-ids
+https://grep.app/search?q=aws%20ec2%20describe-images%20--image-ids
 
-    This is correct, I think.
-    https://github.com/azerothcore/wiki/blob/master/docs/aws-tutorial.md
+This is correct, I think.
+https://github.com/azerothcore/wiki/blob/master/docs/aws-tutorial.md
 
 * TODO Create a recipe for this that I can follow the steps again and again
 https://londonappdeveloper.thinkific.com/courses/devops-deployment-automation-terraform-aws-docker
