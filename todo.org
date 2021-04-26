@@ -145,6 +145,8 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-gr
 #+END_SRC
 
 ** Select the =AdministratorAccess= policy and add to =Administrator=
+Use emacs and tablist for this.
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   oci aws iam list-policies | jq ".Policies[] | [ .PolicyName, .Arn ] | @csv"
 #+END_SRC
