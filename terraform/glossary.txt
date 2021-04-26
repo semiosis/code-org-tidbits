@@ -1,3 +1,8 @@
+data
+    https://www.terraform.io/docs/language/data-sources/index.html
+
+    ewwlinks +/"data \"aws_ecs_task_definition\" \"film_ratings_app\" {" "https://dzone.com/articles/deploy-a-clojure-web-application-to-aws-using-terr"
+
 jsonencode
     gli -F "\\.tf$" json
     ga json .tf

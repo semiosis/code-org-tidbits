@@ -5,6 +5,7 @@ https://web.archive.org/web/20190729164342/https://dzone.com/articles/deploy-a-c
 $SCRIPTS/aws
 $SCRIPTS/saws-docker
 $SCRIPTS/saws
+$SCRIPTS/scrape-terraform-resource
 
 * automate aws
 ** TODO enable iam billing
