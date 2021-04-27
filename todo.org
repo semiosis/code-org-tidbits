@@ -503,3 +503,4 @@ It takes significant time to shut down.
 ** TODO Automate collection of =terraform apply output=
 - Specifically variables
   - Then I can collect database of cluster states
+- Partially done
