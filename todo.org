@@ -439,7 +439,9 @@ After running above command, for the next 60 seconds I can ssh in to the box.
 #+END_SRC
 
 ** I had to make some modifications to this
-- Destroy the cluster and reapply terraform to see if it works now/sticks
+- Destroy the cluster and reapply terraform to see if it works now/sticks.
+- This fixed the problem.
+- I also needed to unindent the HEREDOC for =user_data=.
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   #!/bin/bash
