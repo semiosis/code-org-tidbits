@@ -462,7 +462,9 @@ After running above command, for the next 60 seconds I can ssh in to the box.
   sudo apt-get -y install ./build/amazon-efs-utils*deb
   )
 
+  # I have confirmed this command works
   sudo mount -t efs ${aws_efs_mount_target.blobdbefs-mnt.0.dns_name}:/ efs
+  # sudo mount -t efs fs-3d3ad725.efs.us-west-1.amazonaws.com:/ efs
 #+END_SRC
 
 *** TODO Reapply to see if it worked
@@ -497,3 +499,7 @@ It takes significant time to shut down.
   
   (provide 'my-aws)
 #+END_SRC
+
+** TODO Automate collection of =terraform apply output=
+- Specifically variables
+  - Then I can collect database of cluster states
