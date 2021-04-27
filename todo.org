@@ -419,7 +419,7 @@ https://github.com/kvz/json2hcl
 <script src="https://asciinema.org/a/zrCqjoxfv1h0n6PshGRCjrBDx.js" id="asciicast-zrCqjoxfv1h0n6PshGRCjrBDx" async></script>
 #+END_EXPORT
 
-* TODO Automate adding my public key to an instance
+* TODO Automate adding my public key to an instance and ssh into the box
 - Inspect from emacs =aws-instances=
 - Get region and availability zone
 
