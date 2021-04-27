@@ -391,7 +391,11 @@ https://github.com/kvz/json2hcl
   cd "$MYGIT/mullikine/blob-uploader-terraform"; cat cloud-watch.tf| json2hcl -reverse
 #+END_SRC
 
-* First attempt at =terraform apply= (creating the cluster) failed
+* Cluster successfully created with terraform
+- Ubuntu 20.04
+- =t2.micro= (free tier)
+
+** First attempt at =terraform apply= (creating the cluster) failed
 #+BEGIN_EXPORT html
 <!-- Play on asciinema.com -->
 <!-- <a title="asciinema recording" href="https://asciinema.org/a/Jiq2phUugU6LnPMFcYQXxl8Tc" target="_blank"><img alt="asciinema recording" src="https://asciinema.org/a/Jiq2phUugU6LnPMFcYQXxl8Tc.svg" /></a> -->
@@ -407,7 +411,7 @@ https://github.com/kvz/json2hcl
      1: resource "aws_launch_configuration" "ecs-launch-configuration" {
 #+END_SRC
 
-* Successful =terraform apply=. Cluster created.
+** Successful =terraform apply=. Cluster created.
 #+BEGIN_EXPORT html
 <!-- Play on asciinema.com -->
 <!-- <a title="asciinema recording" href="https://asciinema.org/a/zrCqjoxfv1h0n6PshGRCjrBDx" target="_blank"><img alt="asciinema recording" src="https://asciinema.org/a/zrCqjoxfv1h0n6PshGRCjrBDx.svg" /></a> -->
