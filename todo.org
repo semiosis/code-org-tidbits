@@ -171,6 +171,13 @@ e:$SCRIPTS/docker-get-build-cmd
 * docker wrapper for lmgrep
 $SCRIPTS/lmgrep
 
+* TODO Create a key pair
+Once logged in, select EC2 from the Services
+drop-down and click Key Pairs in the Resources
+on the EC2 dashboard.
+
+Ensure that it is created in the correct region, =us-west-1=.
+
 * TODO Set up aws user account
 https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html
 
