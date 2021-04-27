@@ -381,3 +381,6 @@ https://github.com/kvz/json2hcl
 #+BEGIN_SRC sh -n :sps bash :async :results none
   cd "$MYGIT/mullikine/blob-uploader-terraform"; cat cloud-watch.tf| json2hcl -reverse
 #+END_SRC
+
+* First attempt at =terraform apply= (creating the cluster) failed
+https://asciinema.org/a/Jiq2phUugU6LnPMFcYQXxl8Tc

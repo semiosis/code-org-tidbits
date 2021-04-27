@@ -1,3 +1,23 @@
+Amazon Elastic File System
+EFS
+    A cloud storage service provided by Amazon
+    Web Services designed to provide scalable,
+    elastic, concurrent with some
+    restrictions, and encrypted file storage
+    for use with both AWS cloud services and
+    on-premises resources.
+
+    This is used to mount EFS filesystems.
+
+    https://github.com/aws/efs-utils
+    
+    e.g.
+        sudo mount -t efs file-system-id efs-mount-point/
+
+amazon-efs-utils
+    Utilities for Amazon Elastic File System
+    (EFS)
+
 task definition
     Required to run Docker containers in
     Amazon ECS.
