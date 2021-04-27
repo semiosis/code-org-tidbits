@@ -18,6 +18,10 @@ task definition:
 #+END_SRC
 
 #+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"\"image\": \"\${var.blob_uploader_app_image}\"," "$MYGIT/mullikine/blob-uploader-terraform/blob-uploader-app-task-definition.tf"
+#+END_SRC
+
+#+BEGIN_SRC sh -n :sps bash :async :results none
   sp +/"container_port    = 3000" "$MYGIT/mullikine/blob-uploader-terraform/blob-uploader-app-service.tf"
 #+END_SRC
 
