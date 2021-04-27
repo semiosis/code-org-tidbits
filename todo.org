@@ -10,23 +10,10 @@ Do this so I can see at a glance (and navigate to) where terms are located.
 * TODO I must push my docker image to ECR
 https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
-* emacs
-$EMACSD/config/my-file-parsers.el
-$EMACSD/config/my-aws.el
-
-Copy these across.
-
 * Follow these instructions
 https://web.archive.org/web/20190729164342/https://dzone.com/articles/deploy-a-clojure-web-application-to-aws-using-terr
 
 * TODO Make a parser binding for each file type I work with
-
-* Copy this across before continuing. It uses =hc=.
-$SCRIPTS/aws
-$SCRIPTS/saws-docker
-$SCRIPTS/saws
-$SCRIPTS/scrape-terraform-resource
-$SCRIPTS/json2hcl
 
 * automate aws
 ** TODO enable iam billing
@@ -169,13 +156,6 @@ But it would be more useful to automate/extend emacs' =aws-instances=.
   mkw aws-fuzzy
 #+END_SRC
 
-* copy across
-e:$SCRIPTS/docker-get-build-cmd
-e:$SCRIPTS/aws-ssh-into-box
-
-* docker wrapper for lmgrep
-$SCRIPTS/lmgrep
-
 * TODO Create a key pair
 Once logged in, select EC2 from the Services
 drop-down and click Key Pairs in the Resources
@@ -247,10 +227,6 @@ Or use awk in the interim.
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   oci aws iam attach-user-policy --user-name Administrator --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 #+END_SRC
-
-#+RESULTS:
-#+begin_src bash
-#+end_src
 
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-example.svg
   !include <awslib/AWSCommon>
@@ -378,17 +354,6 @@ blob_uploader_app
 blobuser
 blobapp
 blob uploader
-
-* TODO Set up this tool
-I should use it to parse hcl files.
-
-e:$MYGIT/kvz/json2hcl
-
-https://github.com/kvz/json2hcl
-
-#+BEGIN_SRC sh -n :sps bash :async :results none
-  go get -u github.com/kvz/json2hcl
-#+END_SRC
 
 ** DONE Use this to query hcl files instead of sed
    CLOSED: [2021-04-27 Tue 17:05]
