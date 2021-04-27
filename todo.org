@@ -370,5 +370,8 @@ https://github.com/kvz/json2hcl
   go get -u github.com/kvz/json2hcl
 #+END_SRC
 
-** TODO Use this to query hcl files instead of sed
-cd "$MYGIT/mullikine/blob-uploader-terraform"; cat cloud-watch.tf| json2hcl -reverse
+** DONE Use this to query hcl files instead of sed
+   CLOSED: [2021-04-27 Tue 17:05]
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  cd "$MYGIT/mullikine/blob-uploader-terraform"; cat cloud-watch.tf| json2hcl -reverse
+#+END_SRC
