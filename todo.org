@@ -278,8 +278,8 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
   ' EC2(Smadex, "Smadex Service", " ")
   ' }
 
-  EC2(ALBLoadBalancer, "ALB Application Load Balancer", " ")
-  EC2(NLBLoadBalancer, "NLB Network Load Balancer", " ")
+  EC2(ALBLoadBalancer, "ALB (Application Load Balancer)", " ")
+  EC2(NLBLoadBalancer, "NLB (Network Load Balancer)", " ")
   EC2AutoScaling(AutoscalingGroup, "Autoscaling Group", " ")
   EC2InstancewithCloudWatch(InstanceCW, "Instance with CloudWatch", " ")
   General(App1, "App", " ")
