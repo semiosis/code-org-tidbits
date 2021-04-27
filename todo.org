@@ -435,22 +435,27 @@ After running above command, for the next 60 seconds I can ssh in to the box.
   ssh -oBatchMode=no -vvv -i $HOME/.ssh/ids/default.pem ubuntu@ec2-3-101-73-201.us-west-1.compute.amazonaws.com
 #+END_SRC
 
+** I had to make some modifications to this
+- Destroy the cluster and reapply terraform to see if it works now/sticks
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   #!/bin/bash
-  sudo mkdir -m 777 -p /etc/ecs
+  sudo mkdir -m 777 -p /etc/ecs; sudo chown $USER:$USER /etc/ecs
   # echo ECS_CLUSTER=${var.ecs_cluster} >> /etc/ecs/ecs.config
-  echo ECS_CLUSTER=blob_uploader_cluster >> /etc/ecs/ecs.config
-  mkdir -p /mnt/efs/postgres
+  echo ECS_CLUSTER=${var.ecs_cluster} >> /etc/ecs/ecs.config
+  sudo mkdir -p /mnt/efs/postgres; sudo chown $USER:$USER /mnt/efs/postgres
   cd /mnt
   # sudo yum install -y amazon-efs-utils
   (
   sudo apt-get update
   sudo apt-get -y install git binutils
+  sudo chmod 777 /mnt
   git clone https://github.com/aws/efs-utils
   cd efs-utils
   ./build-deb.sh
+  sudo sh -c 'apt-get update && apt-get install stunnel4'
   sudo apt-get -y install ./build/amazon-efs-utils*deb
   )
-  
+
   sudo mount -t efs ${aws_efs_mount_target.blobdbefs-mnt.0.dns_name}:/ efs
 #+END_SRC
