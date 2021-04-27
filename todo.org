@@ -83,7 +83,7 @@ download and save the json.
 #+end_src
 
 *** Create key
-- Unfortunately, no way yet to specify a region for the cli subcommand
+- Unfortunately, no way yet to specify a region for the cli subcommand, so this step must be done manually in the AWS console
 https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html
 
 #+BEGIN_SRC sh -n :sps bash :async :results none
