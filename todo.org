@@ -384,3 +384,11 @@ https://github.com/kvz/json2hcl
 
 * First attempt at =terraform apply= (creating the cluster) failed
 https://asciinema.org/a/Jiq2phUugU6LnPMFcYQXxl8Tc
+
+#+BEGIN_SRC text -n :async :results verbatim code
+  Error: Error creating launch configuration: ValidationError: The key pair 'blob_uploader_key_pair' does not exist
+          status code: 400, request id: 42206521-5721-44ce-9a11-7bc24d1b440c
+  
+    on launch-configuration.tf line 1, in resource "aws_launch_configuration" "ecs-launch-configuration":
+     1: resource "aws_launch_configuration" "ecs-launch-configuration" {
+#+END_SRC
