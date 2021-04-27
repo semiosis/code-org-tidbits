@@ -248,12 +248,14 @@ Or use awk in the interim.
 [[file:aws-example.svg]]
 
 ** Automate building the aws diagram
-$SCRIPTS/plantuml-list-sprites
-https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
+https://plantuml.com/openiconic
 
-#+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-sprites.svg
+#+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file openiconic-sprites.svg
   listopeniconic
 #+END_SRC
+
+#+RESULTS:
+[[file:openiconic-sprites.svg]]
 
 ** Automate building the aws diagram
 $SCRIPTS/plantuml-list-sprites
