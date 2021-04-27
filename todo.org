@@ -168,6 +168,7 @@ But it would be more useful to automate/extend emacs' =aws-instances=.
 
 * copy across
 e:$SCRIPTS/docker-get-build-cmd
+e:$SCRIPTS/aws-ssh-into-box
 
 * docker wrapper for lmgrep
 $SCRIPTS/lmgrep
