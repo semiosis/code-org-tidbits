@@ -1,11 +1,22 @@
+* TODO I need some kind of semantic network (a graph) for terms found across project files
+Do this so I can see at a glance (and navigate to) where terms are located.
+
+* emacs
+$EMACSD/config/my-file-parsers.el
+
+Copy these across.
+
 * Follow these instructions
 https://web.archive.org/web/20190729164342/https://dzone.com/articles/deploy-a-clojure-web-application-to-aws-using-terr
+
+* TODO Make a parser binding for each file type I work with
 
 * Copy this across before continuing. It uses =hc=.
 $SCRIPTS/aws
 $SCRIPTS/saws-docker
 $SCRIPTS/saws
 $SCRIPTS/scrape-terraform-resource
+$SCRIPTS/json2hcl
 
 * automate aws
 ** TODO enable iam billing
@@ -334,6 +345,7 @@ communicate with the database.
 
 * Incorporate into submission
 aws-list-regions
+aws-list-instance-types
 
 * Identifying strings
 blob-uploader
@@ -343,3 +355,14 @@ blob_uploader_app
 blobuser
 blobapp
 blob uploader
+
+* TODO Set up this tool
+I should use it to parse hcl files.
+
+$MYGIT/kvz/json2hcl
+https://github.com/kvz/json2hcl
+
+go get -u github.com/kvz/json2hcl
+
+** TODO Use this to query hcl files instead of sed
+cd "$MYGIT/mullikine/blob-uploader-terraform"; cat cloud-watch.tf| json2hcl -reverse
