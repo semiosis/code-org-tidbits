@@ -333,4 +333,17 @@ container to use it as the DB_HOST to
 communicate with the database.
 
 * Incorporate into submission
-aws-list-regions
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  aws-list-regions
+#+END_SRC
+
+* Identifying strings
+#+BEGIN_SRC text -n :async :results verbatim code
+  blob-uploader
+  blob uploader
+  blob_uploader_db
+  blob_uploader_app
+  blobuser
+  blobapp
+  blob uploader
+#+END_SRC
