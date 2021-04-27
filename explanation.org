@@ -6,15 +6,21 @@ The docker container forwards requests from port 3000 to the application contain
 The docker container runs as an ECS service.
 The load balancer and container name are specified here.
 
-The docker container was pushed to circleci, but I could push it to ECR.
+The docker container is pushed to ECR.
 
-egr aws_ecs_task_definition container_definitions
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  egr aws_ecs_task_definition container_definitions
+#+END_SRC
 
-sp +/"container_port    = 3000" "$MYGIT/mullikine/blob-uploader-terraform/blob-uploader-app-service.tf"
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"container_port    = 3000" "$MYGIT/mullikine/blob-uploader-terraform/blob-uploader-app-service.tf"
+#+END_SRC
 
 The container is found here.
 
-sp +/"blob_uploader_app_image= \"mullikine\/blob-uploader-app:latest\"" "$MYGIT/mullikine/blob-uploader-terraform/terraform.tfvars"
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"blob_uploader_app_image= \"mullikine\/blob-uploader-app:latest\"" "$MYGIT/mullikine/blob-uploader-terraform/terraform.tfvars"
+#+END_SRC
 
 * Database
 
