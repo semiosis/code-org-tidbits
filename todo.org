@@ -331,3 +331,6 @@ containers the network load balancer's DNS
 name in order for the application within the
 container to use it as the DB_HOST to
 communicate with the database.
+
+* Incorporate into submission
+aws-list-regions
