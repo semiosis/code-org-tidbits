@@ -83,8 +83,11 @@ download and save the json.
 #+end_src
 
 *** Create key
+- Unfortunately, no way yet to specify a region for the cli subcommand
+https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html
+
 #+BEGIN_SRC sh -n :sps bash :async :results none
-  aws ec2 create-key-pair --key-name AdminKey
+  aws ec2 create-key-pair --key-name blob_uploader_key_pair
 #+END_SRC
 
 **** Download key to ssh file when it's created
