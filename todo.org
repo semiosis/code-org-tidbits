@@ -263,6 +263,9 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
 #+RESULTS:
 [[file:aws-sprites.svg]]
 
+Symbols
+https://github.com/awslabs/aws-icons-for-plantuml/blob/main/AWSSymbols.md
+
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file terraformclojure.svg
   !include <awslib/AWSCommon>
   !include <awslib/AWSSimplified.puml>
