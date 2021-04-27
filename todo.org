@@ -421,7 +421,8 @@ https://github.com/kvz/json2hcl
 <script src="https://asciinema.org/a/zrCqjoxfv1h0n6PshGRCjrBDx.js" id="asciicast-zrCqjoxfv1h0n6PshGRCjrBDx" async></script>
 #+END_EXPORT
 
-* TODO Automate adding my public key to an instance and ssh into the box
+* DONE Automate adding my public key to an instance and ssh into the box
+  CLOSED: [2021-04-27 Tue 19:42]
 - Inspect from emacs =aws-instances=
 - Get region and availability zone
 
@@ -465,3 +466,33 @@ After running above command, for the next 60 seconds I can ssh in to the box.
 *** TODO Reapply to see if it worked
 It's taking a long time to shut down.
 Finally!
+
+** DONE Automate showing =userData= for an instance
+   CLOSED: [2021-04-27 Tue 19:43]
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  ;; TODO Make an ssh into box script
+  
+  (defun aws-ssh-into-box (id)
+    (interactive (list (tabulated-list-get-id)))
+  
+    (if (major-mode-p 'aws-instances-mode)
+        (sps (concat "aws-ssh-into-box " id))))
+  
+  (defun aws-show-user-data (id)
+    (interactive (list (tabulated-list-get-id)))
+  
+    (if (major-mode-p 'aws-instances-mode)
+        ;; https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
+        (etv (snc (concat
+                   "aws ec2 describe-instance-attribute --instance-id "
+                   id
+                   " --attribute userData --output text --query \"UserData.Value\" | base64 --decode")))
+      ;; 
+      ;; (sps (concat "aws-ssh-into-box " id))
+      ))
+  
+  (define-key aws-instances-mode-map (kbd ";") 'aws-ssh-into-box)
+  (define-key aws-instances-mode-map (kbd "D") 'aws-show-user-data)
+  
+  (provide 'my-aws)
+#+END_SRC
