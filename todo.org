@@ -434,3 +434,23 @@ After running above command, for the next 60 seconds I can ssh in to the box.
 #+BEGIN_SRC sh -n :sps bash :async :results none
   ssh -oBatchMode=no -vvv -i $HOME/.ssh/ids/default.pem ubuntu@ec2-3-101-73-201.us-west-1.compute.amazonaws.com
 #+END_SRC
+
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  #!/bin/bash
+  sudo mkdir -m 777 -p /etc/ecs
+  # echo ECS_CLUSTER=${var.ecs_cluster} >> /etc/ecs/ecs.config
+  echo ECS_CLUSTER=blob_uploader_cluster >> /etc/ecs/ecs.config
+  mkdir -p /mnt/efs/postgres
+  cd /mnt
+  # sudo yum install -y amazon-efs-utils
+  (
+  sudo apt-get update
+  sudo apt-get -y install git binutils
+  git clone https://github.com/aws/efs-utils
+  cd efs-utils
+  ./build-deb.sh
+  sudo apt-get -y install ./build/amazon-efs-utils*deb
+  )
+  
+  sudo mount -t efs ${aws_efs_mount_target.blobdbefs-mnt.0.dns_name}:/ efs
+#+END_SRC
