@@ -252,6 +252,14 @@ $SCRIPTS/plantuml-list-sprites
 https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
 
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-sprites.svg
+  listopeniconic
+#+END_SRC
+
+** Automate building the aws diagram
+$SCRIPTS/plantuml-list-sprites
+https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
+
+#+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file aws-sprites.svg
   !include <awslib/AWSCommon>
   !include <awslib/Compute/all.puml>
   !include <awslib/mobile/all.puml>
