@@ -423,6 +423,8 @@ https://github.com/kvz/json2hcl
 - Inspect from emacs =aws-instances=
 - Get region and availability zone
 
+https://aws.amazon.com/blogs/compute/new-using-amazon-ec2-instance-connect-for-ssh-access-to-your-ec2-instances/
+
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   aws ec2-instance-connect send-ssh-public-key --region us-west-1 --availability-zone us-west-1a --instance-id i-034950c831ac772a5 --instance-os-user ec2-user --ssh-public-key file://$HOME/.ssh/pub/id_rsa.pub
 #+END_SRC
