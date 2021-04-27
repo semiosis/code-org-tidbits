@@ -1,0 +1,13 @@
+* remove =-mode=
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun egr-thing-at-point-lang (query)
+    ;; (interactive (list (q (s-replace "\n" " " (my/thing-at-point)))))
+    (interactive (list (read-string-hist "egr (quoted): " (concat (q (my/thing-at-point)) " "
+                                                                  (cl-sn "sed 's/-mode\\b//'" :stdin (cond
+                                                                                                    ((major-mode-p 'org-mode) (get-src-block-language))
+                                                                                                    ((major-mode-p 'eww-mode) (completing-read "lang:" nil nil nil))
+                                                                                                    (t (buffer-language))) :chomp t)
+  
+                                                                  " "))))
+    (egr-thing-at-point query))
+#+END_SRC
