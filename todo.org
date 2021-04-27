@@ -298,3 +298,15 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
 [[file:terraformclojure.svg]]
 
 Set up two ECS tasks called film_ratings_app and film_ratings_db.
+
+** Commentary
+The app instances need to communicate with the
+DB instance via port 5432. In order to do
+this, they need to route their requests via a
+network load balancer ( film-ratings-nw-load-
+balancer). So when we set up the
+film_ratings_app task, we need to pass the
+containers the network load balancer's DNS
+name in order for the application within the
+container to use it as the DB_HOST to
+communicate with the database.
