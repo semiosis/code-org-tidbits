@@ -464,8 +464,7 @@ After running above command, for the next 60 seconds I can ssh in to the box.
 #+END_SRC
 
 *** TODO Reapply to see if it worked
-It's taking a long time to shut down.
-Finally!
+It takes significant time to shut down.
 
 ** DONE Automate showing =userData= for an instance
    CLOSED: [2021-04-27 Tue 19:43]
