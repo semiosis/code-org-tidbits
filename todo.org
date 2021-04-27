@@ -426,11 +426,11 @@ https://github.com/kvz/json2hcl
 https://aws.amazon.com/blogs/compute/new-using-amazon-ec2-instance-connect-for-ssh-access-to-your-ec2-instances/
 
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
-  aws ec2-instance-connect send-ssh-public-key --region us-west-1 --availability-zone us-west-1a --instance-id i-034950c831ac772a5 --instance-os-user ec2-user --ssh-public-key file://$HOME/.ssh/pub/id_rsa.pub
+  aws ec2-instance-connect send-ssh-public-key --region us-west-1 --availability-zone us-west-1a --instance-id i-034950c831ac772a5 --instance-os-user ubuntu --ssh-public-key file://$HOME/.ssh/pub/id_rsa.pub
 #+END_SRC
 
 After running above command, for the next 60 seconds I can ssh in to the box.
 
 #+BEGIN_SRC sh -n :sps bash :async :results none
-  ssh -oBatchMode=no -vvv -i $HOME/.ssh/ids/default.pem ec2-user@ec2-3-101-73-201.us-west-1.compute.amazonaws.com
+  ssh -oBatchMode=no -vvv -i $HOME/.ssh/ids/default.pem ubuntu@ec2-3-101-73-201.us-west-1.compute.amazonaws.com
 #+END_SRC
