@@ -1,0 +1,17 @@
+* Application
+The application listens on port 3000.
+The application runs within a docker container.
+The docker container forwards requests from port 3000 to the application container on the same port.
+
+The docker container runs as an ECS service.
+The load balancer and container name are specified here.
+
+sp +/"container_port    = 3000" "$MYGIT/mullikine/blob-uploader-terraform/blob-uploader-app-service.tf"
+
+The container is found here.
+
+sp +/"blob_uploader_app_image= \"mullikine\/blob-uploader-app:latest\"" "$MYGIT/mullikine/blob-uploader-terraform/terraform.tfvars"
+
+* Database
+
+* The ALB

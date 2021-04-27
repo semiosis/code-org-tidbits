@@ -1,6 +1,9 @@
 * TODO I need some kind of semantic network (a graph) for terms found across project files
 Do this so I can see at a glance (and navigate to) where terms are located.
 
+* TODO I must push my docker image to ECR
+https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
 * emacs
 $EMACSD/config/my-file-parsers.el
 
