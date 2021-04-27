@@ -318,8 +318,8 @@ https://github.com/awslabs/aws-icons-for-plantuml/blob/main/AWSSymbols.md
 
   ' ELBApplicationLoadBalancer
   ' ELBNetworkLoadBalancer
-  ALBLoadBalancer -down-> InstanceCW
-  NLBLoadBalancer -down-> InstanceCW
+  ALBLoadBalancer -down-> InstanceCW: Port 3000
+  NLBLoadBalancer -down-> InstanceCW: Port 5432
   AutoscalingGroup -right-> InstanceCW
   InstanceCW -down-> App1: Port 3000
   InstanceCW -down-> App2: Port 3000
