@@ -278,8 +278,8 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
   ' EC2(Smadex, "Smadex Service", " ")
   ' }
 
-  EC2(ALBLoadBalancer, "ALB Load Balancer", " ")
-  EC2(NWLoadBalancer, "NW Load Balancer", " ")
+  EC2(ALBLoadBalancer, "ALB Application Load Balancer", " ")
+  EC2(NLBLoadBalancer, "NLB Network Load Balancer", " ")
   EC2AutoScaling(AutoscalingGroup, "Autoscaling Group", " ")
   EC2InstancewithCloudWatch(InstanceCW, "Instance with CloudWatch", " ")
   General(App1, "App", " ")
@@ -287,7 +287,7 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
   GenericDatabase(DB, "Database", " ")
 
   ALBLoadBalancer -down-> InstanceCW
-  NWLoadBalancer -down-> InstanceCW
+  NLBLoadBalancer -down-> InstanceCW
   AutoscalingGroup -right-> InstanceCW
   InstanceCW -down-> App1: Port 3000
   InstanceCW -down-> App2: Port 3000
