@@ -419,3 +419,7 @@ https://github.com/kvz/json2hcl
 <script src="https://asciinema.org/a/zrCqjoxfv1h0n6PshGRCjrBDx.js" id="asciicast-zrCqjoxfv1h0n6PshGRCjrBDx" async></script>
 #+END_EXPORT
 
+* TODO Automate adding my public key to an instance
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  aws ec2-instance-connect send-ssh-public-key --region us-west-1 --availability-zone us-west-1a --instance-id i-034950c831ac772a5 --instance-os-user ec2-user --ssh-public-key file://$HOME/.ssh/pub/id_rsa.pub
+#+END_SRC
