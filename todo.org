@@ -277,8 +277,8 @@ Symbols
 https://github.com/awslabs/aws-icons-for-plantuml/blob/main/AWSSymbols.md
 
 #+BEGIN_SRC plantuml -n :f "plantuml -svg" :async :results raw :file terraformclojure.svg
-  !include <tupadr3/common>
-  !include <office/Servers/application_server>
+  '!include <tupadr3/common>
+  '!include <office/Servers/application_server>
 
   !include <awslib/AWSCommon>
   !include <awslib/AWSSimplified.puml>
@@ -300,8 +300,8 @@ https://github.com/awslabs/aws-icons-for-plantuml/blob/main/AWSSymbols.md
   ELBNetworkLoadBalancer(NLBLoadBalancer, "NLB (Network Load Balancer)", " ")
   EC2AutoScaling(AutoscalingGroup, "Autoscaling Group", " ")
   EC2InstancewithCloudWatch(InstanceCW, "Instance with CloudWatch", " ")
-  'General(App1, "App", " ")
-  OFF_APPLICATION_SERVER(App1, "App")
+  General(App1, "App", " ")
+  'OFF_APPLICATION_SERVER(App1, "App")
   General(App2, "App", " ")
   GenericDatabase(DB, "Database", " ")
 
