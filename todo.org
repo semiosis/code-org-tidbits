@@ -270,6 +270,7 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
   !include <awslib/mobile/all.puml>
   !include <awslib/general/all.puml>
   !include <awslib/GroupIcons/all.puml>
+  !include <awslib/NetworkingAndContentDelivery/all.puml>
 
    skinparam linetype polyline
   ' skinparam linetype ortho
@@ -278,14 +279,17 @@ https://github.com/plantuml/plantuml-stdlib/tree/master/awslib
   ' EC2(Smadex, "Smadex Service", " ")
   ' }
 
-  EC2(ALBLoadBalancer, "ALB (Application Load Balancer)", " ")
-  EC2(NLBLoadBalancer, "NLB (Network Load Balancer)", " ")
+  ' EC2()
+  ELBApplicationLoadBalancer(ALBLoadBalancer, "ALB (Application Load Balancer)", " ")
+  ELBNetworkLoadBalancer(NLBLoadBalancer, "NLB (Network Load Balancer)", " ")
   EC2AutoScaling(AutoscalingGroup, "Autoscaling Group", " ")
   EC2InstancewithCloudWatch(InstanceCW, "Instance with CloudWatch", " ")
   General(App1, "App", " ")
   General(App2, "App", " ")
   GenericDatabase(DB, "Database", " ")
 
+  ' ELBApplicationLoadBalancer
+  ' ELBNetworkLoadBalancer
   ALBLoadBalancer -down-> InstanceCW
   NLBLoadBalancer -down-> InstanceCW
   AutoscalingGroup -right-> InstanceCW
