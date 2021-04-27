@@ -297,7 +297,7 @@ https://github.com/awslabs/aws-icons-for-plantuml/blob/main/AWSSymbols.md
   ELBNetworkLoadBalancer(NLBLoadBalancer, "NLB (Network Load Balancer)", " ")
   EC2AutoScaling(AutoscalingGroup, "Autoscaling Group", " ")
   EC2InstancewithCloudWatch(InstanceCW, "Instance with CloudWatch", " ")
-  General(App1, "App", " ")
+  browser(App1, "App", " ")
   General(App2, "App", " ")
   GenericDatabase(DB, "Database", " ")
 
