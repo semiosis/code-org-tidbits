@@ -8,6 +8,11 @@ The load balancer and container name are specified here.
 
 The docker container is pushed to ECR.
 
+A task definition is required to run Docker
+containers in Amazon ECS. The following are
+some of the parameters you can specify in a
+task definition:
+
 #+BEGIN_SRC sh -n :sps bash :async :results none
   egr aws_ecs_task_definition container_definitions
 #+END_SRC
