@@ -12,6 +12,7 @@ https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.htm
 
 * emacs
 $EMACSD/config/my-file-parsers.el
+$EMACSD/config/my-aws.el
 
 Copy these across.
 
@@ -459,3 +460,7 @@ After running above command, for the next 60 seconds I can ssh in to the box.
 
   sudo mount -t efs ${aws_efs_mount_target.blobdbefs-mnt.0.dns_name}:/ efs
 #+END_SRC
+
+*** TODO Reapply to see if it worked
+It's taking a long time to shut down.
+Finally!
