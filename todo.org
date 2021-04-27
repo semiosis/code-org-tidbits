@@ -362,10 +362,13 @@ blob uploader
 * TODO Set up this tool
 I should use it to parse hcl files.
 
-$MYGIT/kvz/json2hcl
+e:$MYGIT/kvz/json2hcl
+
 https://github.com/kvz/json2hcl
 
-go get -u github.com/kvz/json2hcl
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  go get -u github.com/kvz/json2hcl
+#+END_SRC
 
 ** TODO Use this to query hcl files instead of sed
 cd "$MYGIT/mullikine/blob-uploader-terraform"; cat cloud-watch.tf| json2hcl -reverse
