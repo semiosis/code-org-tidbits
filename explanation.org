@@ -22,6 +22,10 @@ The app task is defined here.
   sp +/"\"image\": \"\${var.blob_uploader_app_image}\"," "$MYGIT/mullikine/blob-uploader-terraform/blob-uploader-app-task-definition.tf"
 #+END_SRC
 
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"blob_uploader_app_image= \"mullikine\/blob-uploader-app:latest\"" "$MYGIT/mullikine/blob-uploader-terraform/terraform.tfvars"
+#+END_SRC
+
 The DB task is defined in a separate file.
 But the image is standard.
 #+BEGIN_SRC sh -n :sps bash :async :results none
