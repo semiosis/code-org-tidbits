@@ -1,0 +1,11 @@
+#+BEGIN_SRC python -n :i mypython :async :results verbatim code
+  x = 1
+  y = [2]
+  x ,= y
+  print(x)
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+2
+#+end_src
