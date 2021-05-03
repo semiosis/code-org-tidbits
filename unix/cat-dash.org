@@ -1,0 +1,4 @@
+#+BEGIN_SRC bash -n :i bash :async :results verbatim code
+  # stop here and read from the keyboard until Crtl-d is pressed"
+  cat a-file - | cat
+#+END_SRC
