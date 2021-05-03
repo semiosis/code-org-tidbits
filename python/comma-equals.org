@@ -1,7 +1,10 @@
+* =,= is a formatting error
 #+BEGIN_SRC python -n :i mypython :async :results verbatim code
   x = 1
   y = [2]
   x ,= y
+  print(x)
+  x, = y
   print(x)
 #+END_SRC
 
