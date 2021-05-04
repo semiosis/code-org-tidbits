@@ -1,0 +1,11 @@
+This may be the most straightforward / concise way to do it, and it doesn't require building any sets (which is relatively expensive).
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (keys (select-keys map-1 (keys map-2)))
+#+END_SRC
+
+Finally, an optimized version, which is a bit faster, and a bit harder to read:
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (keep #(some->> % (find map-1) key) (keys map-2))
+#+END_SRC
