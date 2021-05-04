@@ -26,3 +26,18 @@ or
   (defn key-intersection [m & ms]
     (reduce (fn [v c] (keep #(some->> % (find c) key) v)) (keys m) ms))
 #+END_SRC
+
+
+** Performant
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn key-intersection [s1 s2]
+    (if (< (count s2) (count s1))
+      (recur s2 s1)
+      (reduce
+       (fn [result item]
+         (if (contains? s2 item)
+           (conj result item)
+           result))
+       #{}
+       (keys s1))))
+#+END_SRC
