@@ -1,3 +1,4 @@
+* join / intersect two maps
 https://stackoverflow.com/questions/27660786/intersection-between-two-maps-in-clojure
 
 This may be the most straightforward / concise way to do it, and it doesn't require building any sets (which is relatively expensive).
@@ -10,4 +11,18 @@ Finally, an optimized version, which is a bit faster, and a bit harder to read:
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (keep #(some->> % (find map-1) key) (keys map-2))
+#+END_SRC
+
+** Many maps
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn key-intersection [m & ms]
+    (reduce #(keys (select-keys %2 %1)) (keys m) ms))
+#+END_SRC
+
+or
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (defn key-intersection [m & ms]
+    (reduce (fn [v c] (keep #(some->> % (find c) key) v)) (keys m) ms))
 #+END_SRC
