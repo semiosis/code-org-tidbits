@@ -1,0 +1,2 @@
+* =att-type-map=
+Describe an object.
