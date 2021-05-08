@@ -1,0 +1,1 @@
+https://clojure.org/about/functional_programming
