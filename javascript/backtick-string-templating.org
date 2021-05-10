@@ -1,1 +1,7 @@
 https://stackoverflow.com/questions/47067319/back-tick-vs-single-quote-in-js
+
+#+BEGIN_SRC js -n :async :results verbatim code
+  var value = 4;
+  var str = `text with a ${value}`
+  // str will be  : 'text with a 4'
+#+END_SRC
