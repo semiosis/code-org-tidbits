@@ -1,3 +1,5 @@
+* "Backtick" strings are for string templating
+
 https://stackoverflow.com/questions/47067319/back-tick-vs-single-quote-in-js
 
 #+BEGIN_SRC js -n :async :results verbatim code
