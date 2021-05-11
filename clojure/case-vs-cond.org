@@ -1,4 +1,19 @@
 * case vs cond
-https://stackoverflow.com/a/21079882
-
 cond and case are different things btw.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (cond
+    (< x 2) "x is less than 2"
+    (< x 10) "x is less than 10"
+    :else "x is greater than or equal to 10")
+#+END_SRC
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (case x
+    5 "x is 5"
+    10 "x is 10"
+    "x isn't 5 or 10")
+#+END_SRC
+
+** mirrored in elixir
+https://stackoverflow.com/a/21079882
