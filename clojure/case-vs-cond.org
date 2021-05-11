@@ -1,2 +1,4 @@
 * case vs cond
 https://stackoverflow.com/q/27652176
+
+cond and case are different things btw.
