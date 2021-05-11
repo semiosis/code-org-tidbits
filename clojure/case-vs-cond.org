@@ -1,5 +1,5 @@
 * case vs cond
-cond and case are different things btw.
+cond and case are different things.
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   (cond
