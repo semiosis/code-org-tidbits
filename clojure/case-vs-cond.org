@@ -15,5 +15,7 @@ cond and case are different things.
     "x isn't 5 or 10")
 #+END_SRC
 
+case is missing from elisp.
+
 ** mirrored in elixir
 https://stackoverflow.com/a/21079882
