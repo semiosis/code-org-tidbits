@@ -1,0 +1,11 @@
+All ~>>=~ does is take the value out of the wrapped type.
+
+#+BEGIN_SRC haskell -n :i "babel-ghci -norc" :async :results verbatim code
+  half x = if even x then Just (x `div` 2) else Nothing
+  Just 4 >>= half
+#+END_SRC
+
+#+RESULTS:
+#+begin_src haskell
+Just 2
+#+end_src
