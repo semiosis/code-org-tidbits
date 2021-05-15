@@ -1,4 +1,6 @@
-All ~>>=~ does is take the value out of the wrapped type and apply it to the function on the RHS.
+All ~>>=~ does is take the value out of the
+wrapped type and apply it to the function on
+the RHS.
 
 #+BEGIN_SRC haskell -n :i "babel-ghci -norc" :async :results verbatim code
   half x = if even x then Just (x `div` 2) else Nothing
