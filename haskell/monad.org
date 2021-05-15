@@ -1,0 +1,6 @@
+#+BEGIN_SRC haskell -n :i "babel-ghci -norc" :async :results verbatim code
+  -- m is the monad
+  class Monad a where
+    (>==) :: m a -> (a -> m b) -> m b
+#+END_SRC
+
