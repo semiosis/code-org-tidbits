@@ -21,4 +21,3 @@ Just 2
 #+begin_src haskell
 Just 1
 #+end_src
-
