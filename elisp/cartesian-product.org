@@ -1,0 +1,12 @@
+* cartesian product
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  ;; I want to make any number of lists here
+  ;; I just need to reduce a list with the reductor being the cartesian-product
+  ;; (-reduce 'cartesian-product '((1 2 3) (a b c) (x y z)))
+  (defun cartesian-product (l1 l2)
+    (loop for x in l1
+          nconc
+          (loop for y in l2
+                collect (list x y))))
+  (defalias '-cartesian-product 'cartesian-product)
+#+END_SRC
