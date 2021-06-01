@@ -12,7 +12,7 @@
   (defun cartesian-product (&rest ls)
     (if (equal 1 (length ls))
         ls
-      (-reduce 'cartesian-product ls)))
+      (mapcar '-flatten (-reduce 'cartesian-product-2 ls))))
 
   (defalias '-cartesian-product 'cartesian-product)
 #+END_SRC
