@@ -1,0 +1,4 @@
+* Square brackets vs parentheses
+Square brackets are sometimes used for
+readability. They mean the same thing as
+parentheses.
