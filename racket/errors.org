@@ -1,0 +1,4 @@
+* Create an error
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (error 'boom)
+#+END_SRC
