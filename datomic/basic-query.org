@@ -1,0 +1,6 @@
+* Basic query
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?name
+   :where
+   [11 :user/name ?name]]
+#+END_SRC
