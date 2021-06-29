@@ -77,3 +77,14 @@ Now we have a tuple of 2 values.
 
 ** Add an email address
 Now lets complicate the business domain.
+
+*** The value of a constraint solver
+If this is ID then anywhere I use the exact
+same name all the values must match.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?id ?email
+   :where
+   [?id :user/name "richhickey"]
+   [?id :user/name ?email]]
+#+END_SRC
