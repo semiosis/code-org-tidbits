@@ -93,7 +93,7 @@ The order doesn't matter here, but if the
 solver finds with this clause an =id= that
 equals =11=, it will then use that value to
 find the =email=, which is perhaps contained
-in a different datum..
+in a different datum.
 
 #+BEGIN_SRC text -n :async :results verbatim code
   [?id :user/name "richhickey"]
