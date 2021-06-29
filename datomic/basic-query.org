@@ -53,3 +53,5 @@ If you use the elipses then it will return a vector.
    [_ :user/name ?name]]
 #+END_SRC
 
+It matched all 3 and return a set, so it
+returns one value such that it's true.
