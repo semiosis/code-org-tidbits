@@ -1,6 +1,5 @@
 ** Additional reading
 *** [[https://www.youtube.com/watch?v=oo-7mN9WXTw][DOMAIN MODELING WITH DATALOG by Norbert Wojtowicz - YouTube]]
-
 Example: github.
 New users.
 There are 3 users here in our system.
