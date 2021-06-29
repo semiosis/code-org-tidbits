@@ -98,3 +98,14 @@ in a different datum.
 #+BEGIN_SRC text -n :async :results verbatim code
   [?id :user/name "richhickey"]
 #+END_SRC
+
+*** You can also have multiple unknowns
+It's a bit like solving a system of linear
+equations, but it's boolean equations.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?id ?email
+   :where
+   [?id :user/name "richhickey"]
+   [?id :user/name ?email]]
+#+END_SRC
