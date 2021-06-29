@@ -109,3 +109,23 @@ equations, but it's boolean equations.
    [?id :user/name "richhickey"]
    [?id :user/name ?email]]
 #+END_SRC
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  {:org/name "clojure"}
+
+  {repo/slug "clojure/clojure"
+   :repo/owner 44}
+  {repo/slug "tonsky/datascript"
+   :repo/owner 22}
+
+  ;; sugar syntax
+  ;; replace this reference with a 2 element vector
+  ;; this says find me the entities such as org
+  ;; name clojure, the 44 and it will replace it,
+  ;; one with the other
+
+  {repo/slug "clojure/clojure"
+   :repo/owner [:org/name "clojure"]}
+  {repo/slug "tonsky/datascript"
+   :repo/owner [:org/name "clojure"]}
+#+END_SRC
