@@ -6,3 +6,19 @@
 #+END_SRC
 
 - name is bound
+
+Order doesn't matter.
+
+=where= is a set of clauses.
+
+Always return sets of tuples.
+
+Datalog is declarative and logic oriented.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?id
+   :where
+   [?id :user/name "tonsky"]]
+#+END_SRC
+
+This will find the id.
