@@ -60,6 +60,7 @@ If you use the elipses then it will return a vector.
 It matched all 3 and return a set, so it
 returns one value such that it's true.
 
+** multiple bindings
 If you want to return multiple things:
 
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
@@ -67,3 +68,9 @@ If you want to return multiple things:
    :where
    [?id :user/name ?name]]
 #+END_SRC
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  ∈{[11 "richhickey"] [22 "tonsky"] [33 "pithyless"]}
+#+END_SRC
+
+Now we have a tuple of 2 values.
