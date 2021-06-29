@@ -169,7 +169,8 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-gr
 #+BEGIN_SRC bash -n :i bash :async :results verbatim code
   oci aws iam create-user --user-name Administrator
   # Enable console login
-  oci aws iam create-login-profile --user-name Administrator --password "$(pwgen 30 1 | tee -a $NOTES/personal/passwords/aws-administrator.txt)"
+  oci aws iam create-login-profile --user-name Administrator --passw
+ord "$(pwgen 30 1 | tee -a $NOTES/personal/passwords/aws-administrator.txt)"
   # Change the pasword
   oci aws iam update-login-profile --user-name Administrator --password "$(pwgen 30 1 | tee -a $NOTES/personal/passwords/aws-administrator.txt)"
   # Enable programmatic access
