@@ -41,3 +41,8 @@ Find all usernames and return the values.
   
       A returned set from a query.
 #+END_SRC
+
+Sets return duplicates.
+
+By default datomic queries return a set of tuples.
+If you use the elipses then it will return a vector.
