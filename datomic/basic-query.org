@@ -141,3 +141,6 @@ The schema you apply is doing a read, not a write.
    [?x :repo/owner ?p]
    [?r :repo/slug ?repo]]
 #+END_SRC
+
+This finds the =p= and =r= that satisfy and
+then finally will bind and return =repo=.
