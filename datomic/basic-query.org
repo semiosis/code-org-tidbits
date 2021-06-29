@@ -134,6 +134,19 @@ Datalog has no concept of schemas.
 
 The schema you apply is doing a read, not a write.
 
+** Example
+
+|  e | a             | v                 |
+|----+---------------+-------------------|
+| 11 | =:user/name=  | richhickey        |
+| 22 | =:user/name=  | tonsky            |
+| 33 | =:user/name=  | pithyless         |
+| 44 | =:org/name=   | clojure           |
+| 55 | =:repo/slug=  | clojure/clojure   |
+| 55 | =:repo/owner= | 44                |
+| 66 | =:repo/slug=  | tonsky/datascript |
+| 66 | =:repo/owner= | 22                |
+
 + Example :: What are all the repositories
   that are owned by this user ="tonsky"=?.
 
@@ -144,6 +157,8 @@ The schema you apply is doing a read, not a write.
    [?x :repo/owner ?p]
    [?r :repo/slug ?repo]]
 #+END_SRC
+
+
 
 This finds the =p= and =r= that satisfy and
 then finally will bind and return =repo=.
