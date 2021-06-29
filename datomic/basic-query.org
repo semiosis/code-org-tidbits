@@ -133,3 +133,11 @@ equations, but it's boolean equations.
 Datalog has no concept of schemas.
 
 The schema you apply is doing a read, not a write.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?repo
+    :where
+   [?p :user/name "tonsky"]
+   [?x :repo/owner ?p]
+   [?r :repo/slug ?repo]]
+#+END_SRC
