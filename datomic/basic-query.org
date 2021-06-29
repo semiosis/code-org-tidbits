@@ -129,3 +129,7 @@ equations, but it's boolean equations.
   {repo/slug "tonsky/datascript"
    :repo/owner [:org/name "tonsky"]}
 #+END_SRC
+
+Datalog has no concept of schemas.
+
+The schema you apply is doing a read, not a write.
