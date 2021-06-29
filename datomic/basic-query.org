@@ -134,6 +134,9 @@ Datalog has no concept of schemas.
 
 The schema you apply is doing a read, not a write.
 
++ Example :: What are all the repositories
+  that are owned by this user ="tonsky"=?.
+
 #+BEGIN_SRC clojure -n :i clj :async :results verbatim code
   [:find ?repo
     :where
