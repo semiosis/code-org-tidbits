@@ -127,5 +127,5 @@ equations, but it's boolean equations.
   {repo/slug "clojure/clojure"
    :repo/owner [:org/name "clojure"]}
   {repo/slug "tonsky/datascript"
-   :repo/owner [:org/name "clojure"]}
+   :repo/owner [:org/name "tonsky"]}
 #+END_SRC
