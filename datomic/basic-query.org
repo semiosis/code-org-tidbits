@@ -30,3 +30,14 @@ This will find the id.
 #+END_SRC
 
 Find all usernames and return the values.
+
+#+BEGIN_SRC text -n :async :results verbatim code
+  ∈{["richhickey"] ["tonsky"] ["pithyless"]}
+#+END_SRC
+
+#+BEGIN_SRC text -n :async :results verbatim code
+  ∈
+      ∈	(-	2208	8712	ELEMENT OF
+  
+      A returned set from a query.
+#+END_SRC
