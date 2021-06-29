@@ -22,3 +22,11 @@ Datalog is declarative and logic oriented.
 #+END_SRC
 
 This will find the id.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?name
+   :where
+   [_ :user/name ?name]]
+#+END_SRC
+
+Find all usernames and return the values.
