@@ -46,3 +46,10 @@ Sets return duplicates.
 
 By default datomic queries return a set of tuples.
 If you use the elipses then it will return a vector.
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find [?name ...]
+   :where
+   [11 :user/name ?name]]
+#+END_SRC
+
