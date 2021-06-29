@@ -4,3 +4,5 @@
    :where
    [11 :user/name ?name]]
 #+END_SRC
+
+- name is bound
