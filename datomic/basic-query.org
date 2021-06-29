@@ -55,3 +55,11 @@ If you use the elipses then it will return a vector.
 
 It matched all 3 and return a set, so it
 returns one value such that it's true.
+
+If you want to return multiple things:
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  [:find ?id ?name
+   :where
+   [?id :user/name ?name]]
+#+END_SRC
