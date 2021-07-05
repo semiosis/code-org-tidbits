@@ -10,3 +10,19 @@ $MYGIT/voluntarily/vly2/Dockerfile
   RUN mkdir -p /usr/src/app
   WORKDIR /usr/src/app
 #+END_SRC
+
+By default, the stages are not named, and you
+refer to them by their integer number,
+starting with 0 for the first FROM
+instruction.
+
+However, you can name your stages, by adding
+an AS <NAME> to the FROM instruction.
+
+This example improves the previous one by
+naming the stages and using the name in the
+COPY instruction.
+
+This means that even if the instructions in
+your Dockerfile are re-ordered later, the COPY
+doesn’t break.
