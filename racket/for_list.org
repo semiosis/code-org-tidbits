@@ -10,3 +10,37 @@
 #+begin_src racket
 '((1 #\a #t) (1 #\a #f) (3 #\c #t) (3 #\c #f))
 #+end_src
+
+
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (for/list ((i '(1 2 3))
+             (j "abc")
+             #:break
+             (not (odd? i))
+             (k #(#t #f)))
+    (list i j k))
+#+END_SRC
+
+#+RESULTS:
+#+begin_src racket
+'((1 #\a #t) (1 #\a #f))
+#+end_src
+
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (for/list () 'any)
+#+END_SRC
+
+#+RESULTS:
+#+begin_src racket
+'(any)
+#+end_src
+
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (for/list ((i (quote ())))
+   (error "doesn't get here"))
+#+END_SRC
+
+#+RESULTS:
+#+begin_src racket
+'()
+#+end_src
