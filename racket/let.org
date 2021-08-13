@@ -1,0 +1,19 @@
+The second form evaluates the init-exprs; the
+resulting values become arguments in an
+application of a procedure (lambda (id ...)
+body ...+), where proc-id is bound within the
+bodys to the procedure itself.
+
+Example:
+
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (let fac ((n 10))
+   (if (zero? n)
+    1
+    (* n (fac (sub1 n)))))
+#+END_SRC
+
+#+RESULTS:
+#+begin_src racket
+3628800
+#+end_src
