@@ -1,0 +1,5 @@
+(for/list ([i '(1 2 3)]
+             [j "abc"]
+             #:when (odd? i)
+             [k #(#t #f)])
+    (list i j k))
