@@ -1,6 +1,7 @@
 #+BEGIN_SRC racket -n :i racket :async :results verbatim code
   (for/list ((i '(1 2 3))
              #:when (odd? i)
+
              (j "abc")
              (k #(#t #f)))
     (list i j k))
@@ -10,6 +11,8 @@
 #+begin_src racket
 '((1 #\a #t) (1 #\b #f) (3 #\a #t) (3 #\b #f))
 #+end_src
+
+The following breaks because =#:when= is part of its preceding clause.
 
 #+BEGIN_SRC racket -n :i racket :async :results verbatim code
   (for/list (#:when (odd? i)
@@ -47,8 +50,10 @@
 
 #+BEGIN_SRC racket -n :i racket :async :results verbatim code
   (for/list ((i '(1 2 3))
+
              (j "abc")
              #:when (odd? i)
+
              (k #(#t #f)))
     (list i j k))
 #+END_SRC
