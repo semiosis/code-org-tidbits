@@ -1,5 +1,52 @@
 #+BEGIN_SRC racket -n :i racket :async :results verbatim code
   (for/list ((i '(1 2 3))
+             #:when (odd? i)
+             (j "abc")
+             (k #(#t #f)))
+    (list i j k))
+#+END_SRC
+
+#+RESULTS:
+#+begin_src racket
+'((1 #\a #t) (1 #\b #f) (3 #\a #t) (3 #\b #f))
+#+end_src
+
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (for/list (#:when (odd? i)
+             (i '(1 2 3))
+             (j "abc")
+             (k #(#t #f)))
+    (list i j k))
+#+END_SRC
+
+#+RESULTS:
+#+begin_src racket
+/tmp/file_tmp_zXWc4M_rand-6992_pid-2707427.bin:2:24: i: unbound identifier
+  in: i
+  location...:
+   /tmp/file_tmp_zXWc4M_rand-6992_pid-2707427.bin:2:24
+  context...:
+   do-raise-syntax-error
+   for-loop
+   [repeats 1 more time]
+   finish-bodys
+   for-loop
+   [repeats 1 more time]
+   finish-bodys
+   lambda-clause-expander
+   for-loop
+   loop
+   [repeats 1 more time]
+   module-begin-k
+   expand-module16
+   expand-capturing-lifts
+   temp118_0
+   temp91_0
+   ...
+#+end_src
+
+#+BEGIN_SRC racket -n :i racket :async :results verbatim code
+  (for/list ((i '(1 2 3))
              (j "abc")
              #:when (odd? i)
              (k #(#t #f)))
