@@ -14,8 +14,7 @@
 #+BEGIN_SRC racket -n :i racket :async :results verbatim code
   (for/list ((i '(1 2 3))
              (j "abc")
-             #:break
-             (not (odd? i))
+             #:break (not (odd? i))
              (k #(#t #f)))
     (list i j k))
 #+END_SRC
