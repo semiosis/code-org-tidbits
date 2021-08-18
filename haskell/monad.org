@@ -12,7 +12,9 @@
 *** For example, =Maybe=
 
 You might say the name of the nomad is =Maybe=.
-But you would also say that =Just 2=, a value is a monad, or an instance of it.
+
+But you would also say that =Just 2=, a value
+is a monad, or an instance of it.
 
 *** perspectivea
 Bind returns a monad.
