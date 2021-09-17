@@ -1,0 +1,10 @@
+#+BEGIN_SRC haskell -n :i "babel-ghci -norc" :async :results verbatim code
+  -- Think of comparing lists like comparing decimal places
+  compareList = [3,2,1] > [2,1,0] -- determined element by element
+  compareList' = [3,4,2] < [3,4,3]
+#+END_SRC
+
+#+BEGIN_SRC haskell -n :i "babel-ghci -norc" :async :results verbatim code
+  listInList = [[1,2,3,4],[5,3,3,3],[1,2,2,3,4]]
+  indexList' = listInList !! 1
+#+END_SRC
