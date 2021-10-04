@@ -16,6 +16,12 @@
     name(Str3, StrList3).
 #+END_SRC
 
+Then interactively:
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  join_str('Another ', 'Random String', X).
+#+END_SRC
+
 ** Recursion
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
   write_list([]).
