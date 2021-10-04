@@ -7,6 +7,41 @@
   ?
 #+END_SRC
 
+** help
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  help(append).
+#+END_SRC
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  help(name).
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+help(name).
+1 ?-                                                       Availability: built-in
+     name(?Atomic, ?CodeList)
+         CodeList is  a list  of character  codes representing  the same  text as
+         Atomic. Each of the arguments may be a variable, but not both.
+           • When CodeList describes an integer or floating point  number and
+             Atomic is a variable, Atomic  will be  unified with  the numeric
+             value described by CodeList (e.g.,  name(N, "300"),  400 is  N +
+             100 succeeds).
+           • If CodeList is not a representation of a number, Atomic  will be
+             unified with the atom with the name given by the  character code
+             list.
+           • If   Atomic   is  an   atom  or   number,  the   unquoted  print
+             representation of it as a  character code  list is  unified with
+             CodeList.
+         This  predicate  is  part  of  the  Edinburgh  tradition.  It  should be
+         considered deprecated although, given its long tradition, it is unlikely
+         to be removed from the system. It  still has  some value  for converting
+         input to a number or an atom (depending on the syntax). New  code should
+         consider  the  ISO  predicates   atom_codes/2,  number_codes/2   or  the
+         SWI-Prolog predicate atom_number/2.
+     true.
+#+end_src
+
 ** Append strings
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
   join_str(Str1, Str2, Str3) :-
