@@ -54,9 +54,20 @@ name('A random string', X).
 #+end_src
 
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  name('Derek', List),
   nth0(0, List, FChar),
   put(FChar).
 #+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+name('Derek', List),
+nth0(0, List, FChar),
+put(FChar).
+1 ?- |    |    D
+     List = [68, 101, 114, 101, 107],
+     FChar = 68.
+#+end_src
 
 ** Append strings
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
