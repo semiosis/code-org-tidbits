@@ -1,0 +1,345 @@
+* Prolog
+#+BEGIN_SRC text -n :async :results verbatim code
+  ?- rich(money, X) = rich(Y, no_debt).
+  X = no_debt,
+  Y = money.
+  
+  ?
+#+END_SRC
+
+** read
+#+BEGIN_SRC text -n :async :results verbatim code
+  ?- read(Guess).
+  |: succ(2,X).
+  
+  Guess = succ(2, _11902).
+#+END_SRC
+
+** format
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  fav_char :-
+    write('What is your fav character? '),
+    get (X),
+    format('The Ascii value ~w is ', [X]),
+    put(X), nl.
+#+END_SRC
+
+** lists
+*** separate a list into head and tail parts
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  [H|T] = [a, b, c].
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+[H|T] = [a, b, c].
+1 ?- H = a,
+     T = [b, c].
+#+end_src
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  [X1, X2, X3, X4|T] = [1, b, c, d].
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+[X1, X2, X3, X4|T] = [1, b, c, d].
+1 ?- X1 = 1,
+     X2 = b,
+     X3 = c,
+     X4 = d,
+     T = [].
+#+end_src
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% With anonymous variables
+  [_, X2, _ , _|T] = [a,b,c,d].
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+%% With anonymous variables
+[_, X2, _ , _|T] = [a,b,c,d].
+1 ?- |    X2 = b,
+     T = [].
+#+end_src
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  [_, _, [X|Y], _, Z|T] = [a, b, [c, d, e], f, g, h].
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+[_, _, [X|Y], _, Z|T] = [a, b, [c, d, e], f, g, h].
+1 ?- X = c,
+     Y = [d, e],
+     Z = g,
+     T = [h].
+#+end_src
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% define a list
+  List1 = [a,b,c].
+#+END_SRC
+
+*** check if element is a member of list
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  List1 = [a,b,c].
+  member(a, List1).
+#+END_SRC
+
+*** show all members of list
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  member(X, [a,b,c,d]).
+#+END_SRC
+
+*** length
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  length([1,2,3], X).
+#+END_SRC
+
+*** cons
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% pipe is the list constructor. This adds an element to the alice&bob list
+  write([albert|[alice, bob]]), nl.
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+%% pipe is the list constructor. This adds an element to the alice&bob list
+write([albert|[alice, bob]]), nl.
+1 ?- |    [albert,alice,bob]
+     true.
+#+end_src
+
+** environment variables
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  getenv('PWD',X).
+#+END_SRC
+
+** retract
+This is like assert, but it retracts facts/relations from a database.
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  retract(likes(mercutio, dancing)).
+#+END_SRC
+
+*** retractall
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% nobody has fathers anymore
+  retractall(father(_,_)).
+#+END_SRC
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% nobody likes dancing anymore
+  retractall(likes(_,dancing)).
+#+END_SRC
+
+** assert
+Enter some information into the database.
+
+https://www3.cs.stonybrook.edu/~sbprolog/manual1/node81.html
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% Add permission to modify static procedure 'friend'
+  %% That is for assert
+  :- dynamic(friend/2).
+
+  friend(romeo,mercutio).
+  friend(romeo,benvolio).
+#+END_SRC
+
+Then interactively.
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% This adds more friendship relations to the database
+  assert(friend(benvol1o, mercutio)).
+#+END_SRC
+
+Alternatively =assertz= puts it at the end.
+Alternatively =asserta= puts it at the start.
+
+** loop
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% start is a dummy value
+  guess_num :- loop(start).
+  
+  loop(15) :- write('You guessed it').
+  
+  loop(X) :-
+      X \= 15,
+      write('Guess Number '),
+      read(Guess),
+      write(Guess),
+      write(' is not the number'), nl,
+      loop(Guess).
+#+END_SRC
+
+Then interactively start the loop.
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code  
+  %% Then interactively
+  guess_num.
+#+END_SRC
+
+Then enter guesses.
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  432.
+#+END_SRC
+
+** combinations
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  male(X), female(Y).
+#+END_SRC
+
+** write to screen
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  write('You saw me'), nl.
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+write('You saw me'), nl.
+1 ?- You saw me
+     true.
+#+end_src
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  writeq('I show quotes'), nl.
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+writeq('I show quotes'), nl.
+1 ?- 'I show quotes'
+     true.
+#+end_src
+
+** listing
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  % db
+  male(albert).
+  male(bob).
+  male(bill).
+  
+  male(carl).
+  male(charlie).
+  male(dan).
+  male(edward).
+  
+  % interactively
+  listing(male).
+#+END_SRC
+
+** custom predicate
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  double_digit(X, Y) :-
+    Y is X*2.
+#+END_SRC
+
+** functions
+*** round
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  X is mod(7,2).
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+X is mod(7,2).
+1 ?- X = 1.
+#+end_src
+
+*** round
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  X is round(10.56).
+#+END_SRC
+
+*** min
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  X is min(10,5).
+#+END_SRC
+
+*** max
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  X is max(10,5).
+#+END_SRC
+
+*** abs
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  X is abs(-8).
+#+END_SRC
+
+*** succ
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% increment 2 and assign to X
+  succ(2,X).
+#+END_SRC
+
+*** between
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% Get all possible numbers between 0 and 10 and store in the variable X
+  %% Get the first result.
+  between(0,10,X), !.
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+%% Get all possible numbers between 0 and 10 and store in the variable X
+%% Get the first result.
+between(0,10,X), !.
+1 ?- |    |    X = 0.
+#+end_src
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% Get all possible numbers between 0 and 10 and store in the variable X
+  between(0,10,X).
+#+END_SRC
+
+*** random
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  %% Random number between 0 and 10 and store in the variable X
+  random(0,10,X).
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+%% Random number between 0 and 10 and store in the variable X
+random(0,10,X).
+1 ?- |    X = 3.
+#+end_src
+
+** operators
+*** greater-than or equal to
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  (3*10) >= (50/2).
+#+END_SRC
+
+*** not
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  \+ (3 = 10).
+#+END_SRC
+
+*** equality
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  5+4 =:= 4+5.
+#+END_SRC
+
+*** inequality
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  5+4 =\= 4+5.
+#+END_SRC
+
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  loop(X) :-
+    X \= 15,
+    write('Guess Number '),
+    read(Guess),
+    write(Guess),
+    write(' is not the number'), nol,
+    loop(Guess).
+#+END_SRC
+
+*** or
+#+BEGIN_SRC text -n :async :results verbatim code
+  5 > 10 ; 10 < 100.
+#+END_SRC
