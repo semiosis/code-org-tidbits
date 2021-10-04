@@ -53,6 +53,11 @@ name('A random string', X).
 1 ?- X = [65, 32, 114, 97, 110, 100, 111, 109, 32|...].
 #+end_src
 
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  nth0(0, List, FChar),
+  put(FChar).
+#+END_SRC
+
 ** Append strings
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
   join_str(Str1, Str2, Str3) :-
