@@ -7,6 +7,15 @@
   ?
 #+END_SRC
 
+** Recursion
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  write_list([]).
+  
+  write_list([Head|Tail]) :-
+    write(Head), nl,
+    write_list(Tail).
+#+END_SRC
+
 ** read
 #+BEGIN_SRC text -n :async :results verbatim code
   ?- read(Guess).
