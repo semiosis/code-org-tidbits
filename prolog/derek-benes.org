@@ -42,6 +42,35 @@ help(name).
      true.
 #+end_src
 
+#+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
+  help(nth0).
+#+END_SRC
+
+#+RESULTS:
+#+begin_src prolog
+help(nth0).
+1 ?-             Availability: :- use_module(library(lists)). (can be autoloaded)
+     nth0(?Index, ?List, ?Elem)
+         True when Elem is the Index’th element of List. Counting starts at 0.
+         Errors
+             type_error(integer, Index) if Index is not an integer or unbound.
+         See also
+             nth1/3.
+                 Availability: :- use_module(library(lists)). (can be autoloaded)
+     nth0(?N, ?List, ?Elem, ?Rest)                                          [det]
+         Select/insert element at  index. True  when Elem  is the  N’th (0-based)
+         element of List and Rest is the remainder (as in  by select/3)  of List.
+         For example:
+             ?- nth0(I, [a,b,c], E, R).
+             I = 0, E = a, R = [b, c] ;
+             I = 1, E = b, R = [a, c] ;
+             I = 2, E = c, R = [a, b] ;
+             false.
+             ?- nth0(1, L, a1, [a,b]).
+             L = [a, a1, b].
+     true.
+#+end_src
+
 ** name
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
   name('A random string', X).
@@ -61,12 +90,12 @@ name('A random string', X).
 
 #+RESULTS:
 #+begin_src prolog
-name('Derek', List),
-nth0(0, List, FChar),
-put(FChar).
-1 ?- |    |    D
-     List = [68, 101, 114, 101, 107],
-     FChar = 68.
+  name('Derek', List),
+  nth0(0, List, FChar),
+  put(FChar).
+  1 ?- |    |    D
+       List = [68, 101, 114, 101, 107],
+       FChar = 68.
 #+end_src
 
 ** Append strings
