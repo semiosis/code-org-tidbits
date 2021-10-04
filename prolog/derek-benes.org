@@ -9,7 +9,7 @@
 
 ** Append strings
 #+BEGIN_SRC prolog -n :i babel-prolog :async :results verbatim code
-  join_str(Stri, Str2, Str3) :-
+  join_str(Str1, Str2, Str3) :-
     name(Str1, StrList1),
     name(Str2, StrList2),
     append(StrList1, StrList2, StrList3),
