@@ -4,4 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+K	vim/dvorak-toggle.vim	/^command! K call ToggleKeymap()$/;"	c
+ToggleKeymap	vim/dvorak-toggle.vim	/^function! ToggleKeymap()$/;"	f
 clean-up-terraform	terraform/eww-extras.el	/^(defun clean-up-terraform ()$/;"	f
