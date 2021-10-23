@@ -1,0 +1,4 @@
+* Inherit from a list (extend the list class)
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"^class LogitsProcessorList(list):" "$HOME/local/lib/python3.6/site-packages/transformers/generation_logits_process.py"
+#+END_SRC
