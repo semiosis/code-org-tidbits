@@ -1,4 +1,8 @@
 * sort by percent
+#+BEGIN_SRC sh -n :sps bash :async :results none
+  sp +/"^scores.sort_values(by=\"%\", ascending=False)" "$HOME/var/smulliga/source/gist/brockmanmatt/7a346d641e2d2159eb3319f888193212/introtologprobs.py"
+#+END_SRC
+
 #+BEGIN_SRC python -n :i mypython :async :results verbatim code
   scores = pd.DataFrame([r["choices"][0]["logprobs"]["top_logprobs"][0]]).T
   scores.columns = ["logprob"]
