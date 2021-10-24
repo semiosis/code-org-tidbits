@@ -1,4 +1,8 @@
 #+BEGIN_SRC python -n :i mypython :async :results verbatim code
+  def create(cls, *args, timeout=None, **kwargs):
+#+END_SRC
+
+#+BEGIN_SRC python -n :i mypython :async :results verbatim code
   kwargs = {
   "engine":"davinci",
   "temperature":0,
