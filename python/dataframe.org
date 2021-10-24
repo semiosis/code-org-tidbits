@@ -1,0 +1,7 @@
+* sort by percent
+#+BEGIN_SRC python -n :i mypython :async :results verbatim code
+  scores = pd.DataFrame([r["choices"][0]["logprobs"]["top_logprobs"][0]]).T
+  scores.columns = ["logprob"]
+  scores["%"] = scores["logprob"].apply(lambda x: 100*np.e**x)
+  scores.sort_values(by="%", ascending=False)
+#+END_SRC
