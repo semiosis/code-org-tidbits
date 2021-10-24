@@ -1,0 +1,14 @@
+#+BEGIN_SRC python -n :i mypython :async :results verbatim code
+  kwargs = {
+  "engine":"davinci",
+  "temperature":0,
+  "max_tokens":10,
+  "stop":"\n",
+  }
+  
+  kwargs["logprobs"] = 10
+  kwargs["max_tokens"] = 20
+  kwargs["temperature"] = 0
+  
+  r = openai.Completion.create(prompt=prompt, **kwargs)
+#+END_SRC
