@@ -1,0 +1,10 @@
+#+BEGIN_SRC emacs-lisp -n :async :results verbatim code
+  (defun apply-partially (fun &rest args)
+    "Return a function that is a partial application of FUN to ARGS.
+  ARGS is a list of the first N arguments to pass to FUN.
+  The result is a new function which does the same as FUN, except that
+  the first N arguments are fixed at the values with which this function
+  was called."
+    (lambda (&rest args2)
+      (apply fun (append args args2))))
+#+END_SRC
