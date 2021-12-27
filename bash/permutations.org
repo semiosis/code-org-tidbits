@@ -1,0 +1,18 @@
+Multiple input sources¶
+
+GNU parallel can take multiple input sources given on the command line.
+GNU parallel then generates all combinations of the input sources:
+
+parallel echo ::: A B C ::: D E F
+
+Output (the order may be different):
+
+A D
+A E
+A F
+B D
+B E
+B F
+C D
+C E
+C F
