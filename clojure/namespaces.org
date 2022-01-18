@@ -1,0 +1,13 @@
+** If you want to switch namespaces
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (ns clojure-noob.core) ;; switch to the correct namespace
+  (can-vote) ;; call the function
+#+END_SRC
+
+** If you want to call it with the fully qualified symbol from the user namespace
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (require 'clojure-noob.core) ;; first require the namespace
+  (clojure-noob.core/can-vote) ;; call the fully qualified function
+#+END_SRC
