@@ -23,4 +23,3 @@ Apply treats positional arguments and list elements equally.
 
   (write-hex-words-to-file "bigDictionary.txt" "hex-words.txt")
 #+END_SRC
-
