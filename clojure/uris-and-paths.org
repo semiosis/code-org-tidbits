@@ -1,0 +1,14 @@
+** URIs and Paths
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (uri-to-path (string-to-uri "/etc/hosts"))
+#+END_SRC
+
+#+BEGIN_SRC text -n :async :results verbatim code
+  ruse.util> (string-to-uri "/sjdflkasdf/dsfadlsf/d")
+  #object[java.net.URI 0x6dac5246 "file:/sjdflkasdf/dsfadlsf/d"]
+  ruse.util> (string-to-uri "/etc/hosts")
+  #object[java.net.URI 0x5cb914fc "file:/etc/hosts"]
+  ruse.util> (uri-to-path (string-to-uri "/etc/hosts"))
+  #object[sun.nio.fs.UnixPath 0x60a5b0dd "/etc/hosts"]
+  ruse.util> (uri-to-path (string-to-uri "/etc/hosts"))
+#+END_SRC
