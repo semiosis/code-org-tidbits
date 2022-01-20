@@ -1,0 +1,24 @@
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (require '[clojure.data.json :as json])
+  
+  (json/write-str {:a 1 :b 2})
+  ;;=> "{\"a\":1,\"b\":2}"
+  
+  (json/read-str "{\"a\":1,\"b\":2}")
+  ;;=> {"a" 1, "b" 2}
+#+END_SRC
+
+You might also like to use cheshire which has
+a nice API and support for various extensions
+such as custom encoding and SMILE (binary
+JSON):
+
+#+BEGIN_SRC clojure -n :i clj :async :results verbatim code
+  (:require [cheshire.core :as json])
+  
+  (json/encode {:a 1 :b 2})
+  ;;=> "{\"a\":1,\"b\":2}"
+  
+  (json/decode "{\"a\":1,\"b\":2}")
+  ;;=> {"a" 1, "b" 2}
+#+END_SRC
